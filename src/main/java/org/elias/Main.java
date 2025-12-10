@@ -1,4 +1,7 @@
-﻿package org.elias;
+package org.elias;
+
+import org.elias.control.MainController;
+import org.elias.view.ConsoleView;
 
 /**
  * Enthaelt die {@code main()} methode.
@@ -13,6 +16,11 @@ public class Main
      */
     static void main ()
     {
+        ConsoleView consoleView = ConsoleView.getInstance();
 
+        MainController.init(consoleView);
+        MainController mainController = MainController.getInstance();
+
+        mainController.start();
     }
 }
