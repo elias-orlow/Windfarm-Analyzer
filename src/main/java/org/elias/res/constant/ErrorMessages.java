@@ -1,4 +1,4 @@
-﻿package org.elias.res.constant;
+package org.elias.res.constant;
 
 public interface ErrorMessages
 {

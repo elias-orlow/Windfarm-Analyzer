@@ -1,6 +1,7 @@
 package org.elias.control;
 
 import org.elias.res.constant.ErrorMessages;
+import org.elias.util.CSVFileReader;
 import org.elias.view.ConsoleView;
 
 /**
@@ -14,7 +15,9 @@ public final class MainController
 {
     private static MainController INSTANCE;
 
-    /** Die mit dem Controller verbundene ConsoleView. */
+    /**
+     * Die mit dem Controller verbundene ConsoleView.
+     */
     private final ConsoleView view;
 
 
@@ -27,11 +30,10 @@ public final class MainController
     /**
      * Gibt die Singleton-Instanz zurück.
      *
-     * @precondition {@code init(ConsoleView view} wurde vorher aufgerufen
-     * @postcondition die gleiche Singleton-Instanz wird zurückgegeben
-     *
      * @return die existierende MainController-Instanz
      * @throws IllegalStateException wenn die Instanz noch nicht initialisiert wurde
+     * @precondition {@code init(ConsoleView view} wurde vorher aufgerufen
+     * @postcondition die gleiche Singleton-Instanz wird zurückgegeben
      */
     public static MainController getInstance ()
     {
@@ -47,11 +49,10 @@ public final class MainController
      * Initialisiert den {@code MainController} mit einer {@code ConsoleView}.
      * Muss vor {@code getInstance()} aufgerufen werden.
      *
-     * @precondition view ist nicht leer
-     * @postcondition {@link #INSTANCE} wird auf eine neue MainController-Instanz gesetzt
-     *
      * @param view die zu MainController verbindende ConsoleView
      * @throws IllegalStateException wenn die Instanz bereits initialisiert wurde
+     * @precondition view ist nicht leer
+     * @postcondition {@link #INSTANCE} wird auf eine neue MainController-Instanz gesetzt
      */
     public static void init (ConsoleView view)
     {
@@ -71,7 +72,12 @@ public final class MainController
 
         while (isRunning)
         {
-            System.out.println("TEST!");
+            for (String line : CSVFileReader.convertCSVtoList("src/main/resources/Windkraftanlagen_DE.csv"))
+            {
+                System.out.println(line);
+            }
+
+
             isRunning = false;
         }
 
