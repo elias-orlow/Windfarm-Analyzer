@@ -32,7 +32,7 @@ public final class MainController
      *
      * @return die existierende MainController-Instanz
      * @throws IllegalStateException wenn die Instanz noch nicht initialisiert wurde
-     * @precondition {@code init(ConsoleView view} wurde vorher aufgerufen
+     * @precondition {@code init(ConsoleView view)} wurde vorher aufgerufen
      * @postcondition die gleiche Singleton-Instanz wird zurückgegeben
      */
     public static MainController getInstance ()

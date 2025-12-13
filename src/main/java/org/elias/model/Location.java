@@ -1,11 +1,13 @@
-﻿package org.elias.model;
+package org.elias.model;
+
+import org.elias.res.Districts;
 
 public class Location
 {
     String town;
-    String district;
+    Districts district;
 
-    public Location (String town, String district)
+    public Location (String town, Districts district)
     {
         this.town = town;
         this.district = district;
@@ -23,12 +25,12 @@ public class Location
         this.town = town;
     }
 
-    public String getDistrict ()
+    public Districts getDistrict ()
     {
         return district;
     }
 
-    public void setDistrict (String district)
+    public void setDistrict (Districts district)
     {
         this.district = district;
     }

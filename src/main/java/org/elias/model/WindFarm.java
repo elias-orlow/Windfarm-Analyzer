@@ -1,4 +1,4 @@
-﻿package org.elias.model;
+package org.elias.model;
 
 import java.util.ArrayList;
 
@@ -19,7 +19,6 @@ public class WindFarm
     }
 
     // --- Getters & Setters ---
-
 
     public String getName ()
     {

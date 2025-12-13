@@ -1,4 +1,4 @@
-﻿package org.elias.model;
+package org.elias.model;
 
 public class Coordinates
 {
