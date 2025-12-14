@@ -4,6 +4,7 @@ import org.elias.res.constant.ProjectConstants;
 import org.elias.res.constant.ViewConstants;
 import org.elias.util.CSVFileReader;
 
+import java.util.List;
 import java.util.Scanner;
 
 public final class ConsoleView
@@ -42,9 +43,8 @@ public final class ConsoleView
         System.out.println(message);
     }
 
-    public void printCSV (){
-        // TODO: List from CSV need to be saved somewhere
-        for (String line : CSVFileReader.convertCSVtoList(ProjectConstants.PATH_TO_CSV))
+    public void printCSV (List<String> CSVRows){
+        for (String line : CSVRows)
         {
             System.out.println(line);
         }

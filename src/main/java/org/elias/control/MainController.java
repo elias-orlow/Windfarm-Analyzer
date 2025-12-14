@@ -1,8 +1,12 @@
 package org.elias.control;
 
 import org.elias.res.constant.ErrorMessages;
+import org.elias.res.constant.ProjectConstants;
 import org.elias.res.constant.ViewConstants;
+import org.elias.util.CSVFileReader;
 import org.elias.view.ConsoleView;
+
+import java.util.List;
 
 /**
  * Singleton main Controller für den Hauptablauf der Anwendung.
@@ -19,6 +23,7 @@ public final class MainController
      * Die mit dem Controller verbundene ConsoleView.
      */
     private final ConsoleView view;
+    private List<String> CSVData;
 
 
     private MainController (ConsoleView view)
@@ -69,6 +74,7 @@ public final class MainController
     public void start ()
     {
         boolean isRunning = true;
+        CSVData = CSVFileReader.convertCSVtoList(ProjectConstants.PATH_TO_CSV);
 
         while (isRunning)
         {
@@ -78,7 +84,7 @@ public final class MainController
             switch (userChoice)
             {
                 case ViewConstants.SHOW_WINDPARKS:
-                    view.printCSV();
+                    view.printCSV(CSVData);
                     break;
                 case ViewConstants.EXIT:
                     isRunning = false;
