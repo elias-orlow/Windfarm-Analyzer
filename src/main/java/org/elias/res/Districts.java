@@ -1,4 +1,4 @@
-﻿package org.elias.res;
+package org.elias.res;
 
 public enum Districts
 {

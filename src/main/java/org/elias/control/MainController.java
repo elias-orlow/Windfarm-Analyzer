@@ -1,7 +1,7 @@
 package org.elias.control;
 
 import org.elias.res.constant.ErrorMessages;
-import org.elias.util.CSVFileReader;
+import org.elias.res.constant.ViewConstants;
 import org.elias.view.ConsoleView;
 
 /**
@@ -72,15 +72,21 @@ public final class MainController
 
         while (isRunning)
         {
-            for (String line : CSVFileReader.convertCSVtoList("src/main/resources/Windkraftanlagen_DE.csv"))
+            view.showMenu();
+            int userChoice = view.getChoice();
+
+            switch (userChoice)
             {
-                System.out.println(line);
+                case ViewConstants.SHOW_WINDPARKS:
+                    view.printCSV();
+                    break;
+                case ViewConstants.EXIT:
+                    isRunning = false;
+                    //TODO: goodbye message
+                    break;
             }
-
-
-            isRunning = false;
         }
-
     }
+
 
 }
