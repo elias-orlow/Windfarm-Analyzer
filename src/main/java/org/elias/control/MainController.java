@@ -1,5 +1,8 @@
 package org.elias.control;
 
+import org.elias.model.Coordinates;
+import org.elias.model.WindFarm;
+import org.elias.model.WindFarmRepository;
 import org.elias.res.constant.ErrorMessages;
 import org.elias.res.constant.ProjectConstants;
 import org.elias.res.constant.ViewConstants;
@@ -13,7 +16,7 @@ import java.util.List;
  * Verwaltet die Interaktion mit der ConsoleView.
  * <p>
  * Diese Klasse folgt dem Singleton-Muster und muss vor der Verwendung
- * mit {@link #init(ConsoleView)} initialisiert werden.
+ * mit {@link #init(ConsoleView, WindFarmRepository)} initialisiert werden.
  */
 public final class MainController
 {
@@ -23,11 +26,13 @@ public final class MainController
      * Die mit dem Controller verbundene ConsoleView.
      */
     private final ConsoleView view;
+    private final WindFarmRepository germanWindFarms;
 
 
-    private MainController (ConsoleView view)
+    private MainController (ConsoleView view, WindFarmRepository germanWindFarms)
     {
         this.view = view;
+        this.germanWindFarms = germanWindFarms;
     }
 
 
@@ -58,11 +63,11 @@ public final class MainController
      * @precondition view ist nicht leer
      * @postcondition {@link #INSTANCE} wird auf eine neue MainController-Instanz gesetzt
      */
-    public static void init (ConsoleView view)
+    public static void init (ConsoleView view, WindFarmRepository germanWindFarms)
     {
         if (INSTANCE == null)
         {
-            INSTANCE = new MainController(view);
+            INSTANCE = new MainController(view, germanWindFarms);
         } else
         {
             throw new IllegalStateException(ErrorMessages.MAIN_CONTROLLER_ALREADY_INITIALIZED);

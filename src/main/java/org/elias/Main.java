@@ -1,6 +1,7 @@
 package org.elias;
 
 import org.elias.control.MainController;
+import org.elias.model.WindFarmRepository;
 import org.elias.view.ConsoleView;
 
 /**
@@ -16,7 +17,7 @@ public class Main
      */
     static void main ()
     {
-        MainController.init(ConsoleView.getInstance());
+        MainController.init(ConsoleView.getInstance(), WindFarmRepository.getInstance());
         MainController mainController = MainController.getInstance();
 
         mainController.start();
