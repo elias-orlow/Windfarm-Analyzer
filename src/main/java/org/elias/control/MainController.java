@@ -23,7 +23,6 @@ public final class MainController
      * Die mit dem Controller verbundene ConsoleView.
      */
     private final ConsoleView view;
-    private List<String> CSVData;
 
 
     private MainController (ConsoleView view)
@@ -74,7 +73,6 @@ public final class MainController
     public void start ()
     {
         boolean isRunning = true;
-        CSVData = CSVFileReader.convertCSVtoList(ProjectConstants.PATH_TO_CSV);
 
         while (isRunning)
         {
@@ -84,7 +82,7 @@ public final class MainController
             switch (userChoice)
             {
                 case ViewConstants.SHOW_WINDPARKS:
-                    view.printCSV(CSVData);
+                    view.printCSV(CSVFileReader.convertCSVtoList(ProjectConstants.PATH_TO_CSV));
                     break;
                 case ViewConstants.EXIT:
                     isRunning = false;

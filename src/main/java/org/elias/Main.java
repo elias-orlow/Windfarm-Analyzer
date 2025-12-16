@@ -16,9 +16,7 @@ public class Main
      */
     static void main ()
     {
-        ConsoleView consoleView = ConsoleView.getInstance();
-
-        MainController.init(consoleView);
+        MainController.init(ConsoleView.getInstance());
         MainController mainController = MainController.getInstance();
 
         mainController.start();
