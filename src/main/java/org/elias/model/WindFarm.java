@@ -1,6 +1,7 @@
 package org.elias.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class WindFarm
 {
@@ -8,8 +9,8 @@ public class WindFarm
     private float totalPerformance;
     private Coordinates coordinates;
 
-    private ArrayList<ProjectManager> projectManagers;
-    private ArrayList<WindTurbineGroup> windTurbineGroups;
+    private final List<ProjectManager> projectManagers = new ArrayList<>();
+    private final List<WindTurbineGroup> windTurbineGroups = new ArrayList<>();
 
     public WindFarm (String name, float totalPerformance, Coordinates coordinates)
     {
@@ -49,4 +50,41 @@ public class WindFarm
     {
         this.coordinates = coordinates;
     }
+
+    public List<ProjectManager> getProjectManagers ()
+    {
+        return projectManagers;
+    }
+
+    public List<WindTurbineGroup> getWindTurbineGroups ()
+    {
+        return windTurbineGroups;
+    }
+
+    public void addProjectManager (ProjectManager projectManager)
+    {
+        this.projectManagers.add(projectManager);
+    }
+
+    public void addProjectManagers (List<ProjectManager> projectManagers)
+    {
+        for (ProjectManager projectManager : projectManagers)
+        {
+            this.addProjectManager(projectManager);
+        }
+    }
+
+    public void addWindTurbineGroup (WindTurbineGroup windTurbineGroup)
+    {
+        this.windTurbineGroups.add(windTurbineGroup);
+    }
+
+    public void addWindTurbineGroups (List<WindTurbineGroup> windTurbineGroups)
+    {
+        for (WindTurbineGroup windTurbineGroup : windTurbineGroups)
+        {
+            this.addWindTurbineGroup(windTurbineGroup);
+        }
+    }
+
 }

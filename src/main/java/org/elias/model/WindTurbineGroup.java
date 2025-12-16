@@ -1,6 +1,7 @@
 package org.elias.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class WindTurbineGroup
 {
@@ -9,7 +10,7 @@ public class WindTurbineGroup
     private Location location;
     private String remarks;
 
-    private ArrayList<WindTurbineType> windTurbines;
+    private final List<WindTurbineType> windTurbines = new ArrayList<>();
 
     public WindTurbineGroup (int ID, int manufactureYear, Location location, String remarks)
     {
@@ -61,13 +62,21 @@ public class WindTurbineGroup
         this.remarks = remarks;
     }
 
-    public ArrayList<WindTurbineType> getWindTurbines ()
+    public List<WindTurbineType> getWindTurbines ()
     {
         return windTurbines;
     }
 
-    public void setWindTurbines (ArrayList<WindTurbineType> windTurbines)
+    public void addWindTurbine (WindTurbineType windTurbineType)
     {
-        this.windTurbines = windTurbines;
+        this.windTurbines.add(windTurbineType);
+    }
+
+    public void addWindTurbines (List<WindTurbineType> windTurbines)
+    {
+        for (WindTurbineType windTurbine : windTurbines)
+        {
+            this.addWindTurbine(windTurbine);
+        }
     }
 }
