@@ -5,6 +5,7 @@ import org.elias.res.constant.ErrorMessages;
 import org.elias.res.constant.ProjectConstants;
 import org.elias.res.constant.ViewConstants;
 import org.elias.util.CSVFileReader;
+import org.elias.util.CSVLineParser;
 import org.elias.view.ConsoleView;
 
 import java.util.*;
@@ -76,6 +77,18 @@ public final class MainController
     public void start ()
     {
         boolean isRunning = true;
+
+        //List<String[]> test = CSVFileReader.convertToDataUnit(new ArrayList<>(List.of("1,Windpark Wittighausen,2002,5.94,9,Vestas V47-660kW (9×),Unterwittighausen,TBB,49.6197,9.8028,UMaAG,Am 17.3.2019 brach durch das Sturmtief Eberhard bei einer Anlage ein Flügel ab. Die Anlage wurde nicht repariert. Der Windpark ist derzeit außer betrieb.,,,,,,,")));
+        /* Test
+        List<String[]> test = CSVLineParser.convertToDataUnit(CSVFileReader.convertCSVtoList(ProjectConstants.PATH_TO_CSV));
+        for (String[] row : test){
+            for (String item : row)
+            {
+                System.out.print(item + " | ");
+            }
+            System.out.println();
+        }
+        */
 
         while (isRunning)
         {
