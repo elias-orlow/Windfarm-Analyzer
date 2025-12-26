@@ -1,11 +1,12 @@
 package org.elias.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class WindFarmRepository
 {
     private static WindFarmRepository INSTANCE;
-    private final ArrayList<WindFarm> GermanWindFarms = new ArrayList<>();
+    private final List<WindFarm> GermanWindFarms = new ArrayList<>();
 
     private WindFarmRepository ()
     {
@@ -20,7 +21,7 @@ public class WindFarmRepository
         return INSTANCE;
     }
 
-    public ArrayList<WindFarm> getGermanWindFarms ()
+    public List<WindFarm> getGermanWindFarms ()
     {
         return GermanWindFarms;
     }

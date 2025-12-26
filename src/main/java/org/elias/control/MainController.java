@@ -76,8 +76,8 @@ public final class MainController
 
     public void start ()
     {
-        boolean isRunning = true;
 
+        programLoop();
         //List<String[]> test = CSVFileReader.convertToDataUnit(new ArrayList<>(List.of("1,Windpark Wittighausen,2002,5.94,9,Vestas V47-660kW (9×),Unterwittighausen,TBB,49.6197,9.8028,UMaAG,Am 17.3.2019 brach durch das Sturmtief Eberhard bei einer Anlage ein Flügel ab. Die Anlage wurde nicht repariert. Der Windpark ist derzeit außer betrieb.,,,,,,,")));
         /* Test
         List<String[]> test = CSVLineParser.convertToDataUnit(CSVFileReader.convertCSVtoList(ProjectConstants.PATH_TO_CSV));
@@ -89,6 +89,12 @@ public final class MainController
             System.out.println();
         }
         */
+
+    }
+
+    private void programLoop ()
+    {
+        boolean isRunning = true;
 
         while (isRunning)
         {
@@ -106,7 +112,7 @@ public final class MainController
                     break;
             }
         }
-    }
 
+    }
 
 }
