@@ -6,6 +6,7 @@ import org.elias.res.constant.ProjectConstants;
 import org.elias.res.constant.ViewConstants;
 import org.elias.util.CSVFileReader;
 import org.elias.util.CSVLineParser;
+import org.elias.util.DataCellParser;
 import org.elias.view.ConsoleView;
 
 import java.util.*;
@@ -76,8 +77,52 @@ public final class MainController
 
     public void start ()
     {
+        List<String> dataRows = CSVFileReader.convertCSVtoList(ProjectConstants.PATH_TO_CSV);
+        List<String[]> CSVDataCells = CSVLineParser.convertToDataUnit(dataRows);
+        WindFarmImporter.importData(CSVDataCells, germanWindFarms);
+
+        int i = 0;
+
+        for (WindFarm windFarm : germanWindFarms.getGermanWindFarms()){
+            System.out.println(windFarm.getName());
+            for (WindTurbineGroup windTurbineGroup : windFarm.getWindTurbineGroups()){
+                System.out.println(windTurbineGroup.getID());
+
+                i++;
+            }
+        }
+
+        System.out.println(i);
+
 
         programLoop();
+
+        //WindFarmImporter.importData(CSVDataCells, germanWindFarms);
+        //System.out.println(DataCellParser.parseWindTurbineType("Nordex N62/1300 (3×)Nordex N80/2500 (1×)Südwind S70 (1×)"));
+        //System.out.println(DataCellParser.parseDistrict("KÜN"));
+
+//        List<String[]> CSVDataTestCells = CSVLineParser.convertToDataUnit(new ArrayList<>(List.of(
+//                "21,Windpark Tomerdingen-Bermaringen (Windpark Keltische Schanze),2007,21.9,11,Vestas V82-1.5MW (5×),Tomerdingen,UL,48.4703,9.8633,\"Planet Energy, Solarinvest AG; Efi Wind, THEOLIA Naturenergien GmbH, Windreich\",errichtet an der A 8,,,,,,,",
+//                "22,Windpark Tomerdingen-Bermaringen (Windpark Keltische Schanze),2013,,,Nordex N117/2400 (6×),Bermaringen,,48.4703,9.8633,,,,,,,,,\n",
+//                "23,Windpark Tomerdingen-Bermaringen (Windpark Keltische Schanze),2017,,,,Temmenhausen,,48.4703,9.8633,,,,,,,,,")));
+//
+//        WindFarm test = WindFarmFactory.createWindFarm(CSVDataTestCells);
+//
+//        System.out.println(test);
+//        System.out.println(test.getName());
+//        System.out.println(test.getTotalPerformance());
+//        System.out.println(test.getCoordinates().getLatitude() + " " +  test.getCoordinates().getLongitude());
+//        System.out.println(test.getProjectManagers().getFirst().getCompany());
+//
+//        for (WindTurbineGroup turb : test.getWindTurbineGroups()){
+//            System.out.println(turb.getID());
+//            System.out.println(turb.getRemarks());
+//            System.out.println(turb.getManufactureYear());
+//            System.out.println(turb.getLocation().getTown() + " " + turb.getLocation().getDistrict());
+//            System.out.println(turb.getWindTurbines());
+//        }
+
+
         //List<String[]> test = CSVFileReader.convertToDataUnit(new ArrayList<>(List.of("1,Windpark Wittighausen,2002,5.94,9,Vestas V47-660kW (9×),Unterwittighausen,TBB,49.6197,9.8028,UMaAG,Am 17.3.2019 brach durch das Sturmtief Eberhard bei einer Anlage ein Flügel ab. Die Anlage wurde nicht repariert. Der Windpark ist derzeit außer betrieb.,,,,,,,")));
         /* Test
         List<String[]> test = CSVLineParser.convertToDataUnit(CSVFileReader.convertCSVtoList(ProjectConstants.PATH_TO_CSV));

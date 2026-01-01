@@ -30,4 +30,12 @@ public class WindFarmRepository
     {
         GermanWindFarms.add(windFarm);
     }
+
+    public void addWindFarms (ArrayList<WindFarm> windFarms)
+    {
+        for (WindFarm currentWindFarm : windFarms)
+        {
+            addWindFarm(currentWindFarm);
+        }
+    }
 }

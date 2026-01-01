@@ -14,7 +14,7 @@ public class CSVFileReader
 
         try (BufferedReader input = new BufferedReader(new FileReader(pathToCSV)))
         {
-            String dataLine;
+            String dataLine = input.readLine();
 
             while ((dataLine = input.readLine()) != null)
             {
