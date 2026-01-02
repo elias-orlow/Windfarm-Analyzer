@@ -41,7 +41,7 @@ public class DataCellParser
     {
         if (raw == null || raw.isEmpty())
         {
-            return -1;
+            return -1.0f;
         }
 
         return Float.parseFloat(raw.trim());
@@ -64,7 +64,7 @@ public class DataCellParser
             String windTurbine = "";
             String count = "1";
 
-            if (rawWindTurbine.contains("\\("))
+            if (rawWindTurbine.contains("("))
             {
                 int openParenIndex = rawWindTurbine.lastIndexOf('(');
 
