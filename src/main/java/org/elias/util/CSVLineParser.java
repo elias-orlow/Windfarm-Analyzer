@@ -1,11 +1,15 @@
 package org.elias.util;
 
+import org.elias.res.constant.GeneralConstants;
+
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Util-Klasse zur Zerlegung jeder CSV-Zeile aus {@link CSVFileReader} in eine Liste aus einzelnen Zellen.
+ */
 public class CSVLineParser
 {
-
     /**
      * Zerlegt eine Liste aus CSV-Zeilen in einzelne Datenfelder
      * <p>
@@ -14,48 +18,45 @@ public class CSVLineParser
      * denen ein Leerzeichen folgt, nicht als Trennzeichen interpretiert.
      *
      * @param dataRows Liste von Zeilen aus einer CSV-Datei
-     * @return Liste von String-Arrays, wo jedes Array die einzelnen Zellen einer CSV-Zeile enthält
-     * @precondition dataRows != null
-     * @postcondition Für jede übergebene CSV-Zeile existiert genau ein String-Array im Rückgabewert, die Reihenfolge der Zeilen bleibt erhalten
+     * @return Liste von String-Arrays, wo jedes Array die einzelnen Zellen einer CSV-Zeile enthaelt
+     * @precondition {@code dataRows} ist nicht null
+     * @postcondition Für jede uebergebene CSV-Zeile existiert genau ein String-Array im Rueckgabewert, die Reihenfolge der Zeilen bleibt erhalten
      */
     public static List<String[]> convertToDataUnit (List<String> dataRows)
     {
-
-        final int COLUMN_COUNT = 12;
         List<String[]> result = new ArrayList<>();
 
         for (String row : dataRows)
         {
-
-            String[] cells = new String[COLUMN_COUNT];
+            String[] cells = new String[GeneralConstants.COLUMN_COUNT];
             StringBuilder currentCell = new StringBuilder();
 
             boolean insideQuotes = false;
-            int cellIndex = 0;
+            int cellIndex = GeneralConstants.INT_ZERO;
 
             for (int i = 0; i < row.length(); i++)
             {
-
                 char currentChar = row.charAt(i);
 
-                if (currentChar == '"')
+                if (currentChar == GeneralConstants.CHAR_DOUBLE_QUOTES)
                 {
                     insideQuotes = !insideQuotes;
                     continue;
                 }
 
-                if (currentChar == ',' && !insideQuotes)
+                // Kommas als Spaltentrenner nur außerhalb von Anfuehrungszeichen
+                if (currentChar == GeneralConstants.CHAR_COMMA && !insideQuotes)
                 {
-
-                    if (i + 1 < row.length() && row.charAt(i + 1) == ' ')
+                    // Wenn nach dem Komma ein Leerzeichen folgt → Teil des Inhalts der Zelle
+                    if (i + GeneralConstants.INT_ONE < row.length() && row.charAt(i + GeneralConstants.INT_ONE) == GeneralConstants.CHAR_SPACE)
                     {
                         currentCell.append(currentChar);
                     } else
                     {
                         cells[cellIndex++] = currentCell.toString().trim();
-                        currentCell.setLength(0);
+                        currentCell.setLength(GeneralConstants.INT_ZERO);
 
-                        if (cellIndex >= COLUMN_COUNT)
+                        if (cellIndex >= GeneralConstants.COLUMN_COUNT)
                         {
                             break;
                         }
@@ -63,10 +64,11 @@ public class CSVLineParser
                     continue;
                 }
 
+                // Normales Zeichen → zur aktuellen Zelle addieren
                 currentCell.append(currentChar);
             }
 
-            if (cellIndex < COLUMN_COUNT)
+            if (cellIndex < GeneralConstants.COLUMN_COUNT)
             {
                 cells[cellIndex] = currentCell.toString().trim();
             }

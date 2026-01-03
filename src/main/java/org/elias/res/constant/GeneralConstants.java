@@ -13,6 +13,12 @@ public interface GeneralConstants
     String QUESTION_MARK = "?";
     String OPEN_BRACKET = "(";
 
+    char CHAR_DOUBLE_QUOTES = '"';
+    char CHAR_COMMA = ',';
+    char CHAR_SPACE = ' ';
+
     int INT_ZERO = 0;
     int INT_ONE = 1;
+
+    int COLUMN_COUNT = 12;
 }
