@@ -100,8 +100,7 @@ public final class MainController
                     view.printCSV(CSVFileReader.convertCSVtoList(GeneralConstants.PATH_TO_CSV));
                     break;
                 case ViewConstants.PRINT_WINDREPO:
-                    TablePrinter tablePrinter = new TablePrinter();
-                    TableController tableController = new TableController(tablePrinter);
+                    TableController tableController = new TableController(TablePrinter.getInstance());
                     tableController.printRepository(germanWindFarms);
                     break;
                 case ViewConstants.EXIT:

@@ -2,8 +2,19 @@ package org.elias.view;
 
 public class TablePrinter
 {
-    public TablePrinter ()
+    private static TablePrinter INSTANCE;
+
+    private TablePrinter ()
     {
+    }
+
+    public static TablePrinter getInstance ()
+    {
+        if (INSTANCE == null)
+        {
+            INSTANCE = new TablePrinter();
+        }
+        return INSTANCE;
     }
 
     public void printUpperSeparator (int width)
