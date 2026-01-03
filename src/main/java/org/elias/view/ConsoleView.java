@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public final class ConsoleView
 {
-    private static ConsoleView INSTANCE;
+    private static ConsoleView INSTANCE = null;
     private final Scanner scanner = new Scanner(System.in);
 
 

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class WindFarmRepository
 {
-    private static WindFarmRepository INSTANCE;
+    private static WindFarmRepository INSTANCE = null;
     private final List<WindFarm> GermanWindFarms = new ArrayList<>();
 
     private WindFarmRepository ()

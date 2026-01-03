@@ -1,11 +1,12 @@
 package org.elias.model;
 
 import org.elias.res.Districts;
+import org.elias.res.constant.ProjectConstants;
 
 public class Location
 {
-    String town;
-    Districts district;
+    String town = ProjectConstants.EMPTY_STRING;
+    Districts district = null;
 
     public Location (String town, Districts district)
     {

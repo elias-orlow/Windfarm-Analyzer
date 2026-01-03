@@ -1,8 +1,10 @@
 package org.elias.model;
 
+import org.elias.res.constant.ProjectConstants;
+
 public class ProjectManager
 {
-    private String company;
+    private String company = ProjectConstants.EMPTY_STRING;
 
     public ProjectManager (String company)
     {

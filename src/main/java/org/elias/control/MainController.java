@@ -20,7 +20,7 @@ import java.util.*;
  */
 public final class MainController
 {
-    private static MainController INSTANCE;
+    private static MainController INSTANCE = null;
 
     /**
      * Die mit dem Controller verbundene ConsoleView.
@@ -82,8 +82,8 @@ public final class MainController
         WindFarmImporter.importData(CSVDataCells, germanWindFarms);
 
         programLoop();
-
     }
+
 
     private void programLoop ()
     {
@@ -91,7 +91,7 @@ public final class MainController
 
         while (isRunning)
         {
-            view.showMenu(); //TODO: Make menu more beautiful
+            view.showMenu(); //TODO: Make menu better
             int userChoice = view.getChoice();
 
             switch (userChoice)
@@ -110,7 +110,6 @@ public final class MainController
                     break;
             }
         }
-
     }
 
 }

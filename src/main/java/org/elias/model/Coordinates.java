@@ -1,9 +1,11 @@
 package org.elias.model;
 
+import org.elias.res.constant.ProjectConstants;
+
 public class Coordinates
 {
-    private float latitude;
-    private float longitude;
+    private float latitude = ProjectConstants.EMPTY_FLOAT_VARIABLE;
+    private float longitude = ProjectConstants.EMPTY_FLOAT_VARIABLE;
 
     public Coordinates (float latitude, float longitude)
     {

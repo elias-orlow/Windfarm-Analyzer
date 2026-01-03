@@ -1,14 +1,16 @@
 package org.elias.model;
 
+import org.elias.res.constant.ProjectConstants;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class WindTurbineGroup
 {
-    private int ID;
-    private int manufactureYear;
-    private Location location;
-    private String remarks;
+    private int ID = ProjectConstants.EMPTY_INT_VARIABLE;
+    private int manufactureYear = ProjectConstants.EMPTY_INT_VARIABLE;
+    private Location location = null;
+    private String remarks = null;
 
     private final List<WindTurbineType> windTurbines = new ArrayList<>();
 

@@ -1,8 +1,10 @@
 package org.elias.model;
 
+import org.elias.res.constant.ProjectConstants;
+
 public class WindTurbineType
 {
-    private String model;
+    private String model = ProjectConstants.EMPTY_STRING;
 
     public WindTurbineType (String model)
     {
