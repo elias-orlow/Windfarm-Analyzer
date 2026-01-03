@@ -1,5 +1,8 @@
 package org.elias.res.constant;
 
+/**
+ * Sammlung aller Konstanten aus Literalen, die von der View-Schicht verwendet wird.
+ */
 public interface ViewConstants
 {
     String MAIN_MENU_MESSAGE = """

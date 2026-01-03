@@ -1,5 +1,17 @@
 package org.elias.res;
 
+/**
+ * Aufzaehlung aller Landkreise aus der CSV-Tabelle.
+ * <p>
+ * Jeder Enum-Wert entspricht einem eindeutig definierten Landkreiskuerzel, wie es in den CSV‑Daten verwendet wird.
+ * <p>
+ * Umlaute wurden manuell ersetzt:
+ * <ul>
+ *     <li>Ä → AE</li>
+ *     <li>Ö → OE</li>
+ *     <li>Ü → UE</li>
+ * </ul>
+ */
 public enum Districts
 {
     STA,

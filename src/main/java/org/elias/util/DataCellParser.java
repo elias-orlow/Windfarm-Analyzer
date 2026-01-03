@@ -2,7 +2,6 @@ package org.elias.util;
 
 import org.elias.res.Districts;
 import org.elias.res.constant.ErrorMessages;
-import org.elias.res.constant.IOConstants;
 import org.elias.res.constant.GeneralConstants;
 import org.elias.res.constant.ParserConstants;
 
@@ -158,7 +157,7 @@ public class DataCellParser
     /**
      * Wandelt einen Roh-String in einen {@link Districts}-Enumwert um.
      * <p>
-     * Dabei werden die Umlaute mit {@code IOConstants.UMLAUT_REPLACEMENT} ersetzt.
+     * Dabei werden die Umlaute mit {@code ParserConstants.UMLAUT_REPLACEMENT} ersetzt.
      *
      * @param raw der Roh-String, der den Landkreisnamen enthaelt.
      * @return entsprechende {@link Districts}-Enumwert oder null.
@@ -167,9 +166,9 @@ public class DataCellParser
      */
     public static Districts parseDistrict (String raw)
     {
-        for (String letter : IOConstants.UMLAUT_REPLACEMENT.keySet())
+        for (String letter : ParserConstants.UMLAUT_REPLACEMENT.keySet())
         {
-            raw = raw.replace(letter, IOConstants.UMLAUT_REPLACEMENT.get(letter));
+            raw = raw.replace(letter, ParserConstants.UMLAUT_REPLACEMENT.get(letter));
         }
 
         try

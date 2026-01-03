@@ -1,5 +1,8 @@
 package org.elias.res.constant;
 
+/**
+ * Sammlung aller Fehlermeldungen, die innerhalb der Anwendung verwendet werden.
+ */
 public interface ErrorMessages
 {
     String MAIN_CONTROLLER_NOT_INITIALIZED = "MainController wurde noch nicht initialisiert!";
