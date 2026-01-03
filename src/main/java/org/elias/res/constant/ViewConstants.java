@@ -15,6 +15,20 @@ public interface ViewConstants
                         ╚══════════════════════════════════════╝
                         Your choice:""";
 
+
+    // Light and double line box components (U+2552 bis U+256C)
+    String BORDER_TOP_LEFT = "╔";
+    String BORDER_TOP_RIGHT = "╗";
+    String BORDER_BOTTOM_LEFT = "╚";
+    String BORDER_BOTTOM_RIGHT = "╝";
+    String BORDER_INNER_LEFT = "╠";
+    String BORDER_INNER_RIGHT = "╣";
+    String BORDER_SIDE = "║";
+    String BORDER_LINE = "═";
+
+    int BORDER_OFFSET = 2;
+
+
     int SHOW_WINDPARKS = 1;
     int PRINT_WINDREPO = 2;
     int EXIT = 0;
