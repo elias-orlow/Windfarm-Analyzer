@@ -1,6 +1,6 @@
 package org.elias.model;
 
-import org.elias.res.constant.ProjectConstants;
+import org.elias.res.constant.GeneralConstants;
 import org.elias.util.DataCellParser;
 
 import java.util.*;
@@ -11,14 +11,14 @@ public class WindFarmImporter {
                                   WindFarmRepository repository) {
 
         List<String[]> currentGroup = new ArrayList<>();
-        String currentWindFarmName = ProjectConstants.EMPTY_STRING;
+        String currentWindFarmName = GeneralConstants.EMPTY_STRING;
 
         for (String[] row : csvDataCells) {
 
             String windFarmName = DataCellParser.parseWindFarmName(row[1]);
 
             // Erste Zeile
-            if (currentWindFarmName.equals(ProjectConstants.EMPTY_STRING)) {
+            if (currentWindFarmName.equals(GeneralConstants.EMPTY_STRING)) {
                 currentWindFarmName = windFarmName;
             }
 

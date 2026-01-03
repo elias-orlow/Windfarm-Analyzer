@@ -2,7 +2,7 @@ package org.elias.control;
 
 import org.elias.model.*;
 import org.elias.res.constant.ErrorMessages;
-import org.elias.res.constant.ProjectConstants;
+import org.elias.res.constant.GeneralConstants;
 import org.elias.res.constant.ViewConstants;
 import org.elias.util.CSVFileReader;
 import org.elias.util.CSVLineParser;
@@ -77,7 +77,7 @@ public final class MainController
 
     public void start ()
     {
-        List<String> dataRows = CSVFileReader.convertCSVtoList(ProjectConstants.PATH_TO_CSV);
+        List<String> dataRows = CSVFileReader.convertCSVtoList(GeneralConstants.PATH_TO_CSV);
         List<String[]> CSVDataCells = CSVLineParser.convertToDataUnit(dataRows);
         WindFarmImporter.importData(CSVDataCells, germanWindFarms);
 
@@ -97,7 +97,7 @@ public final class MainController
             switch (userChoice)
             {
                 case ViewConstants.SHOW_WINDPARKS:
-                    view.printCSV(CSVFileReader.convertCSVtoList(ProjectConstants.PATH_TO_CSV));
+                    view.printCSV(CSVFileReader.convertCSVtoList(GeneralConstants.PATH_TO_CSV));
                     break;
                 case ViewConstants.PRINT_WINDREPO:
                     TablePrinter tablePrinter = new TablePrinter();

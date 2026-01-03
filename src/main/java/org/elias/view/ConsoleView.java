@@ -1,8 +1,6 @@
 package org.elias.view;
 
-import org.elias.res.constant.ProjectConstants;
 import org.elias.res.constant.ViewConstants;
-import org.elias.util.CSVFileReader;
 
 import java.util.List;
 import java.util.Scanner;

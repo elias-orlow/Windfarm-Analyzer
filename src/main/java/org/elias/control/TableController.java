@@ -2,7 +2,7 @@ package org.elias.control;
 
 import org.elias.model.*;
 import org.elias.res.Districts;
-import org.elias.res.constant.ProjectConstants;
+import org.elias.res.constant.GeneralConstants;
 import org.elias.view.TablePrinter;
 
 import java.util.ArrayList;
@@ -114,7 +114,7 @@ public class TableController
             String town = loc.getTown();
             Districts dist = loc.getDistrict();
 
-            String location = ProjectConstants.EMPTY_STRING;
+            String location = GeneralConstants.EMPTY_STRING;
             if (!town.isEmpty() && dist != null)
             {
                 location = town + ", " + dist;
@@ -138,9 +138,9 @@ public class TableController
                 String col4 = padRight(" " + string + " ", COL_TYPES);
 
                 tablePrinter.printDataCell(col1 + "|" + col2 + "|" + col3 + "|" + col4);
-                id = ProjectConstants.EMPTY_STRING;
-                year = ProjectConstants.EMPTY_STRING;
-                location = ProjectConstants.EMPTY_STRING;
+                id = GeneralConstants.EMPTY_STRING;
+                year = GeneralConstants.EMPTY_STRING;
+                location = GeneralConstants.EMPTY_STRING;
             }
 
         }
@@ -174,7 +174,7 @@ public class TableController
     {
         if (s == null)
         {
-            s = ProjectConstants.EMPTY_STRING;
+            s = GeneralConstants.EMPTY_STRING;
         }
         if (s.length() > width)
         {

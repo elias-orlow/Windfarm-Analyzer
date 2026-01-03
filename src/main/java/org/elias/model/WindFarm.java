@@ -1,14 +1,14 @@
 package org.elias.model;
 
-import org.elias.res.constant.ProjectConstants;
+import org.elias.res.constant.GeneralConstants;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class WindFarm
 {
-    private String name = ProjectConstants.EMPTY_STRING;
-    private float totalPerformance = ProjectConstants.EMPTY_FLOAT_VARIABLE;
+    private String name = GeneralConstants.EMPTY_STRING;
+    private float totalPerformance = GeneralConstants.EMPTY_FLOAT_VARIABLE;
     private Coordinates coordinates = null;
 
     private final List<ProjectManager> projectManagers = new ArrayList<>();
