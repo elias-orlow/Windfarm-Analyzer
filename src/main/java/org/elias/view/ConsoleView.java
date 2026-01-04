@@ -50,6 +50,19 @@ public final class ConsoleView
 
 
     /**
+     * Gibt die angegebene Nachricht auf der Konsole aus.
+     *
+     * @param message die auszugebende Nachricht.
+     * @precondition eine Instanz von {@code ConsoleView} existiert.
+     * @postcondition die Nachricht wurde auf der Konsole ausgegeben.
+     */
+    public void printMessage (String message)
+    {
+        System.out.println(message);
+    }
+
+
+    /**
      * Liest eine ganzzahlige Benutzereingabe aus der Konsole ein.
      *
      * @return der vom Benutzer eingegebene Integer-Wert.

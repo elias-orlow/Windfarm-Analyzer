@@ -77,6 +77,8 @@ public final class MainController
 
     public void start ()
     {
+        view.printMessage(ViewConstants.WELCOME_MESSAGE);
+
         List<String> dataRows = CSVFileReader.convertCSVtoList(GeneralConstants.PATH_TO_CSV);
         List<String[]> CSVDataCells = CSVLineParser.convertToDataUnit(dataRows);
         WindFarmImporter.importData(CSVDataCells, germanWindFarms);

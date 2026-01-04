@@ -5,6 +5,12 @@ package org.elias.res.constant;
  */
 public interface ViewConstants
 {
+    String WELCOME_MESSAGE = """
+            ========================================
+                Welcome to the Windfarm Analyzer
+            ========================================
+            """;
+
     String MAIN_MENU_MESSAGE = """
                         ╔══════════════════════════════════════╗
                         ║          WINDFARM ANALYZER           ║
