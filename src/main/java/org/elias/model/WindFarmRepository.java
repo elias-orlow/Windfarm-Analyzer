@@ -5,11 +5,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Speichert alle aktuelle Windparke waehrend der Programmausfuehrung.
+ * <p>
+ * Wird von {@link WindFarmImporter} befuegt.
+ * Folgt dem Singleton-Pattern.
+ */
 public class WindFarmRepository
 {
     private static WindFarmRepository INSTANCE = null;
-    private final List<WindFarm> germanWindFarms = new ArrayList<>();
 
+    /** Erfolgreich erzeugte Windparke aus der CSV-Datei */
+    private final List<WindFarm> germanWindFarms = new ArrayList<>();
+    /** Fehlerhafte Eintraege in der CSV-Datei und Fehlermeldung */
     Map<String[], String> invalidRows = new HashMap<>();
 
     private WindFarmRepository ()
@@ -25,6 +33,8 @@ public class WindFarmRepository
         return INSTANCE;
     }
 
+    // --- Getters ---
+
     public List<WindFarm> getGermanWindFarms ()
     {
         return germanWindFarms;
@@ -34,6 +44,8 @@ public class WindFarmRepository
     {
         return invalidRows;
     }
+
+    // --- Add-Methode ---
 
     public void addWindFarm (WindFarm windFarm)
     {
