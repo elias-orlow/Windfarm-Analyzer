@@ -28,6 +28,7 @@ public final class MainController
      */
     private final ConsoleView view;
     private final WindFarmRepository germanWindFarms;
+    int normalizedCoordinatesCounter = GeneralConstants.EMPTY_INT_VARIABLE;
 
 
     private MainController (ConsoleView view, WindFarmRepository germanWindFarms)
@@ -87,6 +88,7 @@ public final class MainController
         calculateData();
         waitForEnter();
         validateCoordinates();
+        waitForEnter();
         programLoop();
     }
 
@@ -114,11 +116,18 @@ public final class MainController
     {
         for (WindFarm windFarm : germanWindFarms.getGermanWindFarms())
         {
+            Coordinates originalCoordinates = windFarm.getCoordinates();
             windFarm.setCoordinates(
                     CoordinatesNormalizer.normalizeCoordinates(
                             windFarm.getCoordinates().getLatitude(),
                             windFarm.getCoordinates().getLongitude()));
+
+            if (!originalCoordinates.equals(windFarm.getCoordinates())){
+                normalizedCoordinatesCounter++;
+            }
         }
+
+        view.printMessage(String.format(ViewConstants.TOTAL_NORMALIZED_COORDINATE_MESSAGE, normalizedCoordinatesCounter));
     }
 
 

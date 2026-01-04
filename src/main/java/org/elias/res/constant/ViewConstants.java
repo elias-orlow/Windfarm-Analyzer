@@ -15,6 +15,7 @@ public interface ViewConstants
     String TOTAL_INVALID_MESSAGE = "%d wind farms could not be imported due to invalid data:";
     String FAILED_CAUSE_MESSAGE = "- %s: %s - Reason: %s";
     String ENTER_MESSAGE = "Press <enter> to continue...\n";
+    String TOTAL_NORMALIZED_COORDINATE_MESSAGE = "%d coordinates have been checked and corrected\n";
 
     String MAIN_MENU_MESSAGE = """
                         ╔══════════════════════════════════════╗
