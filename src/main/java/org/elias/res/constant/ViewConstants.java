@@ -16,6 +16,7 @@ public interface ViewConstants
     String FAILED_CAUSE_MESSAGE = "- %s: %s - Reason: %s";
     String ENTER_MESSAGE = "Press <enter> to continue...\n";
     String TOTAL_NORMALIZED_COORDINATE_MESSAGE = "%d coordinates have been checked and corrected\n";
+    String TIME_MESSAGE = "This operation took %d milliseconds.";
 
     String MAIN_MENU_MESSAGE = """
                         ╔══════════════════════════════════════╗

@@ -7,6 +7,7 @@ import org.elias.res.constant.ViewConstants;
 import org.elias.util.CSVFileReader;
 import org.elias.util.CSVLineParser;
 import org.elias.util.CoordinatesNormalizer;
+import org.elias.util.Timer;
 import org.elias.view.ConsoleView;
 import org.elias.view.TablePrinter;
 
@@ -81,14 +82,20 @@ public final class MainController
     {
         view.printMessage(ViewConstants.WELCOME_MESSAGE);
 
+        Timer.startTimer();
         List<String> dataRows = CSVFileReader.convertCSVtoList(GeneralConstants.PATH_TO_CSV);
         List<String[]> CSVDataCells = CSVLineParser.convertToDataUnit(dataRows);
         WindFarmImporter.importData(CSVDataCells, germanWindFarms);
 
         calculateData();
+        view.printMessage(String.format(ViewConstants.TIME_MESSAGE, Timer.getTime()));
         waitForEnter();
+
+        Timer.startTimer();
         validateCoordinates();
+        view.printMessage(String.format(ViewConstants.TIME_MESSAGE, Timer.getTime()));
         waitForEnter();
+
         programLoop();
     }
 
