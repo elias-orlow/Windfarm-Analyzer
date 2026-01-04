@@ -161,23 +161,22 @@ public class DataCellParser
      *
      * @param raw der Roh-String, der den Landkreisnamen enthaelt.
      * @return entsprechende {@link Districts}-Enumwert oder null.
-     * @precondition der Parameter {@code raw} enthaelt einen gueltigen Landkreisnamen oder ist null.
+     * @precondition der Parameter {@code raw} enthaelt einen gueltigen Landkreisnamen oder ist null, leer.
      * @postcondition gibt entweder passenden Enumwert oder null zurueck.
      */
     public static Districts parseDistrict (String raw)
     {
+        if (raw == null || raw.trim().isEmpty())
+        {
+            return null;
+        }
+
         for (String letter : ParserConstants.UMLAUT_REPLACEMENT.keySet())
         {
             raw = raw.replace(letter, ParserConstants.UMLAUT_REPLACEMENT.get(letter));
         }
 
-        try
-        {
-            return Districts.valueOf(raw);
-        } catch (IllegalArgumentException e)
-        {
-            return null;
-        }
+        return Districts.valueOf(raw.trim());
     }
 
 
