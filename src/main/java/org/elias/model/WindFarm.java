@@ -5,6 +5,10 @@ import org.elias.res.constant.GeneralConstants;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Model-Klasse fuer einen Windpark, der aus mehreren Windkraftanlagen besteht und mehrere Einträge
+ * aus der CSV-Tabelle zusammenfasst.
+ */
 public class WindFarm
 {
     private String name = GeneralConstants.EMPTY_STRING;

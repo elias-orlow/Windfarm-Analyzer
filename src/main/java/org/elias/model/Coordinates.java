@@ -2,6 +2,12 @@ package org.elias.model;
 
 import org.elias.res.constant.GeneralConstants;
 
+/**
+ * Model-Klasse, die Koordinaten eines Windparks repraesentiert.
+ * <p>
+ * Die Informationen stammen aus den CSV-Spalten "Breitengrad", "Laengengrad" und werden einer {@link WindFarm}
+ * zugeordnet.
+ */
 public class Coordinates
 {
     private float latitude = GeneralConstants.EMPTY_FLOAT_VARIABLE;

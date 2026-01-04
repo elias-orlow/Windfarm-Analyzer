@@ -5,6 +5,10 @@ import org.elias.res.constant.GeneralConstants;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Model-Klasse fuer eine Windkraftanlage, die ganze Zeile aus der CSV-Tabelle repraesentiert.
+ */
 public class WindTurbineGroup
 {
     private int ID = GeneralConstants.EMPTY_INT_VARIABLE;

@@ -3,6 +3,12 @@ package org.elias.model;
 import org.elias.res.Districts;
 import org.elias.res.constant.GeneralConstants;
 
+/**
+ * Model-Klasse, die Lokation einer Windkraftanlage repraesentiert.
+ * <p>
+ * Die Informationen stammen aus den CSV-Spalten "Ort", "Landkreis" und werden einer {@link WindTurbineGroup}
+ * zugeordnet.
+ */
 public class Location
 {
     String town = GeneralConstants.EMPTY_STRING;

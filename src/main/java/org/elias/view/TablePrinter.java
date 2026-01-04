@@ -9,7 +9,7 @@ import org.elias.res.constant.ViewConstants;
  */
 public class TablePrinter
 {
-    private static TablePrinter INSTANCE;
+    private static TablePrinter INSTANCE = null;
 
     private TablePrinter ()
     {

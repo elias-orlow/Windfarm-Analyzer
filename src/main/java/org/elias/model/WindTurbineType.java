@@ -2,6 +2,9 @@ package org.elias.model;
 
 import org.elias.res.constant.GeneralConstants;
 
+/**
+ * Model-Klasse fuer eine einzelne Windturbine, die Spalte "Typ (WKA)" aus der CSV-Tabelle repraesentiert.
+ */
 public class WindTurbineType
 {
     private String model = GeneralConstants.EMPTY_STRING;
