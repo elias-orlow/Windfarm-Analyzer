@@ -21,6 +21,7 @@ public interface GeneralConstants
     char CHAR_DOUBLE_QUOTES = '"';
     char CHAR_COMMA = ',';
     char CHAR_SPACE = ' ';
+    char CHAR_POINT = '.';
 
     int INT_ZERO = 0;
     int INT_ONE = 1;

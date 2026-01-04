@@ -6,6 +6,7 @@ import org.elias.res.constant.GeneralConstants;
 import org.elias.res.constant.ViewConstants;
 import org.elias.util.CSVFileReader;
 import org.elias.util.CSVLineParser;
+import org.elias.util.CoordinatesNormalizer;
 import org.elias.view.ConsoleView;
 import org.elias.view.TablePrinter;
 
@@ -85,6 +86,7 @@ public final class MainController
 
         calculateData();
         waitForEnter();
+        validateCoordinates();
         programLoop();
     }
 
@@ -106,6 +108,17 @@ public final class MainController
         }
 
         view.makeSpace(GeneralConstants.INT_ONE);
+    }
+
+    private void validateCoordinates ()
+    {
+        for (WindFarm windFarm : germanWindFarms.getGermanWindFarms())
+        {
+            windFarm.setCoordinates(
+                    CoordinatesNormalizer.normalizeCoordinates(
+                            windFarm.getCoordinates().getLatitude(),
+                            windFarm.getCoordinates().getLongitude()));
+        }
     }
 
 
