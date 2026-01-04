@@ -115,7 +115,7 @@ public final class MainController
 
         while (isRunning)
         {
-            view.showMenu(); //TODO: Make menu better
+            view.showMenu();
             int userChoice = view.getChoice();
 
             switch (userChoice)
@@ -129,8 +129,10 @@ public final class MainController
                     break;
                 case ViewConstants.EXIT:
                     isRunning = false;
-                    //TODO: goodbye message
+                    view.printMessage(ViewConstants.EXIT_MESSAGE);
                     break;
+                default:
+                    view.printError(ErrorMessages.INVALID_NUMBER);
             }
         }
     }

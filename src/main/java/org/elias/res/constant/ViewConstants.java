@@ -29,6 +29,8 @@ public interface ViewConstants
                         ╚══════════════════════════════════════╝
                         Your choice:""";
 
+    String EXIT_MESSAGE = "The program is closing...";
+
 
     // Light and double line box components (U+2552 bis U+256C)
     String BORDER_TOP_LEFT = "╔";
