@@ -76,6 +76,22 @@ public final class ConsoleView
 
 
     /**
+     * Fuegt eine bestimmte Anzahl leerer Zeilen ein.
+     *
+     * @param rowsCount Anzahl der Leerzeilen.
+     * @precondition {@code rowsCount} ist groesser oder gleich 0.
+     * @postcondition Es wurden genau {@code rowsCount} Leerzeilen ausgegeben.
+     */
+    public void makeSpace (int rowsCount)
+    {
+        for (int i = 0; i < rowsCount; i++)
+        {
+            System.out.println();
+        }
+    }
+
+
+    /**
      * Gibt eine Liste von CSV-Zeilen auf der Konsole aus.
      *
      * @param CSVRows Liste der CSV-Zeilen, darf null oder leer sein.

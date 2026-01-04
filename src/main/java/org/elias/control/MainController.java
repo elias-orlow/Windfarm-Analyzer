@@ -83,7 +83,28 @@ public final class MainController
         List<String[]> CSVDataCells = CSVLineParser.convertToDataUnit(dataRows);
         WindFarmImporter.importData(CSVDataCells, germanWindFarms);
 
+        calculateData();
         programLoop();
+    }
+
+
+    private void calculateData ()
+    {
+        int windFarmCount = germanWindFarms.getGermanWindFarms().size();
+        int invalidRowCount = germanWindFarms.getInvalidRows().size();
+
+        view.printMessage(String.format(ViewConstants.TOTAL_WINDFARM_MESSAGE, windFarmCount));
+        view.printMessage(String.format(ViewConstants.TOTAL_INVALID_MESSAGE, invalidRowCount));
+
+        for (String[] failedRow : germanWindFarms.getInvalidRows().keySet())
+        {
+            view.printMessage(String.format(ViewConstants.FAILED_CAUSE_MESSAGE,
+                    failedRow[0],
+                    failedRow[1],
+                    germanWindFarms.getInvalidRows().get(failedRow)));
+        }
+
+        view.makeSpace(GeneralConstants.INT_ONE);
     }
 
 

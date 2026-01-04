@@ -1,5 +1,6 @@
 package org.elias.model;
 
+import org.elias.res.constant.ErrorMessages;
 import org.elias.res.constant.GeneralConstants;
 import org.elias.util.DataCellParser;
 
@@ -48,17 +49,9 @@ public class WindFarmImporter {
             WindFarm windFarm = WindFarmFactory.createWindFarm(rows);
             repository.addWindFarm(windFarm);
         } catch (Exception e) {
-
-            String[] faultyRow = rows.getFirst();
-            int id = -1;
-
-            try {
-                id = DataCellParser.parseObjectID(faultyRow[0]);
-            } catch (Exception ignored) {}
-
-            System.err.println(
-                    "Error while importing wind farm (ID: " + id + "): " + e.getMessage()
-            );
+            for (String[] invalidRow : rows){
+                repository.addInvalidRow(invalidRow, e.getMessage());
+            }
         }
     }
 

@@ -1,12 +1,16 @@
 package org.elias.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class WindFarmRepository
 {
     private static WindFarmRepository INSTANCE = null;
-    private final List<WindFarm> GermanWindFarms = new ArrayList<>();
+    private final List<WindFarm> germanWindFarms = new ArrayList<>();
+
+    Map<String[], String> invalidRows = new HashMap<>();
 
     private WindFarmRepository ()
     {
@@ -23,19 +27,29 @@ public class WindFarmRepository
 
     public List<WindFarm> getGermanWindFarms ()
     {
-        return GermanWindFarms;
+        return germanWindFarms;
+    }
+
+    public Map<String[], String> getInvalidRows ()
+    {
+        return invalidRows;
     }
 
     public void addWindFarm (WindFarm windFarm)
     {
-        GermanWindFarms.add(windFarm);
+        germanWindFarms.add(windFarm);
     }
 
-    public void addWindFarms (ArrayList<WindFarm> windFarms)
+    public void addWindFarms (List<WindFarm> windFarms)
     {
         for (WindFarm currentWindFarm : windFarms)
         {
             addWindFarm(currentWindFarm);
         }
+    }
+
+    public void addInvalidRow (String[] row, String errorMessage)
+    {
+        invalidRows.put(row, errorMessage);
     }
 }

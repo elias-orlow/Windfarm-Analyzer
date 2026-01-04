@@ -11,6 +11,10 @@ public interface ViewConstants
             ========================================
             """;
 
+    String TOTAL_WINDFARM_MESSAGE = "A total of %d wind farms were found.\n";
+    String TOTAL_INVALID_MESSAGE = "%d wind farms could not be imported due to invalid data:";
+    String FAILED_CAUSE_MESSAGE = "- %s: %s - Reason: %s";
+
     String MAIN_MENU_MESSAGE = """
                         ╔══════════════════════════════════════╗
                         ║          WINDFARM ANALYZER           ║
