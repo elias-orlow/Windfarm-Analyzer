@@ -1,5 +1,6 @@
 package org.elias.view;
 
+import org.elias.res.constant.ErrorMessages;
 import org.elias.res.constant.ViewConstants;
 
 import java.util.List;
@@ -63,7 +64,22 @@ public final class ConsoleView
 
 
     /**
+     * Gibt die angegebene Nachricht als Error auf der Konsole aus.
+     *
+     * @param errorMessage die auszugebende Nachricht.
+     * @precondition eine Instanz von {@code ConsoleView} existiert.
+     * @postcondition die Nachricht wurde auf der Konsole in der roten Farbe ausgegeben.
+     */
+    public void printError (String errorMessage)
+    {
+        System.err.println(errorMessage);
+    }
+
+
+    /**
      * Liest eine ganzzahlige Benutzereingabe aus der Konsole ein.
+     * <p>
+     * Die Methode fordert den Benutzer so lange zur Eingabe auf, bis ein gueltiger Integer-Wert eingegeben wurde.
      *
      * @return der vom Benutzer eingegebene Integer-Wert.
      * @precondition der Benutzer gibt einen gueltigen ganzzahligen Wert ein.
@@ -71,7 +87,43 @@ public final class ConsoleView
      */
     public int getChoice ()
     {
-        return scanner.nextInt();
+        while (true)
+        {
+            String input = scanner.nextLine();
+
+            try
+            {
+                return Integer.parseInt(input);
+            } catch (NumberFormatException e)
+            {
+                printError(ErrorMessages.INVALID_INPUT);
+            }
+        }
+    }
+
+
+    /**
+     * Liest Benutzereingabe aus der Konsole ein.
+     *
+     * @return der vom Benutzer eingegebene Zeile.
+     * @precondition eine Instanz von {@code ConsoleView} existiert.
+     * @postcondition gibt die eingelesene Zeile zurueck.
+     */
+    public String getUserInput ()
+    {
+        return scanner.nextLine();
+    }
+
+
+    /**
+     * Erinnert den User daran, "enter" zu druecken.
+     *
+     * @precondition {@code ViewConstants.ENTER_MESSAGE} ist nicht null.
+     * @postcondition die EnterNachricht wurde auf der Konsole angezeigt.
+     */
+    public void pressEnterToContinue ()
+    {
+        System.out.println(ViewConstants.ENTER_MESSAGE);
     }
 
 

@@ -11,4 +11,5 @@ public interface ErrorMessages
     String ERROR_READING_CSV = "Fehler beim Lesen der CSV-Datei: ";
 
     String NULL_COORDINATES = "Coordinates cannot be null";
+    String INVALID_INPUT = "Invalid input. Please enter a number";
 }

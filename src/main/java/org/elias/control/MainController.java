@@ -84,6 +84,7 @@ public final class MainController
         WindFarmImporter.importData(CSVDataCells, germanWindFarms);
 
         calculateData();
+        waitForEnter();
         programLoop();
     }
 
@@ -134,4 +135,19 @@ public final class MainController
         }
     }
 
+
+    public void waitForEnter ()
+    {
+        boolean isNotEnter = true;
+
+        while (isNotEnter)
+        {
+            view.pressEnterToContinue();
+
+            if (view.getUserInput().isEmpty())
+            {
+                isNotEnter = false;
+            }
+        }
+    }
 }
