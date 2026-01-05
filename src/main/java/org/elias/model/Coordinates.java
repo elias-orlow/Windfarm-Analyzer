@@ -2,8 +2,6 @@ package org.elias.model;
 
 import org.elias.res.constant.GeneralConstants;
 
-import java.util.Objects;
-
 /**
  * Model-Klasse, die Koordinaten eines Windparks repraesentiert.
  * <p>

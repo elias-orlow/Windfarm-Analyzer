@@ -1,7 +1,5 @@
 package org.elias.util;
 
-import org.elias.res.constant.GeneralConstants;
-
 /**
  * Util-Klasse zur Messung von Ausfuehrungszeiten.
  */

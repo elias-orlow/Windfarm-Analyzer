@@ -55,7 +55,7 @@ public interface ViewConstants
     int TOTAL_TABLE_WIDTH = 100;
     int ROWS_BETWEEN_FARMS = 1;
     int COL_ID = 10;
-    int COL_YEAR = 10;
+    int COL_YEAR = 15;
     int COL_LOCATION = 22;
     int ALL_SEPARATOR_COUNTER = 5;
     int COL_TYPES = TOTAL_TABLE_WIDTH - ALL_SEPARATOR_COUNTER - COL_ID - COL_YEAR - COL_LOCATION;
