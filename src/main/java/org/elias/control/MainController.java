@@ -25,7 +25,7 @@ public final class MainController
     private static MainController INSTANCE = null;
 
     /**
-     * Die mit dem Controller verbundene ConsoleView.
+     * Die mit dem Controller verbundene {@link ConsoleView}.
      */
     private final ConsoleView view;
     private final WindFarmRepository germanWindFarms;
@@ -153,7 +153,7 @@ public final class MainController
                     view.printCSV(CSVFileReader.convertCSVtoList(GeneralConstants.PATH_TO_CSV));
                     break;
                 case ViewConstants.PRINT_WINDREPO:
-                    TableController tableController = new TableController(TablePrinter.getInstance());
+                    TableController tableController = TableController.getInstance(TablePrinter.getInstance());
                     tableController.printRepository(germanWindFarms);
                     break;
                 case ViewConstants.EXIT:

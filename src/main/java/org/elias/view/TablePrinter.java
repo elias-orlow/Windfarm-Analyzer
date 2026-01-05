@@ -104,4 +104,17 @@ public class TablePrinter
         }
     }
 
+
+    /**
+     * Gibt die angegebene Nachricht als Error auf der Konsole aus.
+     *
+     * @param errorMessage die auszugebende Nachricht.
+     * @precondition eine Instanz von {@code TablePrinter} existiert.
+     * @postcondition die Nachricht wurde auf der Konsole in der roten Farbe ausgegeben.
+     */
+    public void printError (String errorMessage)
+    {
+        System.err.println(errorMessage);
+    }
+
 }

@@ -51,4 +51,23 @@ public interface ViewConstants
     int PRINT_WINDREPO = 2;
     int EXIT = 0;
 
+    // Konstante, die fuer Tabellenausgabe verwendet werden
+    int TOTAL_TABLE_WIDTH = 100;
+    int ROWS_BETWEEN_FARMS = 1;
+    int COL_ID = 10;
+    int COL_YEAR = 10;
+    int COL_LOCATION = 22;
+    int ALL_SEPARATOR_COUNTER = 5;
+    int COL_TYPES = TOTAL_TABLE_WIDTH - ALL_SEPARATOR_COUNTER - COL_ID - COL_YEAR - COL_LOCATION;
+    int ELLIPSIS_LENGTH = 3;
+
+    String NOT_SPECIFIED = "not specified";
+    String PERFORMANCE_COORDINATES_ROW = " Performance: %s  |  Coordinates: %s";
+    String PERFORMANCE_FORMAT = "%.1f MW";
+    String COORDINATES_FORMAT = "%.4f - %.4f";
+    String MANAGER_ROW = "Company-Manager:";
+    String ID_CELL = "ID ";
+    String VERTICAL_BAR = "|";
+    String WINDTURBINE_FORMAT = " %s (%dx)";
+    String ELLIPSIS = "...";
 }
