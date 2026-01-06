@@ -13,7 +13,13 @@ import org.elias.view.ConsoleView;
 public class Main
 {
     /**
+     * Einstiegspunkt der Anwendung.
+     * <p>
      * Enthaelt alle notwendigen Methoden, um das Programm zu starten.
+     *
+     * @precondition {@link ConsoleView} und {@link WindFarmRepository} koennen erfolgreich
+     * initialisiert werden.
+     * @postcondition Der {@link MainController} wurde gestartet.
      */
     static void main ()
     {
