@@ -1,5 +1,6 @@
 package org.elias.control;
 
+import org.elias.Main;
 import org.elias.model.*;
 import org.elias.res.constant.ErrorMessages;
 import org.elias.res.constant.GeneralConstants;
@@ -78,28 +79,78 @@ public final class MainController
     }
 
 
+    /**
+     * Startet das Program.
+     * <p>
+     * Ablauf:
+     * <ol>
+     *     <li>Begruessung ausgeben.</li>
+     *     <li>Daten vorbereiten.</li>
+     *     <li>Koordinaten normalisieren.</li>
+     *     <li>Hauptloop aufrufen.</li>
+     * </ol>
+     *
+     * @precondition diese Methode wird nur einmal in {@link Main} aufgerufen.
+     * @postcondition die Datenvorbereitung zum Programmablauf wurde durchgefuehrt und
+     * der Hauptzyklus wird gestartet.
+     */
     public void start ()
     {
         view.printMessage(ViewConstants.WELCOME_MESSAGE);
 
-        Timer.startTimer();
-        List<String> dataRows = CSVFileReader.convertCSVtoList(GeneralConstants.PATH_TO_CSV);
-        List<String[]> CSVDataCells = CSVLineParser.convertToDataUnit(dataRows);
-        WindFarmImporter.importData(CSVDataCells, germanWindFarms);
+        calculateRuntime(this::setupData);
 
-        calculateData();
-        view.printMessage(String.format(ViewConstants.TIME_MESSAGE, Timer.getTime()));
         waitForEnter();
 
-        Timer.startTimer();
-        validateCoordinates();
-        view.printMessage(String.format(ViewConstants.TIME_MESSAGE, Timer.getTime()));
+        calculateRuntime(this::validateCoordinates);
+
         waitForEnter();
 
         programLoop();
     }
 
 
+    /**
+     * Liest die CSV-Datei ein, wandelt die Zellen aus Zeilen um un importiert die Daten
+     * in das {@link WindFarmRepository}.
+     *
+     * @precondition der Pfad {@code GeneralConstants.PATH_TO_CSV} zur CSV-Datei ist korrekt und die Daten sind lesbar.
+     * @postcondition das Repository {@code germanWindFarm} enthaelt WindFarms aus CSV-Tabelle.
+     */
+    private void setupData ()
+    {
+        List<String> dataRows = CSVFileReader.convertCSVtoList(GeneralConstants.PATH_TO_CSV);
+        List<String[]> CSVDataCells = CSVLineParser.convertToDataUnit(dataRows);
+        WindFarmImporter.importData(CSVDataCells, germanWindFarms);
+
+        calculateData();
+    }
+
+
+    /**
+     * Fuehrt eine Aufgabe aus und misst ihre Laufzeit.
+     *
+     * @param task eine Methode, deren Laufzeit gemessen wird.
+     * @precondition {@code task} ist nicht null.
+     * @postcondition Es wird die Laufzeit der gegebenen Methode in der Konsole aufgegeben.
+     */
+    private void calculateRuntime (Runnable task)
+    {
+        Timer.startTimer();
+        task.run();
+        view.printMessage(String.format(ViewConstants.TIME_MESSAGE, Timer.getTime()));
+    }
+
+
+    /**
+     * Berechnet statistische Information ueber die importierten Daten.
+     * <p>
+     * Es wird die Anzahl der erfolgreich importierten Windparks,
+     * sowie die ungueltige Dateneintraege ausgegeben.
+     *
+     * @precondition {@link WindFarmRepository} wurde bereits initialisiert und aufgefuellt.
+     * @postcondition Informationen wurden ueber die {@link ConsoleView} ausgegeben.
+     */
     private void calculateData ()
     {
         int windFarmCount = germanWindFarms.getGermanWindFarms().size();
@@ -111,14 +162,23 @@ public final class MainController
         for (String[] failedRow : germanWindFarms.getInvalidRows().keySet())
         {
             view.printMessage(String.format(ViewConstants.FAILED_CAUSE_MESSAGE,
-                    failedRow[0],
-                    failedRow[1],
+                    failedRow[GeneralConstants.INT_ZERO],
+                    failedRow[GeneralConstants.INT_ONE],
                     germanWindFarms.getInvalidRows().get(failedRow)));
         }
 
         view.makeSpace(GeneralConstants.INT_ONE);
     }
 
+
+    /**
+     * Validiert und normalisiert die Koordinaten aller Windparks.
+     * <P>
+     * Die Anzahl an geaenderten Koordinaten werden zusammengezaehlt und ausgegeben.
+     *
+     * @precondition {@link WindFarmRepository} enthaelt einen oder mehrere {@link WindFarm}
+     * @postcondition Alle WindFarm-Objekte enthalten normalisierte Koordinaten.
+     */
     private void validateCoordinates ()
     {
         for (WindFarm windFarm : germanWindFarms.getGermanWindFarms())
@@ -129,7 +189,8 @@ public final class MainController
                             windFarm.getCoordinates().getLatitude(),
                             windFarm.getCoordinates().getLongitude()));
 
-            if (!originalCoordinates.equals(windFarm.getCoordinates())){
+            if (!originalCoordinates.equals(windFarm.getCoordinates()))
+            {
                 normalizedCoordinatesCounter++;
             }
         }
@@ -138,6 +199,14 @@ public final class MainController
     }
 
 
+    /**
+     * Fuehrt die Hauptprogrammschleife aus.
+     * <p>
+     * Das Menue wird angezeigt, Benutzereingaben verarbeitet und entsprechende Aktionen ausgefuehrt.
+     *
+     * @precondition View, Repository und Controller sind vollstaendig initialisiert.
+     * @postcondition das Programm wird auf die Benutzeraktionen ordnungsgemaess reagieren.
+     */
     private void programLoop ()
     {
         boolean isRunning = true;
@@ -167,6 +236,12 @@ public final class MainController
     }
 
 
+    /**
+     * Wartet auf die Bestaetigung mit <enter> vom Benutzer.
+     *
+     * @precondition die View ist initialisiert und kann Benutzereingaben lesen.
+     * @postcondition die Methode wird beendet, wenn der Benutzer auf <enter> drueckt.
+     */
     public void waitForEnter ()
     {
         boolean isNotEnter = true;
