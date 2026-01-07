@@ -18,6 +18,23 @@ public class WindFarm
     private final List<ProjectManager> projectManagers = new ArrayList<>();
     private final List<WindTurbineGroup> windTurbineGroups = new ArrayList<>();
 
+
+    /**
+     * Erzeugt ein neues {@link WindFarm}-Objekt.
+     * <p>
+     * Der Konstruktor initialisiert einen Windpark mit einem Namen, der
+     * Gesamtleistung sowie den zugehoerigen Koordinaten.
+     *
+     * @param name             der Name des Windparks.
+     * @param totalPerformance die gesamte installierte Leistung des Windparks in Megawatt.
+     * @param coordinates      die Koordinaten des Windparks.
+     * @precondition Es wird ein Name als {@code String}, eine Leistung sowie
+     * ein {@link Coordinates}-Objekt uebergeben. Eine inhaltliche Validierung
+     * der Werte oder eine Pruefung auf {@code null} erfolgt nicht.
+     * @postcondition Das {@code WindFarm}-Objekt ist initialisiert und speichert den
+     * uebergebenen Namen, die uebergebene Gesamtleistung sowie die
+     * uebergebenen Koordinaten unveraendert.
+     */
     public WindFarm (String name, float totalPerformance, Coordinates coordinates)
     {
         this.name = name;
@@ -67,11 +84,25 @@ public class WindFarm
         return windTurbineGroups;
     }
 
+    /**
+     * Fuegt einen Projektmanager zur Liste der Projektmanager hinzu.
+     *
+     * @param projectManager das {@link ProjectManager}-Objekt, das hinzugefuegt werden soll.
+     * @precondition projectManager darf nicht null sein.
+     * @postcondition projectManager befindet sich in der Liste projectManagers.
+     */
     public void addProjectManager (ProjectManager projectManager)
     {
         this.projectManagers.add(projectManager);
     }
 
+    /**
+     * Fuegt mehrere Projektmanager zur Liste der Projektmanager hinzu.
+     *
+     * @param projectManagers die Liste von {@link ProjectManager}-Objekten.
+     * @precondition projectManagers darf nicht null sein; die Liste kann leer sein.
+     * @postcondition alle uebergebenen Projektmanager befinden sich in der Liste projectManagers.
+     */
     public void addProjectManagers (List<ProjectManager> projectManagers)
     {
         for (ProjectManager projectManager : projectManagers)
@@ -80,11 +111,25 @@ public class WindFarm
         }
     }
 
+    /**
+     * Fuegt eine Windturbinen-Gruppe zur Liste der Gruppen hinzu.
+     *
+     * @param windTurbineGroup das {@link WindTurbineGroup}-Objekt, das hinzugefuegt werden soll.
+     * @precondition windTurbineGroup darf nicht null sein.
+     * @postcondition windTurbineGroup befindet sich in der Liste windTurbineGroups.
+     */
     public void addWindTurbineGroup (WindTurbineGroup windTurbineGroup)
     {
         this.windTurbineGroups.add(windTurbineGroup);
     }
 
+    /**
+     * Fuegt mehrere Windturbinen-Gruppen zur Liste der Gruppen hinzu.
+     *
+     * @param windTurbineGroups die Liste von {@link WindTurbineGroup}-Objekten
+     * @precondition windTurbineGroups darf nicht null sein; die Liste kann leer sein
+     * @postcondition alle uebergebenen Gruppen befinden sich in der Liste windTurbineGroups
+     */
     public void addWindTurbineGroups (List<WindTurbineGroup> windTurbineGroups)
     {
         for (WindTurbineGroup windTurbineGroup : windTurbineGroups)
@@ -92,5 +137,6 @@ public class WindFarm
             this.addWindTurbineGroup(windTurbineGroup);
         }
     }
+
 
 }

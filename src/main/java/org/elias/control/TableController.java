@@ -25,6 +25,13 @@ public class TableController
      */
     private final TablePrinter tablePrinter;
 
+    /**
+     * Erzeugt eine neue Instanz des {@link TableController}
+     *
+     * @param tablePrinter der {@link TablePrinter}, der fuer die Ausgabe der Tabellen verantwortlich ist.
+     * @precondition {@code tablePrinter} ist nicht null.
+     * @postcondition es wird eine Instanz vom Kontroller mit View als {@code TablePrinter} erstellt.
+     */
     private TableController (TablePrinter tablePrinter)
     {
         this.tablePrinter = tablePrinter;
@@ -57,8 +64,8 @@ public class TableController
      * @param tablePrinter der {@link TablePrinter}, der vom Controller verwendet wird.
      * @return die neu erzeugte {@code TableController}-Instanz.
      * @throws IllegalStateException wenn der Controller bereits initialisiert wurde.
-     * @precondition  {@code tablePrinter} ist nicht null.
-     * @postcondition  {@link #getInstance()} gibt dieselbe Instanz zurueck.
+     * @precondition {@code tablePrinter} ist nicht null.
+     * @postcondition {@link #getInstance()} gibt dieselbe Instanz zurueck.
      */
     public static TableController getInstance (TablePrinter tablePrinter)
     {

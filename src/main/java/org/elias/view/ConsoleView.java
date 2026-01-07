@@ -17,6 +17,17 @@ public final class ConsoleView
     private final Scanner scanner = new Scanner(System.in);
 
 
+    /**
+     * Erzeugt eine neue Instanz der {@link ConsoleView}.
+     * <p>
+     * Der Konstruktor ist privat, da die Klasse dem Singleton-Muster folgt
+     * und ausschliesslich ueber die bereitgestellte Zugriffsmethode instanziiert
+     * werden darf.
+     *
+     * @precondition es existiert noch keine Instanz der {@code ConsoleView}.
+     * @postcondition eine neue {@code ConsoleView}-Instanz ist erzeugt und fuer die
+     * Konsolenein-/-ausgabe initialisiert.
+     */
     private ConsoleView ()
     {
     }

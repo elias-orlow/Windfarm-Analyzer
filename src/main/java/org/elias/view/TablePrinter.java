@@ -11,6 +11,16 @@ public class TablePrinter
 {
     private static TablePrinter INSTANCE = null;
 
+    /**
+     * Erzeugt eine neue Instanz des {@code TablePrinter}.
+     * <p>
+     * Der Konstruktor ist privat, da die Klasse dem Singleton-Muster folgt
+     * und ausschliesslich über die Zugriffsmethode {@code getInstance()}
+     * instanziiert werden darf.
+     *
+     * @precondition es existiert noch keine Instanz des {@code TablePrinter}.
+     * @postcondition eine neue {@code TablePrinter}-Instanz ist erzeugt und initialisiert.
+     */
     private TablePrinter ()
     {
     }

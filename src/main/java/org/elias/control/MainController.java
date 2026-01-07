@@ -33,6 +33,16 @@ public final class MainController
     int normalizedCoordinatesCounter = GeneralConstants.EMPTY_INT_VARIABLE;
 
 
+    /**
+     * Erzeugt eine neue Instanz des {@link MainController}.
+     *
+     * @param view            die {@link ConsoleView}, die fuer die Ein- und Ausgabe der Anwendung verwendet wird.
+     *                        Darf nicht {@code null} sein.
+     * @param germanWindFarms das {@link WindFarmRepository}, das die verwalteten Windparkdaten enthaelt.
+     *                        Darf nicht {@code null} sein.
+     * @precondition {@code view != null && germanWindFarms != null}
+     * @postcondition {@code this.view == view && this.germanWindFarms == germanWindFarms}
+     */
     private MainController (ConsoleView view, WindFarmRepository germanWindFarms)
     {
         this.view = view;
@@ -173,7 +183,7 @@ public final class MainController
 
     /**
      * Validiert und normalisiert die Koordinaten aller Windparks.
-     * <P>
+     * <p>
      * Die Anzahl an geaenderten Koordinaten werden zusammengezaehlt und ausgegeben.
      *
      * @precondition {@link WindFarmRepository} enthaelt einen oder mehrere {@link WindFarm}

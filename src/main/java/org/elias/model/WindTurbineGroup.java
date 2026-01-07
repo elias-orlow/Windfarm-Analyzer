@@ -18,7 +18,24 @@ public class WindTurbineGroup
     private String remarks = null;
 
     private final List<WindTurbineType> windTurbines = new ArrayList<>();
-//TODO:
+
+    /**
+     * Erzeugt eine neue {@link WindTurbineGroup}.
+     * <p>
+     * Der Konstruktor initialisiert die Gruppe mit einer eindeutigen Kennung,
+     * dem Herstellungsjahr, der zugehoerigen {@link Location} sowie optionalen
+     * Bemerkungen.
+     *
+     * @param ID              die eindeutige Identifikationsnummer der Windturbinen-Gruppe.
+     * @param manufactureYear das Herstellungsjahr der Windturbinen.
+     * @param location        der Standort der Windturbinen-Gruppe.
+     * @param remarks         zusaetzliche Bemerkungen zur Windturbinen-Gruppe.
+     * @precondition es werden eine Identifikationsnummer, ein Herstellungsjahr, ein
+     * Standort sowie eine Bemerkung uebergeben. Die Parameter koennen
+     * inhaltlich leer oder {@code null} sein; eine Validierung erfolgt nicht.
+     * @postcondition die {@code WindTurbineGroup} ist initialisiert und speichert die
+     * uebergebenen Werte unveraendert.
+     */
     public WindTurbineGroup (int ID, Year manufactureYear, Location location, String remarks)
     {
         this.ID = ID;
@@ -74,11 +91,28 @@ public class WindTurbineGroup
         return windTurbines;
     }
 
+    // --- Add methods ---
+
+    /**
+     * Fuegt einen Windturbinentyp zur Gruppe hinzu.
+     *
+     * @param windTurbineType der hinzuzufuegende {@link WindTurbineType}.
+     * @precondition windTurbineType darf nicht null sein.
+     * @postcondition der Windturbinentyp befindet sich in der Liste windTurbines
+     */
     public void addWindTurbine (WindTurbineType windTurbineType)
     {
         this.windTurbines.add(windTurbineType);
     }
 
+
+    /**
+     * Fuegt mehrere Windturbinentypen zur Gruppe hinzu.
+     *
+     * @param windTurbines die Liste der hinzuzufuegenden {@link WindTurbineType}-Objekte
+     * @precondition windTurbines darf nicht null sein; die Liste kann leer sein
+     * @postcondition Alle uebergebenen Windturbinentypen befinden sich in der Liste windTurbines
+     */
     public void addWindTurbines (List<WindTurbineType> windTurbines)
     {
         for (WindTurbineType windTurbine : windTurbines)

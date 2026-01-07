@@ -12,6 +12,18 @@ public class ProjectManager
 {
     private String company = GeneralConstants.EMPTY_STRING;
 
+    /**
+     * Erzeugt ein neues {@link ProjectManager}-Objekt.
+     * <p>
+     * Der Konstruktor initialisiert den Projektmanager mit dem Namen des
+     * zugehoerigen Unternehmens. Der uebergebene Wert wird unveraendert uebernommen.
+     *
+     * @param company der Name des Unternehmens, das den Projektmanager stellt.
+     * @precondition es wird ein {@code String} uebergeben, der den Namen eines Unternehmens
+     * repraesentiert.
+     * @postcondition Das {@code ProjectManager}-Objekt ist initialisiert und speichert den
+     * uebergebenen Unternehmensnamen unveraendert.
+     */
     public ProjectManager (String company)
     {
         this.company = company;
