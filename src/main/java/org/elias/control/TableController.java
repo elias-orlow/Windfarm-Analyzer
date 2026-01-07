@@ -235,7 +235,7 @@ public class TableController
         {
             String id = ViewConstants.ID_CELL + currentGroup.getID();
 
-            String year = (currentGroup.getManufactureYear() == GeneralConstants.EMPTY_INT_VARIABLE)
+            String year = (currentGroup.getManufactureYear().getValue() == GeneralConstants.EMPTY_INT_VARIABLE)
                     ? ViewConstants.NOT_SPECIFIED
                     : String.valueOf(currentGroup.getManufactureYear());
 

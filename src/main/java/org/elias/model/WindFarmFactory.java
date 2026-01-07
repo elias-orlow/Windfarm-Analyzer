@@ -3,6 +3,7 @@ package org.elias.model;
 import org.elias.res.constant.GeneralConstants;
 import org.elias.util.DataCellParser;
 
+import java.time.Year;
 import java.util.List;
 import java.util.Map;
 
@@ -53,7 +54,7 @@ public class WindFarmFactory
         for (String[] row : rows)
         {
             int ID = DataCellParser.parseObjectID(row[GeneralConstants.COLUMN_INDEX_ID]);
-            int manufactureYear = DataCellParser.parseManufactureYear(row[GeneralConstants.COLUMN_INDEX_MANUFACTURE_YEAR]);
+            Year manufactureYear = DataCellParser.parseManufactureYear(row[GeneralConstants.COLUMN_INDEX_MANUFACTURE_YEAR]);
 
             Location location = new Location(
                     DataCellParser.parseTown(row[GeneralConstants.COLUMN_INDEX_TOWN]),

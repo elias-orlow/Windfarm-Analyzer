@@ -5,6 +5,7 @@ import org.elias.res.constant.ErrorMessages;
 import org.elias.res.constant.GeneralConstants;
 import org.elias.res.constant.ParserConstants;
 
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -56,11 +57,11 @@ public class DataCellParser
      * @precondition der Parameter {@code raw} enthaelt keine Buchstaben. null, leeres String oder Fragezeichen sind erlaubt.
      * @postcondition gibt den geparsten ganzzahligen Wert zurueck. Bei Jahresbereich wird das letzte Jahr verwendet.
      */
-    public static int parseManufactureYear (String raw)
+    public static Year parseManufactureYear (String raw)
     {
         if (raw == null || raw.isEmpty() || raw.contains(GeneralConstants.QUESTION_MARK))
         {
-            return GeneralConstants.EMPTY_INT_VARIABLE;
+            return Year.of(GeneralConstants.EMPTY_INT_VARIABLE);
         }
 
         if (raw.contains(GeneralConstants.DASH) || raw.contains(GeneralConstants.EN_DASH))
@@ -69,7 +70,7 @@ public class DataCellParser
             raw = parts[parts.length - ParserConstants.LAST_ELEMENT_OFFSET];
         }
 
-        return Integer.parseInt(raw.trim());
+        return Year.of(Integer.parseInt(raw.trim()));
     }
 
 
