@@ -8,7 +8,7 @@ import org.elias.res.constant.GeneralConstants;
  * Die Informationen stammen aus der CSV-Spalte "Projektierer/Betreiber" und werden einer {@link WindFarm}
  * zugeordnet.
  */
-public class ProjectManager
+public class ProjectManager implements Comparable<ProjectManager>
 {
     private String company = GeneralConstants.EMPTY_STRING;
 
@@ -39,5 +39,11 @@ public class ProjectManager
     public void setCompany (String company)
     {
         this.company = company;
+    }
+
+    @Override
+    public int compareTo (ProjectManager projectManager)
+    {
+        return this.getCompany().compareTo(projectManager.getCompany());
     }
 }
