@@ -94,8 +94,8 @@ public class TableController
      * Ist das Repository leer, wird eine entsprechende Fehlermeldung ausgegeben.
      *
      * @param repository das {@code WindFarmRepository}, dessen Inhalte ausgegeben werden sollen.
-     * @pre {@code repository} ist nicht leer.
-     * @post Die Daten wurden an {@code tablePrinter} uebergeben.
+     * @precondition {@code repository} ist nicht leer.
+     * @postcondition Die Daten wurden an {@code tablePrinter} uebergeben.
      */
     public void printRepository (WindFarmRepository repository)
     {
@@ -211,7 +211,7 @@ public class TableController
         {
             if (i > GeneralConstants.INT_ZERO)
             {
-                sb.append(GeneralConstants.CHAR_COMMA + GeneralConstants.CHAR_SPACE);
+                sb.append(GeneralConstants.CHAR_COMMA).append(GeneralConstants.CHAR_SPACE);
             }
             sb.append(managers.get(i).getCompany());
         }
