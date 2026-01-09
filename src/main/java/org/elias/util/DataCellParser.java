@@ -67,7 +67,9 @@ public class DataCellParser
         if (raw.contains(GeneralConstants.DASH) || raw.contains(GeneralConstants.EN_DASH))
         {
             String[] parts = raw.split(ParserConstants.YEAR_SPLIT_REGEX);
-            raw = parts[parts.length - ParserConstants.LAST_ELEMENT_OFFSET];
+            raw = parts[parts.length - ParserConstants.LAST_ELEMENT_OFFSET].trim().length() == 4
+                    ? parts[parts.length - ParserConstants.LAST_ELEMENT_OFFSET]
+                    : parts[GeneralConstants.INT_ZERO];
         }
 
         return Year.of(Integer.parseInt(raw.trim()));
