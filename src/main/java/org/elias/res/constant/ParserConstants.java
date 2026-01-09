@@ -23,9 +23,9 @@ public interface ParserConstants
     // Konstanten fuer CoordinatesNormalizer
     float NORTHEASTERNMOST_POINT = 54.9090f;
     float EASTERNMOST_POINT = 15.0419f;
-    int GERMAN_LATITUDE_START_FOUR = 4;
-    int GERMAN_LATITUDE_START_FIVE = 5;
-    int GERMAN_LONGITUDE_START_ONE = 1;
+    char GERMAN_LATITUDE_START_FOUR = '4';
+    char GERMAN_LATITUDE_START_FIVE = '5';
+    char GERMAN_LONGITUDE_START_ONE = '1';
     int POINT_INDEX_SHORT = 1;
     int POINT_INDEX_LONG = 2;
     float ROUNDING_FACTOR = 10000.0f;
