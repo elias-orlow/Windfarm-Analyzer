@@ -38,30 +38,34 @@ public interface ViewConstants
             ╠════════════════════════════════════════════╣
             ║ Choose sorting method:                     ║
             ║                                            ║
-            ║  1. By Turbine Age                         ║
+            ║  1. By ID                                  ║
+            ║     ├─ a) Ascending                        ║
+            ║     └─ b) Descending                       ║
+            ║                                            ║
+            ║  2. By Turbine Age                         ║
             ║     ├─ a) Oldest turbine commissioning     ║
             ║     └─ b) Latest turbine commissioning     ║
             ║                                            ║
-            ║  2. By Location                            ║
+            ║  3. By Location                            ║
             ║     └─ a) Latitude                         ║
             ║           ├─ +) Ascending                  ║
             ║           └─ -) Descending                 ║
             ║                                            ║
-            ║  3. By Scale                               ║
+            ║  4. By Scale                               ║
             ║     ├─ a) Wind turbine count               ║
             ║     └─ b) Manager count                    ║
             ║                                            ║
-            ║  4. By Performance                         ║
+            ║  5. By Performance                         ║
             ║     └─ a) Total performance                ║
             ║           ├─ +) Ascending                  ║
             ║           └─ -) Descending                 ║
             ║                                            ║
-            ║  5. By Name                                ║
+            ║  6. By Name                                ║
             ║     └─ a) Wind farm name                   ║
             ║           ├─ +) A-Z                        ║
             ║           └─ -) Z-A                        ║
             ║                                            ║
-            ║  6. Combined Sort                          ║
+            ║  7. Combined Sort                          ║
             ║     ├─ a) Age + Performance                ║
             ║     ├─ b) Turbine count + Performance      ║
             ║     └─ c) Turbine count + Manager count    ║
@@ -92,19 +96,21 @@ public interface ViewConstants
     int EXIT = 0;
 
     // User-Wahl fuer Sort-menue
-    String TURBINE_AGE_OLD = "1a";
-    String TURBINE_AGE_LATE = "1b";
-    String LATITUDE_ASC = "2a+";
-    String LATITUDE_DESC = "2a-";
-    String TURBINE_COUNT = "3a";
-    String MANAGER_COUNT = "3b";
-    String PERFORMANCE_ASC = "4a+";
-    String PERFORMANCE_DESC = "4a-";
-    String NAME_AZ = "5a+";
-    String NAME_ZA = "5a-";
-    String AGE_PERFORMANCE = "6a";
-    String TURBINE_PERFORMANCE = "6b";
-    String TURBINE_MANAGER_COUNT = "6c";
+    String ID_ASC = "1a";
+    String ID_DESC = "1b";
+    String TURBINE_AGE_OLD = "2a";
+    String TURBINE_AGE_LATE = "2b";
+    String LATITUDE_ASC = "3a+";
+    String LATITUDE_DESC = "3a-";
+    String TURBINE_COUNT = "4a";
+    String MANAGER_COUNT = "4b";
+    String PERFORMANCE_ASC = "5a+";
+    String PERFORMANCE_DESC = "5a-";
+    String NAME_AZ = "6a+";
+    String NAME_ZA = "6a-";
+    String AGE_PERFORMANCE = "7a";
+    String TURBINE_PERFORMANCE = "7b";
+    String TURBINE_MANAGER_COUNT = "7c";
     String EXIT_STRING = "0";
 
 

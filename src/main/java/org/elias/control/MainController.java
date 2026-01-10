@@ -258,6 +258,12 @@ public final class MainController
 
         switch (userChoice)
         {
+            case ViewConstants.ID_ASC:
+                sortByAndPrint(new IdComparator());
+                break;
+            case ViewConstants.ID_DESC:
+                sortByAndPrint(new IdComparator().reversed());
+                break;
             case ViewConstants.TURBINE_AGE_OLD:
                 sortByAndPrint(new OldestTurbineCommissioningComparator());
                 break;
