@@ -240,6 +240,9 @@ public final class MainController
                 case ViewConstants.SORT_WINDREPO:
                     sortProcess();
                     break;
+                case ViewConstants.ANALYSIS_WINDREPO:
+                    analysisProcess();
+                    break;
                 case ViewConstants.EXIT:
                     isRunning = false;
                     view.printMessage(ViewConstants.EXIT_MESSAGE);
@@ -319,6 +322,48 @@ public final class MainController
         TableController tableController = TableController.getInstance();
         tableController.printRepository(germanWindFarms);
     }
+
+
+    private void analysisProcess ()
+    {
+        view.printMessage(ViewConstants.ANALYSIS_MENU_MESSAGE);
+
+        WindFarmAnalyzer windFarmAnalyzer = new WindFarmAnalyzer(germanWindFarms);
+        TableController tableController = TableController.getInstance();
+        int userChoice = view.getChoice();
+
+        switch (userChoice)
+        {
+            case ViewConstants.FIND_SOUTHERNMOST:
+                Timer.startTimer();
+                view.printMessage(ViewConstants.SOUTHERNMOST_MESSAGE);
+                tableController.printWindfarm(windFarmAnalyzer.findSouthernmostWindfarm());
+                view.printMessage(String.format(ViewConstants.TIME_MESSAGE, Timer.getTime()));
+                break;
+            case ViewConstants.FIND_HIGHEST_PERFORMANCE:
+                Timer.startTimer();
+                view.printMessage(ViewConstants.HIGHEST_PERFORMANCE_MESSAGE);
+                tableController.printWindfarm(windFarmAnalyzer.findHighestPerformance());
+                view.printMessage(String.format(ViewConstants.TIME_MESSAGE, Timer.getTime()));
+                break;
+            case ViewConstants.FIND_MOST_TURBINES:
+                Timer.startTimer();
+                view.printMessage(ViewConstants.MOST_TURBINES_MESSAGE);
+                tableController.printWindfarm(windFarmAnalyzer.findMostWindturbine());
+                view.printMessage(String.format(ViewConstants.TIME_MESSAGE, Timer.getTime()));
+                break;
+            case ViewConstants.CALCULATE_TOTAL_PERFORMACE:
+                Timer.startTimer();
+                view.printMessage(String.format(
+                        ViewConstants.TOTAL_PERFORMANCE_MESSAGE,
+                        windFarmAnalyzer.calculateTotalPerformanceOfAllWindFarms()));
+                view.printMessage(String.format(ViewConstants.TIME_MESSAGE, Timer.getTime()));
+                break;
+            default:
+                view.printError(ErrorMessages.INVALID_NUMBER);
+        }
+    }
+
 
     /**
      * Wartet auf die Bestaetigung mit <enter> vom Benutzer.

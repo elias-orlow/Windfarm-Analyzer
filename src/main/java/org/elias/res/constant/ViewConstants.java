@@ -17,6 +17,10 @@ public interface ViewConstants
     String ENTER_MESSAGE = "Press <enter> to continue...\n";
     String TOTAL_NORMALIZED_COORDINATE_MESSAGE = "%d coordinates have been checked and corrected\n";
     String TIME_MESSAGE = "This operation took %d milliseconds.";
+    String SOUTHERNMOST_MESSAGE = "The southernmost wind-farm is: ";
+    String HIGHEST_PERFORMANCE_MESSAGE = "The wind-farm with highest performance is: ";
+    String MOST_TURBINES_MESSAGE = "The wind-farm with most turbines is: ";
+    String TOTAL_PERFORMANCE_MESSAGE = "The total performance of all wind-farms is %.2f MW";
 
     String MAIN_MENU_MESSAGE = """
             ╔══════════════════════════════════════╗
@@ -25,8 +29,9 @@ public interface ViewConstants
             ║ Please choose an option:             ║
             ║                                      ║
             ║  1. Show CSV-File                    ║
-            ║  2. Print repository of windFarms    ║
-            ║  3. Sort and show windFarms          ║
+            ║  2. Print repository of wind-farms   ║
+            ║  3. Sort and show wind-farms         ║
+            ║  4. Analysis of wind-farms           ║
             ║  0. Exit program                     ║
             ║                                      ║
             ╚══════════════════════════════════════╝
@@ -34,7 +39,7 @@ public interface ViewConstants
 
     String SORT_MENU_MESSAGE = """
             ╔════════════════════════════════════════════╗
-            ║         SORT WINDFARMS BY CRITERIA         ║
+            ║        SORT WIND-FARMS BY CRITERIA         ║
             ╠════════════════════════════════════════════╣
             ║ Choose sorting method:                     ║
             ║                                            ║
@@ -74,6 +79,21 @@ public interface ViewConstants
             ╚════════════════════════════════════════════╝
             Your choice:""";
 
+    String ANALYSIS_MENU_MESSAGE = """
+            ╔════════════════════════════════════════════════════╗
+            ║              WINDFARM ANALYSIS MENU                ║
+            ╠════════════════════════════════════════════════════╣
+            ║ Please choose an analysis option:                  ║
+            ║                                                    ║
+            ║  1. Find southernmost wind-farm                    ║
+            ║  2. Find wind-farm with highest performance        ║
+            ║  3. Find wind-farm with most turbines              ║
+            ║  4. Calculate total power of all wind-farms        ║
+            ║                                                    ║
+            ║  0. Return to main menu                            ║
+            ╚════════════════════════════════════════════════════╝
+            Your choice:""";
+
     String EXIT_MESSAGE = "The program is closing...";
 
 
@@ -93,6 +113,7 @@ public interface ViewConstants
     int SHOW_WINDPARKS = 1;
     int PRINT_WINDREPO = 2;
     int SORT_WINDREPO = 3;
+    int ANALYSIS_WINDREPO = 4;
     int EXIT = 0;
 
     // User-Wahl fuer Sort-menue
@@ -113,6 +134,11 @@ public interface ViewConstants
     String TURBINE_MANAGER_COUNT = "7c";
     String EXIT_STRING = "0";
 
+    // User-Wahl fuer Analysis-menue
+    int FIND_SOUTHERNMOST = 1;
+    int FIND_HIGHEST_PERFORMANCE = 2;
+    int FIND_MOST_TURBINES = 3;
+    int CALCULATE_TOTAL_PERFORMACE = 4;
 
     // Konstante, die fuer Tabellenausgabe verwendet werden
     int TOTAL_TABLE_WIDTH = 100;
