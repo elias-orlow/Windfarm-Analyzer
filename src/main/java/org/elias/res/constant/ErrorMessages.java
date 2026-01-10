@@ -16,4 +16,6 @@ public interface ErrorMessages
     String NULL_COORDINATES = "Coordinates cannot be null";
     String INVALID_INPUT = "Invalid input. Please enter a number";
     String INVALID_NUMBER = "Invalid input. Please select an action";
+
+    String INVALID_USER_SORT = "Input not recognized. Your selection must follow the required format (e.g., 1a, 2b+, 3c-). \nPlease try again.";
 }

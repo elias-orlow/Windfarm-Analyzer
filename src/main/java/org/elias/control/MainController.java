@@ -2,6 +2,7 @@ package org.elias.control;
 
 import org.elias.Main;
 import org.elias.model.*;
+import org.elias.model.sort.*;
 import org.elias.res.constant.ErrorMessages;
 import org.elias.res.constant.GeneralConstants;
 import org.elias.res.constant.ViewConstants;
@@ -221,6 +222,8 @@ public final class MainController
     {
         boolean isRunning = true;
 
+        TableController tableController = TableController.getInstance(TablePrinter.getInstance());
+
         while (isRunning)
         {
             view.showMenu();
@@ -232,8 +235,10 @@ public final class MainController
                     view.printCSV(CSVFileReader.convertCSVtoList(GeneralConstants.PATH_TO_CSV));
                     break;
                 case ViewConstants.PRINT_WINDREPO:
-                    TableController tableController = TableController.getInstance(TablePrinter.getInstance());
                     tableController.printRepository(germanWindFarms);
+                    break;
+                case ViewConstants.SORT_WINDREPO:
+                    sortProcess();
                     break;
                 case ViewConstants.EXIT:
                     isRunning = false;
@@ -245,6 +250,69 @@ public final class MainController
         }
     }
 
+
+    private void sortProcess ()
+    {
+        view.printMessage(ViewConstants.SORT_MENU_MESSAGE);
+        String userChoice = view.getUserInput();
+
+        switch (userChoice)
+        {
+            case ViewConstants.TURBINE_AGE_OLD:
+                sortByAndPrint(new OldestTurbineCommissioningComparator());
+                break;
+            case ViewConstants.TURBINE_AGE_LATE:
+                sortByAndPrint(new LatestTurbineCommissioningComparator());
+                break;
+            case ViewConstants.LATITUDE_ASC:
+                sortByAndPrint(new LatitudeComparator());
+                break;
+            case ViewConstants.LATITUDE_DESC:
+                sortByAndPrint(new LatitudeComparator().reversed());
+                break;
+            case ViewConstants.TURBINE_COUNT:
+                sortByAndPrint(new WindTurbineCountComparator());
+                break;
+            case ViewConstants.MANAGER_COUNT:
+                sortByAndPrint(new ManagerCountComparator());
+                break;
+            case ViewConstants.PERFORMANCE_ASC:
+                sortByAndPrint(new TotalPerformanceComparator());
+                break;
+            case ViewConstants.PERFORMANCE_DESC:
+                sortByAndPrint(new TotalPerformanceComparator().reversed());
+                break;
+            case ViewConstants.NAME_AZ:
+                sortByAndPrint(new WindFarmNameComparator());
+                break;
+            case ViewConstants.NAME_ZA:
+                sortByAndPrint(new WindFarmNameComparator().reversed());
+                break;
+            case ViewConstants.AGE_PERFORMANCE:
+                sortByAndPrint(new LatestTurbineCommissioningComparator().thenComparing(new TotalPerformanceComparator().reversed()));
+                break;
+            case ViewConstants.TURBINE_PERFORMANCE:
+                sortByAndPrint(new WindTurbineCountComparator().thenComparing(new TotalPerformanceComparator().reversed()));
+                break;
+            case ViewConstants.TURBINE_MANAGER_COUNT:
+                sortByAndPrint(new WindTurbineCountComparator().thenComparing(new ManagerCountComparator()));
+                break;
+            case ViewConstants.EXIT_STRING:
+                break;
+            default:
+                view.printError(ErrorMessages.INVALID_USER_SORT);
+                waitForEnter();
+                sortProcess();
+        }
+    }
+
+
+    private void sortByAndPrint (Comparator<WindFarm> comparator)
+    {
+        germanWindFarms.getGermanWindFarms().sort(comparator);
+        TableController tableController = TableController.getInstance();
+        tableController.printRepository(germanWindFarms);
+    }
 
     /**
      * Wartet auf die Bestaetigung mit <enter> vom Benutzer.
