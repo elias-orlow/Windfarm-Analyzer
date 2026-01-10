@@ -84,7 +84,7 @@ public class TableController
      * Gibt alle Windparks eines {@link WindFarmRepository} als Tabelle aus.
      *
      * <p>
-     * Für jeden {@link WindFarm} wird eine eigene Tabelle erzeugt, bestehend aus:
+     * Fuer jeden {@link WindFarm} wird eine eigene Tabelle erzeugt, bestehend aus:
      * <ul>
      *   <li>Kopfbereich (Name, Gesamtleistung, Koordinaten)</li>
      *   <li>Projektleitern (falls vorhanden)</li>
@@ -95,7 +95,7 @@ public class TableController
      *
      * @param repository das {@code WindFarmRepository}, dessen Inhalte ausgegeben werden sollen.
      * @precondition {@code repository} ist nicht leer.
-     * @postcondition Die Daten wurden an {@code tablePrinter} uebergeben.
+     * @postcondition die Daten wurden an {@code tablePrinter} uebergeben.
      */
     public void printRepository (WindFarmRepository repository)
     {
@@ -109,19 +109,32 @@ public class TableController
 
         for (WindFarm farm : farms)
         {
-            tablePrinter.printUpperSeparator(ViewConstants.TOTAL_TABLE_WIDTH);
-
-            printFarmHeader(farm);
-            printProjectManagers(farm);
-
-            tablePrinter.printInnerSeparator(ViewConstants.TOTAL_TABLE_WIDTH);
-
-            printGroups(farm);
-
-            tablePrinter.printLowerSeparator(ViewConstants.TOTAL_TABLE_WIDTH);
-            tablePrinter.makeSpace(ViewConstants.ROWS_BETWEEN_FARMS);
+            printWindfarm(farm);
         }
+    }
 
+    /**
+     * Gibt einen einzelnen {@link WindFarm} als vollstaendige Tabelle aus.
+     * <p>
+     * Die Ausgabe umfasst Kopfbereich, Projektleiter und Anlagenuebersicht.
+     *
+     * @param farm der auszugebende Windpark.
+     * @precondition {@code farm} ist nicht null.
+     * @postcondition die Daten des Windparks wurden vollstaendig ueber {@code tablePrinter} ausgegeben.
+     */
+    public void printWindfarm (WindFarm farm)
+    {
+        tablePrinter.printUpperSeparator(ViewConstants.TOTAL_TABLE_WIDTH);
+
+        printFarmHeader(farm);
+        printProjectManagers(farm);
+
+        tablePrinter.printInnerSeparator(ViewConstants.TOTAL_TABLE_WIDTH);
+
+        printGroups(farm);
+
+        tablePrinter.printLowerSeparator(ViewConstants.TOTAL_TABLE_WIDTH);
+        tablePrinter.makeSpace(ViewConstants.ROWS_BETWEEN_FARMS);
     }
 
 
