@@ -41,6 +41,19 @@ public class ProjectManager implements Comparable<ProjectManager>
         this.company = company;
     }
 
+    /**
+     * Vergleicht diesen {@link ProjectManager} mit einem anderen anhand des
+     * Unternehmensnamens.
+     * <p>
+     * Die Sortierung erfolgt alphabetisch aufsteigend.
+     *
+     * @param projectManager der zu vergleichende Projektleiter.
+     * @return negativer Wert, wenn dieser Projektleiter alphabetisch vor dem anderen liegt,
+     * positiver Wert bei spaeterer Position, oder 0 bei Gleichheit.
+     * @precondition {@code projectManager} ist nicht null und beide
+     * {@code ProjectManager}-Objekte besitzen einen gueltigen Unternehmensnamen.
+     * @postcondition Die beiden Unternehmensnamen wurden mittels {@code String.compareTo} verglichen.
+     */
     @Override
     public int compareTo (ProjectManager projectManager)
     {
