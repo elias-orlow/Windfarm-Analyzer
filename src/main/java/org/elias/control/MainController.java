@@ -214,6 +214,13 @@ public final class MainController
      * Fuehrt die Hauptprogrammschleife aus.
      * <p>
      * Das Menue wird angezeigt, Benutzereingaben verarbeitet und entsprechende Aktionen ausgefuehrt.
+     * <ul>
+     *      <li><b>1. Show CSV-File:</b> Zeigt die Rohdaten der Windparks aus der CSV-Datei an.</li>
+     *      <li><b>2. Print repository of wind-farms:</b> Gibt alle Windparks formatiert als Tabellen aus.</li>
+     *      <li><b>3. Sort and show wind-farms:</b> Ermoeglicht dem Benutzer, ein Sortierkriterium zu waehlen
+     * und zeigt anschliessend die sortierten Windparks an.</li>
+     *      <li><b>4. Analysis of wind-farms:</b> Führt verschiedene Analysen durch</li>
+     * </ul>
      *
      * @precondition View, Repository und Controller sind vollstaendig initialisiert.
      * @postcondition das Programm wird auf die Benutzeraktionen ordnungsgemaess reagieren.
@@ -254,6 +261,27 @@ public final class MainController
     }
 
 
+    /**
+     * Verarbeitet die Benutzereingabe fuer das Sortiermenue.
+     * <p>
+     * Der Benutzer kann verschiedene Sortierkriterien auswaehlen, um die
+     * Windparks nach bestimmten Eigenschaften zu ordnen. Zu den moeglichen
+     * Sortieroptionen gehoeren:
+     * <ul>
+     *   <li>Sortieren nach ID (auf- oder absteigend)</li>
+     *   <li>Sortieren nach Alter der Turbinen</li>
+     *   <li>Sortieren nach Breitengrad</li>
+     *   <li>Sortieren nach Anzahl der Turbinen</li>
+     *   <li>Sortieren nach Anzahl der Projektleiter</li>
+     *   <li>Sortieren nach Gesamtleistung (auf- oder absteigend)</li>
+     *   <li>Sortieren nach Name (A–Z oder Z–A)</li>
+     *   <li>Kombinierte Sortierungen</li>
+     * </ul>
+     *
+     * @precondition die View ist initialisiert und kann Benutzereingaben lesen.
+     * @postcondition die Windparks wurden entsprechend der Benutzerauswahl sortiert
+     * und ausgegeben, oder der Benutzer wurde erneut zur Eingabe aufgefordert.
+     */
     private void sortProcess ()
     {
         view.printMessage(ViewConstants.SORT_MENU_MESSAGE);
@@ -316,6 +344,14 @@ public final class MainController
     }
 
 
+    /**
+     * Sortiert die Windparks anhand des uebergebenen Vergleichskriteriums
+     * und gibt das Ergebnis anschließend formatiert aus.
+     *
+     * @param comparator das Sortierkriterium, nach dem die Windparks geordnet werden sollen.
+     * @precondition der Comparator ist nicht null und das Repository ist initialisiert.
+     * @postcondition die Windparks wurden sortiert und tabellarisch ausgegeben.
+     */
     private void sortByAndPrint (Comparator<WindFarm> comparator)
     {
         germanWindFarms.getGermanWindFarms().sort(comparator);
@@ -324,6 +360,25 @@ public final class MainController
     }
 
 
+    /**
+     * Verarbeitet die Benutzereingabe fuer das Analysemenue und führt die
+     * entsprechende Analysefunktion aus.
+     * <p>
+     * Der Benutzer kann verschiedene Auswertungen ueber die vorhandenen
+     * Windparks durchfuehren. Zu den verfuegbaren Analyseoptionen gehoeren:
+     * <ul>
+     *   <li>Ermitteln des suedlichsten Windparks</li>
+     *   <li>Ermitteln des Windparks mit der hoechsten Gesamtleistung</li>
+     *   <li>Ermitteln des Windparks mit den meisten Windturbinen</li>
+     *   <li>Berechnung der Gesamtleistung aller Windparks</li>
+     * </ul>
+     *
+     * @precondition die View, das Repository und der TableController sind
+     * vollstaendig initialisiert und koennen Eingaben verarbeiten.
+     * @postcondition Die vom Benutzer gewaehlte Analyse wurde ausgefuehrt und
+     * das Ergebnis sowie Laufzeit wurde ausgegeben. Bei ungueltiger Eingabe
+     * wurde eine Fehlermeldung angezeigt.
+     */
     private void analysisProcess ()
     {
         view.printMessage(ViewConstants.ANALYSIS_MENU_MESSAGE);
