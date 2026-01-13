@@ -60,18 +60,22 @@ public class AdjacencyGraph<E>
         return neighbors;
     }
 
-    public List<Edge<E>> getEdges(Vertex<E> vertex) {
+    public List<Edge<E>> getEdges (Vertex<E> vertex)
+    {
         return adjacencyMap.getOrDefault(vertex, List.of());
     }
 
     // ---------- Graph algorithms ----------
 
-    public List<Set<Vertex<E>>> getConnectedComponents() {
+    public List<Set<Vertex<E>>> getConnectedComponents ()
+    {
         Set<Vertex<E>> visited = new HashSet<>();
         List<Set<Vertex<E>>> components = new ArrayList<>();
 
-        for (Vertex<E> vertex : adjacencyMap.keySet()) {
-            if (!visited.contains(vertex)) {
+        for (Vertex<E> vertex : adjacencyMap.keySet())
+        {
+            if (!visited.contains(vertex))
+            {
                 Set<Vertex<E>> component = new HashSet<>();
                 bfs(vertex, visited, component);
                 components.add(component);
@@ -80,17 +84,21 @@ public class AdjacencyGraph<E>
         return components;
     }
 
-    private void bfs(Vertex<E> start, Set<Vertex<E>> visited, Set<Vertex<E>> component) {
+    private void bfs (Vertex<E> start, Set<Vertex<E>> visited, Set<Vertex<E>> component)
+    {
         Queue<Vertex<E>> queue = new LinkedList<>();
         queue.add(start);
         visited.add(start);
 
-        while (!queue.isEmpty()) {
+        while (!queue.isEmpty())
+        {
             Vertex<E> current = queue.poll();
             component.add(current);
 
-            for (Vertex<E> neighbor : getNeighbors(current)) {
-                if (!visited.contains(neighbor)) {
+            for (Vertex<E> neighbor : getNeighbors(current))
+            {
+                if (!visited.contains(neighbor))
+                {
                     visited.add(neighbor);
                     queue.add(neighbor);
                 }
