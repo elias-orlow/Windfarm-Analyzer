@@ -6,6 +6,11 @@ public class AdjacencyGraph<E>
 {
     private final Map<Vertex<E>, List<Edge<E>>> adjacencyMap;
 
+    public AdjacencyGraph ()
+    {
+        this.adjacencyMap = new LinkedHashMap<>();
+    }
+
     public AdjacencyGraph (Map<Vertex<E>, List<Edge<E>>> adjacencyMap)
     {
         this.adjacencyMap = adjacencyMap;
