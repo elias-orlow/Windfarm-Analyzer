@@ -4,6 +4,7 @@ import org.elias.res.constant.GeneralConstants;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Model-Klasse fuer einen Windpark, der aus mehreren Windkraftanlagen besteht und mehrere Einträge
@@ -138,5 +139,21 @@ public class WindFarm
         }
     }
 
+    @Override
+    public boolean equals (Object o)
+    {
+        if (o == null || getClass() != o.getClass()) return false;
+        WindFarm windFarm = (WindFarm) o;
+        return Float.compare(totalPerformance, windFarm.totalPerformance) == 0
+                && Objects.equals(name, windFarm.name)
+                && Objects.equals(coordinates, windFarm.coordinates)
+                && Objects.equals(projectManagers, windFarm.projectManagers)
+                && Objects.equals(windTurbineGroups, windFarm.windTurbineGroups);
+    }
 
+    @Override
+    public int hashCode ()
+    {
+        return Objects.hash(name, totalPerformance, coordinates, projectManagers, windTurbineGroups);
+    }
 }

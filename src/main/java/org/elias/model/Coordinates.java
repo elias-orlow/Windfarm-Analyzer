@@ -2,6 +2,8 @@ package org.elias.model;
 
 import org.elias.res.constant.GeneralConstants;
 
+import java.util.Objects;
+
 /**
  * Model-Klasse, die Koordinaten eines Windparks repraesentiert.
  * <p>
@@ -72,8 +74,17 @@ public class Coordinates
     @Override
     public boolean equals (Object o)
     {
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass())
+        {
+            return false;
+        }
         Coordinates that = (Coordinates) o;
         return Float.compare(latitude, that.latitude) == 0 && Float.compare(longitude, that.longitude) == 0;
+    }
+
+    @Override
+    public int hashCode ()
+    {
+        return Objects.hash(latitude, longitude);
     }
 }

@@ -3,6 +3,8 @@ package org.elias.model;
 import org.elias.res.Districts;
 import org.elias.res.constant.GeneralConstants;
 
+import java.util.Objects;
+
 /**
  * Model-Klasse, die Lokation einer Windkraftanlage repraesentiert.
  * <p>
@@ -53,5 +55,19 @@ public class Location
     public void setDistrict (Districts district)
     {
         this.district = district;
+    }
+
+    @Override
+    public boolean equals (Object o)
+    {
+        if (o == null || getClass() != o.getClass()) return false;
+        Location location = (Location) o;
+        return Objects.equals(town, location.town) && district == location.district;
+    }
+
+    @Override
+    public int hashCode ()
+    {
+        return Objects.hash(town, district);
     }
 }

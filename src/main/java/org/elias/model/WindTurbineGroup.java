@@ -5,6 +5,7 @@ import org.elias.res.constant.GeneralConstants;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -119,5 +120,19 @@ public class WindTurbineGroup
         {
             this.addWindTurbine(windTurbine);
         }
+    }
+
+    @Override
+    public boolean equals (Object o)
+    {
+        if (o == null || getClass() != o.getClass()) return false;
+        WindTurbineGroup that = (WindTurbineGroup) o;
+        return ID == that.ID && Objects.equals(manufactureYear, that.manufactureYear) && Objects.equals(location, that.location) && Objects.equals(remarks, that.remarks) && Objects.equals(windTurbines, that.windTurbines);
+    }
+
+    @Override
+    public int hashCode ()
+    {
+        return Objects.hash(ID, manufactureYear, location, remarks, windTurbines);
     }
 }

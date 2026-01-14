@@ -2,6 +2,8 @@ package org.elias.model;
 
 import org.elias.res.constant.GeneralConstants;
 
+import java.util.Objects;
+
 /**
  * Model-Klasse, die einen Projektmanager bzw. Betreiber eines Windparks repraesentiert.
  * <p>
@@ -58,5 +60,19 @@ public class ProjectManager implements Comparable<ProjectManager>
     public int compareTo (ProjectManager projectManager)
     {
         return this.getCompany().compareTo(projectManager.getCompany());
+    }
+
+    @Override
+    public boolean equals (Object o)
+    {
+        if (o == null || getClass() != o.getClass()) return false;
+        ProjectManager that = (ProjectManager) o;
+        return Objects.equals(company, that.company);
+    }
+
+    @Override
+    public int hashCode ()
+    {
+        return Objects.hashCode(company);
     }
 }
