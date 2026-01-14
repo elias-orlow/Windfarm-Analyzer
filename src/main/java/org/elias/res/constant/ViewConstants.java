@@ -21,6 +21,9 @@ public interface ViewConstants
     String HIGHEST_PERFORMANCE_MESSAGE = "The wind-farm with highest performance is: ";
     String MOST_TURBINES_MESSAGE = "The wind-farm with most turbines is: ";
     String TOTAL_PERFORMANCE_MESSAGE = "The total performance of all wind-farms is %.2f MW";
+    String UPDATED_PERFORMANCE_MESSAGE = "Updated the performance data of %d wind farms.";
+    String CONVERTED_PERFORMANCE_NAME = "%s: converted %.2f kW to %.4f MW";
+    String CALCULATED_PERFORMANCE_NAME = "%s: calculated from the adjacent wind farm %.4f MW";
 
     String MAIN_MENU_MESSAGE = """
             ╔══════════════════════════════════════╗

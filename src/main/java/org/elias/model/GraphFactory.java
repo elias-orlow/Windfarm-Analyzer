@@ -1,6 +1,6 @@
 package org.elias.model;
 
-import org.elias.model.graph.AdjacencyGraph;
+import org.elias.model.graph.Graph;
 import org.elias.model.graph.Vertex;
 import org.elias.util.GeoFormula;
 
@@ -8,9 +8,9 @@ import java.util.List;
 
 public class GraphFactory
 {
-    public static AdjacencyGraph<WindFarm> createGraph (List<WindFarm> windFarms)
+    public static Graph<WindFarm> createGraph (List<WindFarm> windFarms)
     {
-        AdjacencyGraph<WindFarm> windFarmGraph = new AdjacencyGraph<>();
+        Graph<WindFarm> windFarmGraph = new Graph<>();
 
         for (int i = 0; i < windFarms.size(); i++)
         {

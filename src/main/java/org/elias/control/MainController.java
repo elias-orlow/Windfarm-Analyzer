@@ -6,9 +6,7 @@ import org.elias.model.sort.*;
 import org.elias.res.constant.ErrorMessages;
 import org.elias.res.constant.GeneralConstants;
 import org.elias.res.constant.ViewConstants;
-import org.elias.util.CSVFileReader;
-import org.elias.util.CSVLineParser;
-import org.elias.util.CoordinatesNormalizer;
+import org.elias.util.*;
 import org.elias.util.Timer;
 import org.elias.view.ConsoleView;
 import org.elias.view.TablePrinter;
@@ -117,6 +115,10 @@ public final class MainController
 
         waitForEnter();
 
+        calculateRuntime(this::validatePerformance);
+
+        waitForEnter();
+
         programLoop();
     }
 
@@ -207,6 +209,24 @@ public final class MainController
         }
 
         view.printMessage(String.format(ViewConstants.TOTAL_NORMALIZED_COORDINATE_MESSAGE, normalizedCoordinatesCounter));
+    }
+
+
+    private void validatePerformance ()
+    {
+        germanWindFarms.setWindFarmGraph(GraphFactory.createGraph(germanWindFarms.getGermanWindFarms()));
+
+        for (WindFarm windFarm : germanWindFarms.getGermanWindFarms())
+        {
+            PerformanceNormalizer.normalizePerformance(windFarm, germanWindFarms.getWindFarmGraph());
+        }
+
+        List<String> correctedPerformance = PerformanceNormalizer.getChangedPerf();
+
+        view.printMessage(String.format(ViewConstants.UPDATED_PERFORMANCE_MESSAGE, correctedPerformance.size()));
+        for (String message : correctedPerformance){
+            view.printMessage(message);
+        }
     }
 
 

@@ -43,4 +43,5 @@ public interface GeneralConstants
     int COLUMN_INDEX_REMARKS = 11;
 
     double EARTH_RADIUS_KM = 6371.000785;
+    float TOP_TURBINE_PERFORMANCE = 15.0f;
 }

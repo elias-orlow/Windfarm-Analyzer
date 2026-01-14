@@ -2,16 +2,16 @@ package org.elias.model.graph;
 
 import java.util.*;
 
-public class AdjacencyGraph<E>
+public class Graph<E>
 {
     private final Map<Vertex<E>, List<Edge<E>>> adjacencyMap;
 
-    public AdjacencyGraph ()
+    public Graph ()
     {
         this.adjacencyMap = new LinkedHashMap<>();
     }
 
-    public AdjacencyGraph (Map<Vertex<E>, List<Edge<E>>> adjacencyMap)
+    public Graph (Map<Vertex<E>, List<Edge<E>>> adjacencyMap)
     {
         this.adjacencyMap = adjacencyMap;
     }
