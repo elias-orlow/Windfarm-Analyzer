@@ -57,6 +57,14 @@ public class Location
         this.district = district;
     }
 
+    /**
+     * Vergleicht diese Lokation mit einem anderen Objekt.
+     *
+     * @param o das Objekt, das mit dieser Lokation verglichen werden soll.
+     * @return boolean-Wert, ob die Objekte gleich sind.
+     * @precondition das uebergebene Objekt ist nicht null.
+     * @postcondition es wird true zurueckgegeben, wenn die Daten gleich sind, sonst false.
+     */
     @Override
     public boolean equals (Object o)
     {
@@ -65,6 +73,13 @@ public class Location
         return Objects.equals(town, location.town) && district == location.district;
     }
 
+    /**
+     * Berechnet den Hashcode dieses Objektes.
+     *
+     * @return einen ganzzahligen Hashwert basierend auf den Daten.
+     * @precondition die gespeicherten Daten sind nicht null.
+     * @postcondition gleiche Objekte liefern den gleichen Hashwert.
+     */
     @Override
     public int hashCode ()
     {

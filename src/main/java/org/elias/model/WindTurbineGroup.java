@@ -122,6 +122,14 @@ public class WindTurbineGroup
         }
     }
 
+    /**
+     * Vergleicht diese Windkraftanlage mit einem anderen Objekt.
+     *
+     * @param o das Objekt, das mit dieser diese Windkraftanlage verglichen werden soll.
+     * @return boolean-Wert, ob die Objekte gleich sind.
+     * @precondition das uebergebene Objekt ist nicht null.
+     * @postcondition es wird true zurueckgegeben, wenn die Daten gleich sind, sonst false.
+     */
     @Override
     public boolean equals (Object o)
     {
@@ -130,6 +138,13 @@ public class WindTurbineGroup
         return ID == that.ID && Objects.equals(manufactureYear, that.manufactureYear) && Objects.equals(location, that.location) && Objects.equals(remarks, that.remarks) && Objects.equals(windTurbines, that.windTurbines);
     }
 
+    /**
+     * Berechnet den Hashcode dieses Objektes.
+     *
+     * @return einen ganzzahligen Hashwert basierend auf den Daten.
+     * @precondition die gespeicherten Daten sind nicht null.
+     * @postcondition gleiche Objekte liefern den gleichen Hashwert.
+     */
     @Override
     public int hashCode ()
     {

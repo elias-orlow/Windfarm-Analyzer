@@ -11,6 +11,11 @@ import org.elias.res.constant.ViewConstants;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Utility-Klasse zur Validierung und Normalisierung der Gesamtleistung von Windparks.
+ * <p>
+ * Falls eine Leistung fehlt oder unrealistisch hoch ist, wird sie korrigiert und dokumentiert.
+ */
 public class PerformanceNormalizer
 {
     private static final List<String> changedPerf = new ArrayList<>();
@@ -21,6 +26,17 @@ public class PerformanceNormalizer
     }
 
 
+    /**
+     * Normalisiert die Leistung eines Windparks.
+     * <p>
+     * Falls keine Leistung gesetzt ist, wird sie berechnet.
+     * Andernfalls wird geprueft, ob die Leistung realistisch ist.
+     *
+     * @param windFarm      der zu pruefende Windpark.
+     * @param windFarmGraph Graph mit benachbarten Windparks.
+     * @precondition windFarm und windFarmGraph sind nicht null.
+     * @postcondition die Leistung des Windparks ist validiert oder neu berechnet.
+     */
     public static void normalizePerformance (WindFarm windFarm, Graph<WindFarm> windFarmGraph)
     {
         if (windFarm.getTotalPerformance() == 0)
@@ -32,6 +48,14 @@ public class PerformanceNormalizer
         }
     }
 
+    /**
+     * Berechnet die Leistung eines Windparks anhand seiner Nachbarn.
+     *
+     * @param windFarm      Windpark ohne gesetzte Leistung.
+     * @param windFarmGraph Graph mit Nachbarschaft.
+     * @precondition windFarm besitzt keine gueltige Gesamtleistung.
+     * @postcondition die Gesamtleistung des Windparks ist berechnet und gesetzt.
+     */
     private static void addPerformance (WindFarm windFarm, Graph<WindFarm> windFarmGraph)
     {
         List<Vertex<WindFarm>> neighborsVertexes = windFarmGraph.getNeighbors(new Vertex<>(windFarm));
@@ -62,7 +86,15 @@ public class PerformanceNormalizer
                 averagePerformance * windFarmCounter));
     }
 
-
+    /**
+     * Prueft, ob die angegebene Leistung eines Windparks realistisch ist.
+     * <p>
+     * Falls die Leistung zu hoch ist, wird sie in eine korrekte Einheit umgerechnet.
+     *
+     * @param windFarm der zu pruefende Windpark.
+     * @precondition windFarm besitzt eine gesetzte Gesamtleistung.
+     * @postcondition die Leistung ist validiert und ggf. korrigiert.
+     */
     private static void validatePerformance (WindFarm windFarm)
     {
         int windTurbineCounter = GeneralConstants.EMPTY_INT_VARIABLE;

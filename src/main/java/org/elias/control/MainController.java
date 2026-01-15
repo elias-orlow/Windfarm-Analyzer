@@ -189,7 +189,7 @@ public final class MainController
      * <p>
      * Die Anzahl an geaenderten Koordinaten werden zusammengezaehlt und ausgegeben.
      *
-     * @precondition {@link WindFarmRepository} enthaelt einen oder mehrere {@link WindFarm}
+     * @precondition {@link WindFarmRepository} enthaelt einen oder mehrere {@link WindFarm}.
      * @postcondition Alle WindFarm-Objekte enthalten normalisierte Koordinaten.
      */
     private void validateCoordinates ()
@@ -212,6 +212,16 @@ public final class MainController
     }
 
 
+    /**
+     * Validiert und normalisiert die Leistungen aller Windparks.
+     * <p>
+     * Die Anzahl an geaenderten Leistungen werden zusammengezaehlt und ausgegeben.
+     *
+     * @precondition {@link WindFarmRepository} enthaelt einen oder mehrere {@link WindFarm} und die Leistungswerte
+     * der Windparks sind gesetzt.
+     * @postcondition Alle WindFarm-Objekte enthalten normalisierte Leistungen. Die Anzahl der vorgenommenen Korrekturen
+     * wurden ausgegeben.
+     */
     private void validatePerformance ()
     {
         germanWindFarms.setWindFarmGraph(GraphFactory.createGraph(germanWindFarms.getGermanWindFarms()));

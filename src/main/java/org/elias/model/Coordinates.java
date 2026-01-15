@@ -82,6 +82,13 @@ public class Coordinates
         return Float.compare(latitude, that.latitude) == 0 && Float.compare(longitude, that.longitude) == 0;
     }
 
+    /**
+     * Berechnet den Hashcode dieses Objektes.
+     *
+     * @return einen ganzzahligen Hashwert basierend auf den Daten.
+     * @precondition die gespeicherten Daten sind nicht null.
+     * @postcondition gleiche Objekte liefern den gleichen Hashwert.
+     */
     @Override
     public int hashCode ()
     {
