@@ -314,10 +314,10 @@ public final class MainController
                 sortByAndPrint(new ManagerCountComparator());
                 break;
             case ViewConstants.PERFORMANCE_ASC:
-                sortByAndPrint(new TotalPerformanceComparator());
+                sortByAndPrint(new TotalPerformanceComparator().reversed());
                 break;
             case ViewConstants.PERFORMANCE_DESC:
-                sortByAndPrint(new TotalPerformanceComparator().reversed());
+                sortByAndPrint(new TotalPerformanceComparator());
                 break;
             case ViewConstants.NAME_AZ:
                 sortByAndPrint(new WindFarmNameComparator());
