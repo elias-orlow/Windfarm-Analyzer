@@ -44,4 +44,6 @@ public interface GeneralConstants
 
     double EARTH_RADIUS_KM = 6371.000785;
     float TOP_TURBINE_PERFORMANCE = 15.0f;
+
+    int MINUTES_PER_HOUR = 60;
 }

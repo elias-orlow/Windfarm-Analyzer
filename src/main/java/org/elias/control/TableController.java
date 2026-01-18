@@ -138,6 +138,7 @@ public class TableController
         tablePrinter.makeSpace(ViewConstants.ROWS_BETWEEN_FARMS);
     }
 
+
     public void printSchedule (Schedule schedule)
     {
         for (WorkDay workDay : schedule.getWorkDays())
@@ -147,55 +148,73 @@ public class TableController
         }
     }
 
+
     private void printWorkday (WorkDay workDay)
     {
         tablePrinter.printUpperSeparator(ViewConstants.TOTAL_DAYS_TABLE_WIDTH);
 
-        tablePrinter.printDataCell(padRight(String.format("   --- DAY %d ---", workDay.getDayNumber()),
+        tablePrinter.printDataCell(padRight(String.format(ViewConstants.DAY_HEADER_FORMAT, workDay.getDayNumber()),
                 ViewConstants.TOTAL_DAYS_TABLE_WIDTH - ViewConstants.BORDER_OFFSET));
 
         if (!workDay.getMaintainedWindTurbines().isEmpty())
         {
-            tablePrinter.printDataCell(padRight(String.format(" Wind farm: %s", workDay.getMaintainedWindFarm().getName()),
-                    ViewConstants.TOTAL_DAYS_TABLE_WIDTH - ViewConstants.BORDER_OFFSET));
-
-            tablePrinter.printDataCell(padRight(" Maintained wind turbines:",
-                    ViewConstants.TOTAL_DAYS_TABLE_WIDTH - ViewConstants.BORDER_OFFSET));
-
-            for (WindTurbineType windTurbineType : workDay.getMaintainedWindTurbines())
-            {
-                tablePrinter.printDataCell(padRight(String.format("    -  %s", windTurbineType.getModel()),
-                        ViewConstants.TOTAL_DAYS_TABLE_WIDTH - ViewConstants.BORDER_OFFSET));
-            }
+            printMaintenanceSection(workDay);
         }
-
 
         if (!(workDay.getDriveTime() == null))
         {
-            tablePrinter.printInnerSeparator(ViewConstants.TOTAL_DAYS_TABLE_WIDTH);
-            tablePrinter.printDataCell(padRight("Driving in the evening:",
-                    ViewConstants.TOTAL_DAYS_TABLE_WIDTH - ViewConstants.BORDER_OFFSET));
-            tablePrinter.printDataCell(padRight(String.format("    - %s", formatDuration(workDay.getDriveTime())), ViewConstants.TOTAL_DAYS_TABLE_WIDTH - ViewConstants.BORDER_OFFSET));
+            printDriveTimeSection(workDay);
         }
 
         tablePrinter.printLowerSeparator(ViewConstants.TOTAL_DAYS_TABLE_WIDTH);
     }
 
 
-    private static String formatDuration(Duration duration) {
-        long totalMinutes = duration.toMinutes();
-        long hours = totalMinutes / 60;
-        long minutes = totalMinutes % 60;
+    private void printMaintenanceSection (WorkDay workDay)
+    {
+        tablePrinter.printDataCell(padRight(String.format(ViewConstants.WIND_FARM_LABEL, workDay.getMaintainedWindFarm().getName()),
+                ViewConstants.TOTAL_DAYS_TABLE_WIDTH - ViewConstants.BORDER_OFFSET));
 
-        if (hours > 0 && minutes > 0) {
-            return hours + " hour(s) " + minutes + " minute(s)";
-        } else if (hours > 0) {
-            return hours + " hour(s)";
-        } else {
-            return minutes + " minute(s)";
+        tablePrinter.printDataCell(padRight(ViewConstants.MAINTAINED_TURBINES_LABEL,
+                ViewConstants.TOTAL_DAYS_TABLE_WIDTH - ViewConstants.BORDER_OFFSET));
+
+        for (WindTurbineType windTurbineType : workDay.getMaintainedWindTurbines())
+        {
+            tablePrinter.printDataCell(padRight(String.format(ViewConstants.ITEM_FORMAT, windTurbineType.getModel()),
+                    ViewConstants.TOTAL_DAYS_TABLE_WIDTH - ViewConstants.BORDER_OFFSET));
         }
     }
 
+
+    private void printDriveTimeSection (WorkDay workDay)
+    {
+        tablePrinter.printInnerSeparator(ViewConstants.TOTAL_DAYS_TABLE_WIDTH);
+
+        tablePrinter.printDataCell(padRight(ViewConstants.EVENING_DRIVE_LABEL,
+                ViewConstants.TOTAL_DAYS_TABLE_WIDTH - ViewConstants.BORDER_OFFSET));
+
+        tablePrinter.printDataCell(padRight(String.format(ViewConstants.ITEM_FORMAT, formatDuration(workDay.getDriveTime())),
+                ViewConstants.TOTAL_DAYS_TABLE_WIDTH - ViewConstants.BORDER_OFFSET));
+    }
+
+
+    private static String formatDuration (Duration duration)
+    {
+        long totalMinutes = duration.toMinutes();
+        long hours = totalMinutes / GeneralConstants.MINUTES_PER_HOUR;
+        long minutes = totalMinutes % GeneralConstants.MINUTES_PER_HOUR;
+
+        if (hours > GeneralConstants.INT_ZERO && minutes > GeneralConstants.INT_ZERO)
+        {
+            return hours + ViewConstants.HOURS_LABEL + minutes + ViewConstants.MINUTES_LABEL;
+        } else if (hours > GeneralConstants.INT_ZERO)
+        {
+            return hours + ViewConstants.HOURS_LABEL;
+        } else
+        {
+            return minutes + ViewConstants.MINUTES_LABEL;
+        }
+    }
 
 
     /**

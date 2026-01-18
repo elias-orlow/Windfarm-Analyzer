@@ -28,6 +28,15 @@ public interface ViewConstants
     String CHOICE_START_POINT_MESSAGE = "Choose the plan’s starting point:";
     String INDEX_DATA_MESSAGE = "{ %d }  -->  %s";
 
+    String DAY_HEADER_FORMAT = "   --- DAY %d ---";
+    String WIND_FARM_LABEL = " Wind farm: %s";
+    String MAINTAINED_TURBINES_LABEL = " Maintained wind turbines:";
+    String ITEM_FORMAT = "    -  %s";
+    String EVENING_DRIVE_LABEL = "Driving in the evening:";
+    String HOURS_LABEL = " hour(s) ";
+    String MINUTES_LABEL = " minute(s)";
+
+
 
     String MAIN_MENU_MESSAGE = """
             ╔══════════════════════════════════════╗
