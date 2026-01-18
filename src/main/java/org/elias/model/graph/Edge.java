@@ -1,5 +1,7 @@
 package org.elias.model.graph;
 
+import org.elias.res.constant.ErrorMessages;
+
 /**
  * Repraesentiert eine Kante in einer Datenstruktur (in Graphen).
  * <p>
@@ -66,6 +68,6 @@ public class Edge<E>
         {
             return fromElement;
         }
-        throw new IllegalArgumentException("Vertex not part of edge");
+        throw new IllegalArgumentException(ErrorMessages.NO_SUCH_VERTEX);
     }
 }
