@@ -21,6 +21,13 @@ public interface ViewConstants
     String HIGHEST_PERFORMANCE_MESSAGE = "The wind-farm with highest performance is: ";
     String MOST_TURBINES_MESSAGE = "The wind-farm with most turbines is: ";
     String TOTAL_PERFORMANCE_MESSAGE = "The total performance of all wind-farms is %.2f MW";
+    String UPDATED_PERFORMANCE_MESSAGE = "Updated the performance data of %d wind farms.";
+    String CONVERTED_PERFORMANCE_NAME = "%s: converted %.2f kW to %.4f MW";
+    String CALCULATED_PERFORMANCE_NAME = "%s: calculated from the adjacent wind farm %.4f MW";
+    String CHOICE_PROJECT_MANAGER_MESSAGE = "Select a wind‑park manager to develop the work plan:";
+    String CHOICE_START_POINT_MESSAGE = "Choose the plan’s starting point:";
+    String INDEX_DATA_MESSAGE = "{ %d }  -->  %s";
+
 
     String MAIN_MENU_MESSAGE = """
             ╔══════════════════════════════════════╗
@@ -32,6 +39,7 @@ public interface ViewConstants
             ║  2. Print repository of wind-farms   ║
             ║  3. Sort and show wind-farms         ║
             ║  4. Analysis of wind-farms           ║
+            ║  5. Make working plan                ║
             ║  0. Exit program                     ║
             ║                                      ║
             ╚══════════════════════════════════════╝
@@ -96,6 +104,12 @@ public interface ViewConstants
 
     String EXIT_MESSAGE = "The program is closing...";
 
+    String PLAN_TABLE_HEAD = """
+            ==============================
+                    MAINTENANCE PLAN
+            ==============================
+            """;
+
 
     // Light and double line box components (U+2552 bis U+256C)
     String BORDER_TOP_LEFT = "╔";
@@ -114,6 +128,7 @@ public interface ViewConstants
     int PRINT_WINDREPO = 2;
     int SORT_WINDREPO = 3;
     int ANALYSIS_WINDREPO = 4;
+    int WINDFARM_PLAN = 5;
     int EXIT = 0;
 
     // User-Wahl fuer Sort-menue
@@ -149,6 +164,9 @@ public interface ViewConstants
     int ALL_SEPARATOR_COUNTER = 5;
     int COL_TYPES = TOTAL_TABLE_WIDTH - ALL_SEPARATOR_COUNTER - COL_ID - COL_YEAR - COL_LOCATION;
     int ELLIPSIS_LENGTH = 3;
+
+    int TOTAL_DAYS_TABLE_WIDTH = 70;
+    int ROWS_BETWEEN_DAYS = 1;
 
     String NOT_SPECIFIED = "not specified";
     String PERFORMANCE_COORDINATES_ROW = " Performance: %s  |  Coordinates: %s";

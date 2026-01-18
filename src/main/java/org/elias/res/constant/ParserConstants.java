@@ -29,6 +29,6 @@ public interface ParserConstants
     int POINT_INDEX_SHORT = 1;
     int POINT_INDEX_LONG = 2;
     float ROUNDING_FACTOR = 10000.0f;
-
+    int KW_TO_MW_FACTOR = 1000;
 
 }

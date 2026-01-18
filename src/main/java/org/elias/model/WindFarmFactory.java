@@ -28,6 +28,7 @@ public class WindFarmFactory
     public static WindFarm createWindFarm (List<String[]> rows) //TODO: in kleineren Methoden zerlegen
     {
         String[] baseRow = rows.getFirst();
+        ProjectManagerAdministration projectManagerAdministration = ProjectManagerAdministration.getInstance();
         
         // --- Basisinformation aus der ersten Roh-Zeile ---
         String windFarmName = DataCellParser.parseWindFarmName(baseRow[GeneralConstants.COLUMN_INDEX_NAME]);
@@ -46,7 +47,9 @@ public class WindFarmFactory
         // --- Projektbetreiber hinzufuegen ---
         for (String companyName : DataCellParser.parseProjectManager(baseRow[GeneralConstants.COLUMN_INDEX_PROJECTMANAGER]))
         {
-            currentWindFarm.addProjectManager(new ProjectManager(companyName));
+            ProjectManager currrentProjectManager = new ProjectManager(companyName);
+            currentWindFarm.addProjectManager(currrentProjectManager);
+            projectManagerAdministration.addProjectManager(currrentProjectManager);
         }
 
 

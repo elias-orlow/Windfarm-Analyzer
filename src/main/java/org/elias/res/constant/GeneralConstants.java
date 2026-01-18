@@ -5,7 +5,9 @@ package org.elias.res.constant;
  */
 public interface GeneralConstants
 {
-    /** Pfad zur CSV-Datei mit den Windkraftanlagen. */
+    /**
+     * Pfad zur CSV-Datei mit den Windkraftanlagen.
+     */
     String PATH_TO_CSV = "src/main/resources/Windkraftanlagen_DE.csv";
 
     // Konstanten für leere Deklarierungen von Variablen
@@ -25,6 +27,7 @@ public interface GeneralConstants
 
     int INT_ZERO = 0;
     int INT_ONE = 1;
+    int INT_TWO = 2;
 
     int COLUMN_COUNT = 12;
     int COLUMN_INDEX_ID = 0;
@@ -38,4 +41,7 @@ public interface GeneralConstants
     int COLUMN_INDEX_LONGITUDE = 9;
     int COLUMN_INDEX_PROJECTMANAGER = 10;
     int COLUMN_INDEX_REMARKS = 11;
+
+    double EARTH_RADIUS_KM = 6371.000785;
+    float TOP_TURBINE_PERFORMANCE = 15.0f;
 }

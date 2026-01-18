@@ -6,13 +6,12 @@ import org.elias.model.sort.*;
 import org.elias.res.constant.ErrorMessages;
 import org.elias.res.constant.GeneralConstants;
 import org.elias.res.constant.ViewConstants;
-import org.elias.util.CSVFileReader;
-import org.elias.util.CSVLineParser;
-import org.elias.util.CoordinatesNormalizer;
+import org.elias.util.*;
 import org.elias.util.Timer;
 import org.elias.view.ConsoleView;
 import org.elias.view.TablePrinter;
 
+import javax.swing.text.View;
 import java.util.*;
 
 /**
@@ -117,6 +116,10 @@ public final class MainController
 
         waitForEnter();
 
+        calculateRuntime(this::validatePerformance);
+
+        waitForEnter();
+
         programLoop();
     }
 
@@ -187,7 +190,7 @@ public final class MainController
      * <p>
      * Die Anzahl an geaenderten Koordinaten werden zusammengezaehlt und ausgegeben.
      *
-     * @precondition {@link WindFarmRepository} enthaelt einen oder mehrere {@link WindFarm}
+     * @precondition {@link WindFarmRepository} enthaelt einen oder mehrere {@link WindFarm}.
      * @postcondition Alle WindFarm-Objekte enthalten normalisierte Koordinaten.
      */
     private void validateCoordinates ()
@@ -207,6 +210,35 @@ public final class MainController
         }
 
         view.printMessage(String.format(ViewConstants.TOTAL_NORMALIZED_COORDINATE_MESSAGE, normalizedCoordinatesCounter));
+    }
+
+
+    /**
+     * Validiert und normalisiert die Leistungen aller Windparks.
+     * <p>
+     * Die Anzahl an geaenderten Leistungen werden zusammengezaehlt und ausgegeben.
+     *
+     * @precondition {@link WindFarmRepository} enthaelt einen oder mehrere {@link WindFarm} und die Leistungswerte
+     * der Windparks sind gesetzt.
+     * @postcondition Alle WindFarm-Objekte enthalten normalisierte Leistungen. Die Anzahl der vorgenommenen Korrekturen
+     * wurden ausgegeben.
+     */
+    private void validatePerformance ()
+    {
+        germanWindFarms.setWindFarmGraph(GraphFactory.createGraph(germanWindFarms.getGermanWindFarms()));
+
+        for (WindFarm windFarm : germanWindFarms.getGermanWindFarms())
+        {
+            PerformanceNormalizer.normalizePerformance(windFarm, germanWindFarms.getWindFarmGraph());
+        }
+
+        List<String> correctedPerformance = PerformanceNormalizer.getChangedPerf();
+
+        view.printMessage(String.format(ViewConstants.UPDATED_PERFORMANCE_MESSAGE, correctedPerformance.size()));
+        for (String message : correctedPerformance)
+        {
+            view.printMessage(message);
+        }
     }
 
 
@@ -249,6 +281,9 @@ public final class MainController
                     break;
                 case ViewConstants.ANALYSIS_WINDREPO:
                     analysisProcess();
+                    break;
+                case ViewConstants.WINDFARM_PLAN:
+                    createPlanProcess();
                     break;
                 case ViewConstants.EXIT:
                     isRunning = false;
@@ -417,6 +452,62 @@ public final class MainController
             default:
                 view.printError(ErrorMessages.INVALID_NUMBER);
         }
+    }
+
+
+    private void createPlanProcess ()
+    {
+        List<ProjectManager> projectManagers = new ArrayList<>(ProjectManagerAdministration.getInstance().getProjectManagerList());
+        Collections.sort(projectManagers);
+
+        view.printMessage(ViewConstants.CHOICE_PROJECT_MANAGER_MESSAGE);
+
+        int index = GeneralConstants.INT_ONE;
+        for (ProjectManager projectManager : projectManagers)
+        {
+            view.printMessage(String.format(ViewConstants.INDEX_DATA_MESSAGE, index++, projectManager.getCompany()));
+        }
+        int choice = view.getChoice();
+        index = GeneralConstants.INT_ONE;
+
+        if (choice > projectManagers.size())
+        {
+            view.printError("To much out of range");
+            return;
+        }
+
+        WindFarmAnalyzer windFarmAnalyzer = new WindFarmAnalyzer(germanWindFarms);
+
+        List<WindFarm> windFarmsWithManager = windFarmAnalyzer.filterWindFarmsWithProjectManager(projectManagers.get(choice - GeneralConstants.INT_ONE));
+        view.printMessage(ViewConstants.CHOICE_START_POINT_MESSAGE);
+        for (WindFarm windFarm : windFarmsWithManager)
+        {
+            view.printMessage(String.format(ViewConstants.INDEX_DATA_MESSAGE, index++, windFarm.getName()));
+        }
+        choice = view.getChoice();
+
+        if (choice > windFarmsWithManager.size())
+        {
+            view.printError("To much out of range");
+            return;
+        }
+
+        createPlan(windFarmsWithManager.get(choice - GeneralConstants.INT_ONE), windFarmsWithManager);
+    }
+
+
+    private void createPlan (WindFarm startingWindFarm, List<WindFarm> windFarms)
+    {
+        NearestNeighborRoutePlanner nearestNeighborRoutePlanner = new NearestNeighborRoutePlanner();
+        List<WindFarm> route = nearestNeighborRoutePlanner.calculateRoute(windFarms, startingWindFarm);
+
+        Schedule schedule = SchedulePlanner.createPlan(route);
+
+        view.printMessage(ViewConstants.PLAN_TABLE_HEAD);
+        TableController tableController = TableController.getInstance();
+
+        tableController.printSchedule(schedule);
+
     }
 
 

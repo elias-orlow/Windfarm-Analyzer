@@ -7,6 +7,7 @@ import org.elias.res.constant.GeneralConstants;
 import org.elias.res.constant.ViewConstants;
 import org.elias.view.TablePrinter;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -136,6 +137,65 @@ public class TableController
         tablePrinter.printLowerSeparator(ViewConstants.TOTAL_TABLE_WIDTH);
         tablePrinter.makeSpace(ViewConstants.ROWS_BETWEEN_FARMS);
     }
+
+    public void printSchedule (Schedule schedule)
+    {
+        for (WorkDay workDay : schedule.getWorkDays())
+        {
+            printWorkday(workDay);
+            tablePrinter.makeSpace(ViewConstants.ROWS_BETWEEN_DAYS);
+        }
+    }
+
+    private void printWorkday (WorkDay workDay)
+    {
+        tablePrinter.printUpperSeparator(ViewConstants.TOTAL_DAYS_TABLE_WIDTH);
+
+        tablePrinter.printDataCell(padRight(String.format("   --- DAY %d ---", workDay.getDayNumber()),
+                ViewConstants.TOTAL_DAYS_TABLE_WIDTH - ViewConstants.BORDER_OFFSET));
+
+        if (!workDay.getMaintainedWindTurbines().isEmpty())
+        {
+            tablePrinter.printDataCell(padRight(String.format(" Wind farm: %s", workDay.getMaintainedWindFarm().getName()),
+                    ViewConstants.TOTAL_DAYS_TABLE_WIDTH - ViewConstants.BORDER_OFFSET));
+
+            tablePrinter.printDataCell(padRight(" Maintained wind turbines:",
+                    ViewConstants.TOTAL_DAYS_TABLE_WIDTH - ViewConstants.BORDER_OFFSET));
+
+            for (WindTurbineType windTurbineType : workDay.getMaintainedWindTurbines())
+            {
+                tablePrinter.printDataCell(padRight(String.format("    -  %s", windTurbineType.getModel()),
+                        ViewConstants.TOTAL_DAYS_TABLE_WIDTH - ViewConstants.BORDER_OFFSET));
+            }
+        }
+
+
+        if (!(workDay.getDriveTime() == null))
+        {
+            tablePrinter.printInnerSeparator(ViewConstants.TOTAL_DAYS_TABLE_WIDTH);
+            tablePrinter.printDataCell(padRight("Driving in the evening:",
+                    ViewConstants.TOTAL_DAYS_TABLE_WIDTH - ViewConstants.BORDER_OFFSET));
+            tablePrinter.printDataCell(padRight(String.format("    - %s", formatDuration(workDay.getDriveTime())), ViewConstants.TOTAL_DAYS_TABLE_WIDTH - ViewConstants.BORDER_OFFSET));
+        }
+
+        tablePrinter.printLowerSeparator(ViewConstants.TOTAL_DAYS_TABLE_WIDTH);
+    }
+
+
+    private static String formatDuration(Duration duration) {
+        long totalMinutes = duration.toMinutes();
+        long hours = totalMinutes / 60;
+        long minutes = totalMinutes % 60;
+
+        if (hours > 0 && minutes > 0) {
+            return hours + " hour(s) " + minutes + " minute(s)";
+        } else if (hours > 0) {
+            return hours + " hour(s)";
+        } else {
+            return minutes + " minute(s)";
+        }
+    }
+
 
 
     /**

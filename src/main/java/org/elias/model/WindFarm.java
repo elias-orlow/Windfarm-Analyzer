@@ -4,9 +4,10 @@ import org.elias.res.constant.GeneralConstants;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
- * Model-Klasse fuer einen Windpark, der aus mehreren Windkraftanlagen besteht und mehrere Einträge
+ * Model-Klasse fuer einen Windpark, der aus mehreren Windkraftanlagen besteht und mehrere Eintraege
  * aus der CSV-Tabelle zusammenfasst.
  */
 public class WindFarm
@@ -138,5 +139,36 @@ public class WindFarm
         }
     }
 
+    /**
+     * Vergleicht diesen Windpark mit einem anderen Objekt.
+     *
+     * @param o das Objekt, das mit diesem Windpark verglichen werden soll.
+     * @return boolean-Wert, ob die Objekte gleich sind.
+     * @precondition das uebergebene Objekt ist nicht null.
+     * @postcondition es wird true zurueckgegeben, wenn die Daten gleich sind, sonst false.
+     */
+    @Override
+    public boolean equals (Object o)
+    {
+        if (o == null || getClass() != o.getClass()) return false;
+        WindFarm windFarm = (WindFarm) o;
+        return Float.compare(totalPerformance, windFarm.totalPerformance) == 0
+                && Objects.equals(name, windFarm.name)
+                && Objects.equals(coordinates, windFarm.coordinates)
+                && Objects.equals(projectManagers, windFarm.projectManagers)
+                && Objects.equals(windTurbineGroups, windFarm.windTurbineGroups);
+    }
 
+    /**
+     * Berechnet den Hashcode dieses Objektes.
+     *
+     * @return einen ganzzahligen Hashwert basierend auf den Daten.
+     * @precondition die gespeicherten Daten sind nicht null.
+     * @postcondition gleiche Objekte liefern den gleichen Hashwert.
+     */
+    @Override
+    public int hashCode ()
+    {
+        return Objects.hash(name, totalPerformance, coordinates, projectManagers, windTurbineGroups);
+    }
 }

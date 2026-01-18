@@ -1,5 +1,7 @@
 package org.elias.model;
 
+import org.elias.model.graph.Graph;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +25,8 @@ public class WindFarmRepository
      * Fehlerhafte Eintraege in der CSV-Datei und Fehlermeldung
      */
     Map<String[], String> invalidRows = new HashMap<>();
+
+    Graph<WindFarm> windFarmGraph = null;
 
     /**
      * Erzeugt eine neue Instanz des {@link WindFarmRepository}.
@@ -65,6 +69,16 @@ public class WindFarmRepository
     public Map<String[], String> getInvalidRows ()
     {
         return invalidRows;
+    }
+
+    public Graph<WindFarm> getWindFarmGraph ()
+    {
+        return windFarmGraph;
+    }
+
+    public void setWindFarmGraph (Graph<WindFarm> windFarmGraph)
+    {
+        this.windFarmGraph = windFarmGraph;
     }
 
     // --- Add-Methode ---

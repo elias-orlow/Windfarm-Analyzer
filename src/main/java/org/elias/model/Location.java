@@ -3,6 +3,8 @@ package org.elias.model;
 import org.elias.res.Districts;
 import org.elias.res.constant.GeneralConstants;
 
+import java.util.Objects;
+
 /**
  * Model-Klasse, die Lokation einer Windkraftanlage repraesentiert.
  * <p>
@@ -53,5 +55,34 @@ public class Location
     public void setDistrict (Districts district)
     {
         this.district = district;
+    }
+
+    /**
+     * Vergleicht diese Lokation mit einem anderen Objekt.
+     *
+     * @param o das Objekt, das mit dieser Lokation verglichen werden soll.
+     * @return boolean-Wert, ob die Objekte gleich sind.
+     * @precondition das uebergebene Objekt ist nicht null.
+     * @postcondition es wird true zurueckgegeben, wenn die Daten gleich sind, sonst false.
+     */
+    @Override
+    public boolean equals (Object o)
+    {
+        if (o == null || getClass() != o.getClass()) return false;
+        Location location = (Location) o;
+        return Objects.equals(town, location.town) && district == location.district;
+    }
+
+    /**
+     * Berechnet den Hashcode dieses Objektes.
+     *
+     * @return einen ganzzahligen Hashwert basierend auf den Daten.
+     * @precondition die gespeicherten Daten sind nicht null.
+     * @postcondition gleiche Objekte liefern den gleichen Hashwert.
+     */
+    @Override
+    public int hashCode ()
+    {
+        return Objects.hash(town, district);
     }
 }
