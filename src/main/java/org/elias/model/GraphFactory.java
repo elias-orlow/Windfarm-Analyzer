@@ -2,6 +2,7 @@ package org.elias.model;
 
 import org.elias.model.graph.Graph;
 import org.elias.model.graph.Vertex;
+import org.elias.res.constant.GeneralConstants;
 import org.elias.util.GeoFormula;
 
 import java.util.List;
@@ -14,15 +15,17 @@ public class GraphFactory
 
         for (int i = 0; i < windFarms.size(); i++)
         {
-            Vertex<WindFarm> currentVertex = new Vertex<>(windFarms.get(i));
-            Coordinates currentWindfarmCord = windFarms.get(i).getCoordinates();
+            WindFarm currentWindFarm = windFarms.get(i);
+            Vertex<WindFarm> currentVertex = new Vertex<>(currentWindFarm);
+            Coordinates currentWindfarmCord = currentWindFarm.getCoordinates();
 
             windFarmGraph.addVertex(currentVertex);
 
-            for (int j = i + 1; j < windFarms.size(); j++)
+            for (int j = i + GeneralConstants.NEXT_INDEX_OFFSET; j < windFarms.size(); j++)
             {
-                Vertex<WindFarm> compareVertex = new Vertex<>(windFarms.get(j));
-                Coordinates compareWindfarmCord = windFarms.get(j).getCoordinates();
+                WindFarm compareWindFarm = windFarms.get(j);
+                Vertex<WindFarm> compareVertex = new Vertex<>(compareWindFarm);
+                Coordinates compareWindfarmCord = compareWindFarm.getCoordinates();
 
                 float distance = (float) GeoFormula.haversineDistance(currentWindfarmCord.getLatitude(),
                         compareWindfarmCord.getLatitude(),
@@ -30,7 +33,7 @@ public class GraphFactory
                         compareWindfarmCord.getLongitude());
 
 
-                if (distance < 20.0f)
+                if (distance < GeneralConstants.MAX_WIND_FARM_DISTANCE_KM)
                 {
                     windFarmGraph.addEdge(currentVertex, compareVertex, distance);
                 }

@@ -46,4 +46,7 @@ public interface GeneralConstants
     float TOP_TURBINE_PERFORMANCE = 15.0f;
 
     int MINUTES_PER_HOUR = 60;
+
+    float MAX_WIND_FARM_DISTANCE_KM = 20.0f;
+    int NEXT_INDEX_OFFSET = 1;
 }
