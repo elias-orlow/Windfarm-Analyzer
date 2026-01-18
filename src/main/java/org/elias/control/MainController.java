@@ -11,6 +11,7 @@ import org.elias.util.Timer;
 import org.elias.view.ConsoleView;
 import org.elias.view.TablePrinter;
 
+import javax.swing.text.View;
 import java.util.*;
 
 /**
@@ -234,7 +235,8 @@ public final class MainController
         List<String> correctedPerformance = PerformanceNormalizer.getChangedPerf();
 
         view.printMessage(String.format(ViewConstants.UPDATED_PERFORMANCE_MESSAGE, correctedPerformance.size()));
-        for (String message : correctedPerformance){
+        for (String message : correctedPerformance)
+        {
             view.printMessage(message);
         }
     }
@@ -279,6 +281,9 @@ public final class MainController
                     break;
                 case ViewConstants.ANALYSIS_WINDREPO:
                     analysisProcess();
+                    break;
+                case ViewConstants.WINDFARM_PLAN:
+                    createPlanProcess();
                     break;
                 case ViewConstants.EXIT:
                     isRunning = false;
@@ -447,6 +452,62 @@ public final class MainController
             default:
                 view.printError(ErrorMessages.INVALID_NUMBER);
         }
+    }
+
+
+    private void createPlanProcess ()
+    {
+        List<ProjectManager> projectManagers = new ArrayList<>(ProjectManagerAdministration.getInstance().getProjectManagerList());
+        Collections.sort(projectManagers);
+
+        view.printMessage(ViewConstants.CHOICE_PROJECT_MANAGER_MESSAGE);
+
+        int index = GeneralConstants.INT_ONE;
+        for (ProjectManager projectManager : projectManagers)
+        {
+            view.printMessage(String.format(ViewConstants.INDEX_DATA_MESSAGE, index++, projectManager.getCompany()));
+        }
+        int choice = view.getChoice();
+        index = GeneralConstants.INT_ONE;
+
+        if (choice > projectManagers.size())
+        {
+            view.printError("To much out of range");
+            return;
+        }
+
+        WindFarmAnalyzer windFarmAnalyzer = new WindFarmAnalyzer(germanWindFarms);
+
+        List<WindFarm> windFarmsWithManager = windFarmAnalyzer.filterWindFarmsWithProjectManager(projectManagers.get(choice - GeneralConstants.INT_ONE));
+        view.printMessage(ViewConstants.CHOICE_START_POINT_MESSAGE);
+        for (WindFarm windFarm : windFarmsWithManager)
+        {
+            view.printMessage(String.format(ViewConstants.INDEX_DATA_MESSAGE, index++, windFarm.getName()));
+        }
+        choice = view.getChoice();
+
+        if (choice > windFarmsWithManager.size())
+        {
+            view.printError("To much out of range");
+            return;
+        }
+
+        createPlan(windFarmsWithManager.get(choice - GeneralConstants.INT_ONE), windFarmsWithManager);
+    }
+
+
+    private void createPlan (WindFarm startingWindFarm, List<WindFarm> windFarms)
+    {
+        NearestNeighborRoutePlanner nearestNeighborRoutePlanner = new NearestNeighborRoutePlanner();
+        List<WindFarm> route = nearestNeighborRoutePlanner.calculateRoute(windFarms, startingWindFarm);
+
+        Schedule schedule = SchedulePlanner.createPlan(route);
+
+        view.printMessage(ViewConstants.PLAN_TABLE_HEAD);
+        TableController tableController = TableController.getInstance();
+
+        tableController.printSchedule(schedule);
+
     }
 
 

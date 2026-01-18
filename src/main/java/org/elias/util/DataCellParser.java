@@ -239,7 +239,7 @@ public class DataCellParser
         {
             String trimmed = part.trim();
 
-            if (!trimmed.isEmpty())
+            if (trimmed.length() > GeneralConstants.INT_ONE)
             {
                 result.add(trimmed);
             }

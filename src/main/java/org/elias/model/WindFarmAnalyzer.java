@@ -5,6 +5,9 @@ import org.elias.model.sort.TotalPerformanceComparator;
 import org.elias.model.sort.WindTurbineCountComparator;
 import org.elias.res.constant.GeneralConstants;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Bietet Analysefunktionen fuer Windparks eines {@link WindFarmRepository}.
  * <p>
@@ -90,4 +93,21 @@ public class WindFarmAnalyzer
 
         return totalPerformance;
     }
+
+
+    public List<WindFarm> filterWindFarmsWithProjectManager (ProjectManager projectManager)
+    {
+        List<WindFarm> result = new ArrayList<>();
+
+        for (WindFarm windFarm : windFarmRepository.getGermanWindFarms())
+        {
+            if (windFarm.getProjectManagers().contains(projectManager))
+            {
+                result.add(windFarm);
+            }
+        }
+
+        return result;
+    }
+
 }
