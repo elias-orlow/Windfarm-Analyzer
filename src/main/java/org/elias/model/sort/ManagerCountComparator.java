@@ -1,6 +1,7 @@
 package org.elias.model.sort;
 
 import org.elias.model.WindFarm;
+import org.elias.res.constant.GeneralConstants;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -30,7 +31,7 @@ public class ManagerCountComparator implements Comparator<WindFarm>
         Collections.sort(windFarm1.getProjectManagers());
         Collections.sort(windFarm2.getProjectManagers());
 
-        if (result == 0 && !windFarm1.getProjectManagers().isEmpty())
+        if (result == GeneralConstants.INT_ZERO && !windFarm1.getProjectManagers().isEmpty())
         {
             return windFarm1.getProjectManagers().getFirst().compareTo(windFarm2.getProjectManagers().getFirst());
         }
