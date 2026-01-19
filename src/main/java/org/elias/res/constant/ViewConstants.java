@@ -32,7 +32,7 @@ public interface ViewConstants
     String WIND_FARM_LABEL = " Wind farm: %s";
     String MAINTAINED_TURBINES_LABEL = " Maintained wind turbines:";
     String ITEM_FORMAT = "    -  %s";
-    String EVENING_DRIVE_LABEL = "Driving in the evening:";
+    String EVENING_DRIVE_LABEL = " Driving in the evening:";
     String HOURS_LABEL = " hour(s) ";
     String MINUTES_LABEL = " minute(s)";
 

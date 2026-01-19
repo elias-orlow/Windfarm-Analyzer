@@ -1,5 +1,7 @@
 package org.elias.res.constant;
 
+import java.time.Duration;
+
 /**
  * Sammlung allgemeiner Konstanten, die in verschiedenen Teilen der Anwendung benoetigt werden.
  */
@@ -49,4 +51,9 @@ public interface GeneralConstants
 
     float MAX_WIND_FARM_DISTANCE_KM = 20.0f;
     int NEXT_INDEX_OFFSET = 1;
+    int YEAR_NUMBER_SIZE = 4;
+
+    int MAX_TURBINES_PER_DAY = 4;
+    float AVERAGE_SPEED_KMH = 110.0f;
+    Duration MAX_DAILY_DRIVE_TIME = Duration.ofHours(2);
 }

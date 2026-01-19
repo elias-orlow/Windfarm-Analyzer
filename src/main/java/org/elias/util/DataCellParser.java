@@ -69,7 +69,7 @@ public class DataCellParser
             String[] parts = raw.split(ParserConstants.YEAR_SPLIT_REGEX);
 
             // Wenn das letzte Element 4-stellig - verwenden, sonst das erste Element verwenden.
-            raw = parts[parts.length - ParserConstants.LAST_ELEMENT_OFFSET].trim().length() == 4
+            raw = parts[parts.length - ParserConstants.LAST_ELEMENT_OFFSET].trim().length() == GeneralConstants.YEAR_NUMBER_SIZE
                     ? parts[parts.length - ParserConstants.LAST_ELEMENT_OFFSET]
                     : parts[GeneralConstants.INT_ZERO];
         }
