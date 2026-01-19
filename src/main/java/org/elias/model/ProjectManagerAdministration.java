@@ -1,7 +1,6 @@
 package org.elias.model;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class ProjectManagerAdministration
@@ -32,11 +31,4 @@ public class ProjectManagerAdministration
         projectManagerList.add(projectManager);
     }
 
-    public void addProjectManagers (List<ProjectManager> projectManagers)
-    {
-        for (ProjectManager projectManager : projectManagers)
-        {
-            addProjectManager(projectManager);
-        }
-    }
 }

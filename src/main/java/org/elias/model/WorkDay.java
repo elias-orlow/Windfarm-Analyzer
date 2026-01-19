@@ -10,20 +10,14 @@ public class WorkDay
     private Duration driveTime;
 
     private WindFarm maintainedWindFarm;
-    private List<WindTurbineType> maintainedWindTurbines = new ArrayList<>();
+    private final List<WindTurbineType> maintainedWindTurbines = new ArrayList<>();
 
     public WorkDay (int dayNumber)
     {
         this.dayNumber = dayNumber;
     }
 
-    public WorkDay (int dayNumber, Duration driveTime, WindFarm maintainedWindFarm, List<WindTurbineType> maintainedWindTurbines)
-    {
-        this.dayNumber = dayNumber;
-        this.driveTime = driveTime;
-        this.maintainedWindFarm = maintainedWindFarm;
-        this.maintainedWindTurbines = maintainedWindTurbines;
-    }
+    // --- Getters & Setters ---
 
     public int getDayNumber ()
     {
@@ -53,11 +47,6 @@ public class WorkDay
     public void setMaintainedWindFarm (WindFarm maintainedWindFarm)
     {
         this.maintainedWindFarm = maintainedWindFarm;
-    }
-
-    public void setMaintainedWindTurbines (List<WindTurbineType> maintainedWindTurbines)
-    {
-        this.maintainedWindTurbines = maintainedWindTurbines;
     }
 
     public void addWindTurbine (WindTurbineType windTurbine)

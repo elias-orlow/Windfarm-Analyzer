@@ -31,8 +31,4 @@ public class Schedule
         return workDays;
     }
 
-    public int getTotalDays ()
-    {
-        return workDays.size();
-    }
 }
