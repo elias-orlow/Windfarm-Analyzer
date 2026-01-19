@@ -97,6 +97,15 @@ public class WindFarmAnalyzer
     }
 
 
+    /**
+     * Filtert alle Windparks, die einem bestimmten Projektbegleiter ({@link ProjectManager}) zugeordnet sind.
+     *
+     * @param projectManager der Projektbegleiter, nach dem gefiltert werden soll.
+     * @return Liste aller Windparks, die diesen Projektbegleiter enthalten.
+     * @precondition {@code projectManager} ist nicht null und {@code windFarmRepository} ist initialisiert.
+     * @postcondition die zurueckgegebene Liste enthaelt nur Windparks, bei denen
+     * der angegebene Projektbegleiter hinterlegt ist.
+     */
     public List<WindFarm> filterWindFarmsWithProjectManager (ProjectManager projectManager)
     {
         List<WindFarm> result = new ArrayList<>();
