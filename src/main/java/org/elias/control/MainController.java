@@ -250,7 +250,8 @@ public final class MainController
      *      <li><b>2. Print repository of wind-farms:</b> Gibt alle Windparks formatiert als Tabellen aus.</li>
      *      <li><b>3. Sort and show wind-farms:</b> Ermoeglicht dem Benutzer, ein Sortierkriterium zu waehlen
      * und zeigt anschliessend die sortierten Windparks an.</li>
-     *      <li><b>4. Analysis of wind-farms:</b> Führt verschiedene Analysen durch</li>
+     *      <li><b>4. Analysis of wind-farms:</b> Fuehrt verschiedene Analysen durch</li>
+     *      <li><b>5. Make working plan:</b> Erstellt einen Wartungsplan</li>
      * </ul>
      *
      * @precondition View, Repository und Controller sind vollstaendig initialisiert.
@@ -454,6 +455,15 @@ public final class MainController
     }
 
 
+    /**
+     * Startet den Prozess zur Erstellung eines Wartungsplans.
+     * <p>
+     * Der Benutzer waehlt zuerst einen Projektmanager, danach einen Start-Windpark.
+     * Anschliessend wird ein Wartungsplan erstellt und ausgegeben.
+     *
+     * @precondition es existierten Projektmanager und Windparks im Repository.
+     * @postcondition ein Wartungsplan wurde erstellt und in der Konsole ausgegeben.
+     */
     private void createPlanProcess ()
     {
         List<ProjectManager> projectManagers = new ArrayList<>(ProjectManagerAdministration.getInstance().getProjectManagerList());
@@ -476,6 +486,14 @@ public final class MainController
     }
 
 
+    /**
+     * Laesst den Benutzer einen Projektmanager aus einer Liste auswaehlen.
+     *
+     * @param projectManagers Liste aller verfuegbaren Projektmanager.
+     * @return der ausgewaehlte Projektmanager oder null.
+     * @precondition die Liste ist nicht leer.
+     * @postcondition ein Projektmanager wurde ausgewaehlt oder null bei ungueltiger Eingabe.
+     */
     private ProjectManager chooseProjectManager (List<ProjectManager> projectManagers)
     {
         view.printMessage(ViewConstants.CHOICE_PROJECT_MANAGER_MESSAGE);
@@ -498,6 +516,14 @@ public final class MainController
     }
 
 
+    /**
+     * Liefert alle Windparks, die einen bestimmten Projektmanager haben.
+     *
+     * @param manager der ausgewaehlte Projektmanager.
+     * @return Liste aller Windparks mit diesem Projektmanager.
+     * @precondition der Projektmanager ist nicht null.
+     * @postcondition eine Liste mit passenden Windparks wurde erzeugt.
+     */
     private List<WindFarm> getWindFarmsWithProjectManager (ProjectManager manager)
     {
         WindFarmAnalyzer windFarmAnalyzer = new WindFarmAnalyzer(germanWindFarms);
@@ -506,6 +532,14 @@ public final class MainController
     }
 
 
+    /**
+     * Laesst den Benutzer einen Start-Windpark auswaehlen.
+     *
+     * @param windFarms Liste der verfuegbaren Windparks.
+     * @return der ausgewaehlte Start-Windpark oder null.
+     * @precondition die Liste ist nicht leer.
+     * @postcondition ein Start-Windpark wurde ausgewaehlt oder null bei ungueltiger Eingabe.
+     */
     private WindFarm chooseStartingWindFarm (List<WindFarm> windFarms)
     {
         view.printMessage(ViewConstants.CHOICE_START_POINT_MESSAGE);
@@ -528,6 +562,14 @@ public final class MainController
     }
 
 
+    /**
+     * Erstellt einen Wartungsplan fuer eine Route von Windparks und gibt diesen tabellarisch aus.
+     *
+     * @param startingWindFarm Startpunkt der Route.
+     * @param windFarms        Liste aller zu beruecksichtigenden Windparks.
+     * @precondition der Start-Windpark ist Teil der Windpark-Liste.
+     * @postcondition ein Wartungsplan wurde erstellt und ausgegeben.
+     */
     private void createPlan (WindFarm startingWindFarm, List<WindFarm> windFarms)
     {
         NearestNeighborRoutePlanner nearestNeighborRoutePlanner = new NearestNeighborRoutePlanner();
@@ -539,7 +581,6 @@ public final class MainController
 
         TableController tableController = TableController.getInstance();
         tableController.printSchedule(schedule);
-
     }
 
 
