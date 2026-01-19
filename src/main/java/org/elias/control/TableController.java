@@ -139,6 +139,13 @@ public class TableController
     }
 
 
+    /**
+     * Gibt einen kompletten Arbeitsplan in Tabellenform aus.
+     *
+     * @param schedule der zu druckende Wartungsplan.
+     * @precondition {@code schedule} ist nicht null und enthaelt mindestens einen Arbeitstag.
+     * @postcondition alle Arbeitstage des Plans wurden in der Konsole ausgegeben.
+     */
     public void printSchedule (Schedule schedule)
     {
         for (WorkDay workDay : schedule.getWorkDays())
@@ -149,6 +156,13 @@ public class TableController
     }
 
 
+    /**
+     * Gibt einen einzelnen Arbeitstag formatiert als Tabelle aus.
+     *
+     * @param workDay der auszugebende Arbeitstag.
+     * @precondition {@code workDay} ist nicht null.
+     * @postcondition der komplette Arbeitstag wurde in der Konsole dargestellt.
+     */
     private void printWorkday (WorkDay workDay)
     {
         tablePrinter.printUpperSeparator(ViewConstants.TOTAL_DAYS_TABLE_WIDTH);
@@ -170,6 +184,15 @@ public class TableController
     }
 
 
+    /**
+     * Gibt den Wartungsbereich eines Arbeitstags aus.
+     * <p>
+     * Gibt den Windpark sowie alle gewarteten Windkraftanlagen.
+     *
+     * @param workDay der Arbeitstag mit Wartungsinformationen.
+     * @precondition {@code workDay} ist nicht null und enthaelt gewartete Anlagen.
+     * @postcondition Alle Wartungsinformationen wurden ausgegeben.
+     */
     private void printMaintenanceSection (WorkDay workDay)
     {
         tablePrinter.printDataCell(padRight(String.format(ViewConstants.WIND_FARM_LABEL, workDay.getMaintainedWindFarm().getName()),
@@ -186,6 +209,13 @@ public class TableController
     }
 
 
+    /**
+     * Gibt die Fahrzeit eines Arbeitstags aus.
+     *
+     * @param workDay der Arbeitstag mit Fahrzeit.
+     * @precondition {@code workDay} ist nicht null und die Fahrzeit ist gesetzt.
+     * @postcondition die Fahrzeit wurde formatiert und ausgegeben.
+     */
     private void printDriveTimeSection (WorkDay workDay)
     {
         tablePrinter.printInnerSeparator(ViewConstants.TOTAL_DAYS_TABLE_WIDTH);
@@ -198,6 +228,14 @@ public class TableController
     }
 
 
+    /**
+     * Formatiert eine Zeitdauer in Stunden und Minuten.
+     *
+     * @param duration die zu formatierende Zeitdauer als {@link Duration}.
+     * @return ein String mit Stunden/Minuten.
+     * @precondition {@code duration} ist nicht null.
+     * @postcondition die Dauer wurde als lesbarer String formatiert.
+     */
     private static String formatDuration (Duration duration)
     {
         long totalMinutes = duration.toMinutes();
@@ -355,7 +393,8 @@ public class TableController
                 String colLocation = padRight(addLeadAndTrailSpaces(location), ViewConstants.COL_LOCATION);
                 String colTypes = padRight(addLeadAndTrailSpaces(type), ViewConstants.COL_TYPES);
 
-                tablePrinter.printDataCell(colID + ViewConstants.VERTICAL_BAR + colYear + ViewConstants.VERTICAL_BAR + colLocation + ViewConstants.VERTICAL_BAR + colTypes);
+                tablePrinter.printDataCell(colID + ViewConstants.VERTICAL_BAR + colYear
+                        + ViewConstants.VERTICAL_BAR + colLocation + ViewConstants.VERTICAL_BAR + colTypes);
 
                 // Falls es mehr als ein Windkrafttyp pro Zeile vorhanden ist, werden die ohne Angaben
                 // von id, year and location ausgegeben, da die logisch zu einer Windkraftanlage gehoeren.
