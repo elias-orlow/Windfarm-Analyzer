@@ -1,5 +1,7 @@
-package org.elias.model;
+package org.elias.model.service;
 
+import org.elias.model.ProjectManager;
+import org.elias.model.WindFarm;
 import org.elias.model.sort.LatitudeComparator;
 import org.elias.model.sort.TotalPerformanceComparator;
 import org.elias.model.sort.WindTurbineCountComparator;

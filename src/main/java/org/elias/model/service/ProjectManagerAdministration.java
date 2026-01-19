@@ -1,4 +1,6 @@
-package org.elias.model;
+package org.elias.model.service;
+
+import org.elias.model.ProjectManager;
 
 import java.util.HashSet;
 import java.util.Set;

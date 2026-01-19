@@ -1,5 +1,6 @@
-package org.elias.model;
+package org.elias.model.service;
 
+import org.elias.model.*;
 import org.elias.res.constant.GeneralConstants;
 import org.elias.util.DataCellParser;
 

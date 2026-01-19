@@ -1,6 +1,7 @@
 package org.elias.control;
 
 import org.elias.model.*;
+import org.elias.model.service.WindFarmRepository;
 import org.elias.res.Districts;
 import org.elias.res.constant.ErrorMessages;
 import org.elias.res.constant.GeneralConstants;

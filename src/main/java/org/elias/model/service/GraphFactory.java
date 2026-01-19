@@ -1,5 +1,7 @@
-package org.elias.model;
+package org.elias.model.service;
 
+import org.elias.model.Coordinates;
+import org.elias.model.WindFarm;
 import org.elias.model.graph.Graph;
 import org.elias.model.graph.Vertex;
 import org.elias.res.constant.GeneralConstants;

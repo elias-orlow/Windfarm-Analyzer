@@ -1,5 +1,6 @@
-package org.elias.model;
+package org.elias.model.service;
 
+import org.elias.model.WindFarm;
 import org.elias.model.graph.Graph;
 
 import java.util.ArrayList;

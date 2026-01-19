@@ -1,7 +1,7 @@
 package org.elias;
 
 import org.elias.control.MainController;
-import org.elias.model.WindFarmRepository;
+import org.elias.model.service.WindFarmRepository;
 import org.elias.view.ConsoleView;
 
 /**
