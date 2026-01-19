@@ -463,7 +463,8 @@ public final class MainController
      * Anschliessend wird ein Wartungsplan erstellt und ausgegeben.
      *
      * @precondition es existierten Projektmanager und Windparks im Repository.
-     * @postcondition ein Wartungsplan wurde erstellt und in der Konsole ausgegeben.
+     * @postcondition ein Wartungsplan wurden erstellt und zusammen mit der Laufzeit
+     * der Methode in der Konsole ausgegeben.
      */
     private void createPlanProcess ()
     {
@@ -483,7 +484,10 @@ public final class MainController
             return;
         }
 
+        Timer.startTimer();
         createPlan(startingWindFarm, windFarmsWithManager);
+        view.printMessage(String.format(ViewConstants.TIME_MESSAGE, Timer.getTime()));
+
     }
 
 
