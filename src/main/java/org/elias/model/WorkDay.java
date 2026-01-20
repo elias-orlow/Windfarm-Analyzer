@@ -4,6 +4,12 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Repraesentiert einen einzelnen Arbeitstag innerhalb eines Wartungsplans.
+ * <p>
+ * Ein Arbeitstag kann Wartungsarbeiten an Windkraftanlagen enthalten
+ * und optional Fahrzeiten zwischen Windparks.
+ */
 public class WorkDay
 {
     private final int dayNumber;
@@ -12,6 +18,14 @@ public class WorkDay
     private WindFarm maintainedWindFarm;
     private final List<WindTurbineType> maintainedWindTurbines = new ArrayList<>();
 
+    /**
+     * Erstellt einen neuen Arbeitstag mit einer festen Tagesnummer.
+     *
+     * @param dayNumber die Nummer des Arbeitstages.
+     * @precondition {@code dayNumber} ist groesser als 0.
+     * @postcondition der Arbeitstag besitzt eine feste Tagesnummer,
+     * aber noch keine Wartungen oder Fahrzeiten.
+     */
     public WorkDay (int dayNumber)
     {
         this.dayNumber = dayNumber;
@@ -49,10 +63,17 @@ public class WorkDay
         this.maintainedWindFarm = maintainedWindFarm;
     }
 
+
+    /**
+     * Fuegt eine Windturbine hinzu, die an diesem Tag gewartet wird.
+     *
+     * @param windTurbine zu wartende Windturbine
+     * @precondition {@code windTurbine} ist nicht null.
+     * @postcondition die Windturbine ist in der Liste der gewarteten Turbinen enthalten.
+     */
     public void addWindTurbine (WindTurbineType windTurbine)
     {
         maintainedWindTurbines.add(windTurbine);
     }
-
 
 }
