@@ -25,6 +25,7 @@ public class TablePrinter
     {
     }
 
+
     /**
      * Liefert die einzige Instanz dieser Klasse zurueck.
      * Falls noch keine existiert, wird sie erzeugt.
