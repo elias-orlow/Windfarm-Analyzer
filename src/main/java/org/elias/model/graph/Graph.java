@@ -52,22 +52,22 @@ public class Graph<E>
      * <p>
      * Die Kante wird intern in beide Richtungen gespeichert.
      *
-     * @param o1     erstes Vertex.
-     * @param o2     zweites Vertex.
+     * @param object1     erstes Vertex.
+     * @param object2     zweites Vertex.
      * @param weight Gewicht der Kante.
-     * @precondition o1 und o2 sind nicht null.
-     * @postcondition zwischen o1 und o2 existiert eine Kante mit dem gegebenen Gewicht.
+     * @precondition object1 und o2 sind nicht null.
+     * @postcondition zwischen object1 und o2 existiert eine Kante mit dem gegebenen Gewicht.
      */
-    public void addEdge (Vertex<E> o1, Vertex<E> o2, float weight)
+    public void addEdge (Vertex<E> object1, Vertex<E> object2, float weight)
     {
-        addVertex(o1);
-        addVertex(o2);
+        addVertex(object1);
+        addVertex(object2);
 
-        Edge<E> edge = new Edge<>(o1, o2, weight);
-        adjacencyMap.get(o1).add(edge);
+        Edge<E> edge = new Edge<>(object1, object2, weight);
+        adjacencyMap.get(object1).add(edge);
 
-        edge = new Edge<>(o2, o1, weight);
-        adjacencyMap.get(o2).add(edge);
+        edge = new Edge<>(object2, object1, weight);
+        adjacencyMap.get(object2).add(edge);
 
     }
 

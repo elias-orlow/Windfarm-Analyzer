@@ -64,7 +64,7 @@ public class Coordinates
      * Objekt ebenfalls vom Typ {@code Coordinates} ist und sowohl Breitengrad
      * als auch Laengengrad exakt uebereinstimmen.
      *
-     * @param o das zu vergleichende Objekt.
+     * @param object das zu vergleichende Objekt.
      * @precondition Es darf ein beliebiges Objekt uebergeben werden.
      * @postcondition Die Methode liefert {@code true}, wenn das uebergebene Objekt eine
      * {@code Coordinates}-Instanz ist und beide Koordinatenwerte mit denen
@@ -72,13 +72,13 @@ public class Coordinates
      * zurueckgegeben.
      */
     @Override
-    public boolean equals (Object o)
+    public boolean equals (Object object)
     {
-        if (o == null || getClass() != o.getClass())
+        if (object == null || getClass() != object.getClass())
         {
             return false;
         }
-        Coordinates that = (Coordinates) o;
+        Coordinates that = (Coordinates) object;
         return Float.compare(latitude, that.latitude) == 0 && Float.compare(longitude, that.longitude) == 0;
     }
 

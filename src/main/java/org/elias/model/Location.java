@@ -60,16 +60,16 @@ public class Location
     /**
      * Vergleicht diese Lokation mit einem anderen Objekt.
      *
-     * @param o das Objekt, das mit dieser Lokation verglichen werden soll.
+     * @param object das Objekt, das mit dieser Lokation verglichen werden soll.
      * @return boolean-Wert, ob die Objekte gleich sind.
      * @precondition das uebergebene Objekt ist nicht null.
      * @postcondition es wird true zurueckgegeben, wenn die Daten gleich sind, sonst false.
      */
     @Override
-    public boolean equals (Object o)
+    public boolean equals (Object object)
     {
-        if (o == null || getClass() != o.getClass()) return false;
-        Location location = (Location) o;
+        if (object == null || getClass() != object.getClass()) return false;
+        Location location = (Location) object;
         return Objects.equals(town, location.town) && district == location.district;
     }
 

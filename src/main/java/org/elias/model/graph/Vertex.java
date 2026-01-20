@@ -49,23 +49,23 @@ public class Vertex<E>
     /**
      * Vergleicht diesen Vertex mit einem anderen Objekt.
      *
-     * @param o das Objekt, das mit diesem Vertex verglichen werden soll.
+     * @param object das Objekt, das mit diesem Vertex verglichen werden soll.
      * @return boolean-Wert, ob die Objekte gleich sind.
      * @precondition das uebergebene Objekt ist nicht null.
      * @postcondition es wird true zurueckgegeben, wenn die Daten gleich sind, sonst false.
      */
     @Override
-    public boolean equals (Object o)
+    public boolean equals (Object object)
     {
-        if (this == o)
+        if (this == object)
         {
             return true;
         }
-        if (o == null || getClass() != o.getClass())
+        if (object == null || getClass() != object.getClass())
         {
             return false;
         }
-        Vertex<?> vertex = (Vertex<?>) o;
+        Vertex<?> vertex = (Vertex<?>) object;
 
         return Objects.equals(getData(), vertex.getData());
     }

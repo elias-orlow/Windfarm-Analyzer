@@ -65,16 +65,16 @@ public class ProjectManager implements Comparable<ProjectManager>
     /**
      * Vergleicht diesen Projektmanager mit einem anderen Objekt.
      *
-     * @param o das Objekt, das mit diesem Projektmanager verglichen werden soll.
+     * @param object das Objekt, das mit diesem Projektmanager verglichen werden soll.
      * @return boolean-Wert, ob die Objekte gleich sind.
      * @precondition das uebergebene Objekt ist nicht null.
      * @postcondition es wird true zurueckgegeben, wenn die Daten gleich sind, sonst false.
      */
     @Override
-    public boolean equals (Object o)
+    public boolean equals (Object object)
     {
-        if (o == null || getClass() != o.getClass()) return false;
-        ProjectManager that = (ProjectManager) o;
+        if (object == null || getClass() != object.getClass()) return false;
+        ProjectManager that = (ProjectManager) object;
         return Objects.equals(company, that.company);
     }
 
