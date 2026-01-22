@@ -196,7 +196,8 @@ public class TableController
      */
     private void printMaintenanceSection (WorkDay workDay)
     {
-        tablePrinter.printDataCell(padRight(String.format(ViewConstants.WIND_FARM_LABEL, workDay.getMaintainedWindFarm().getName()),
+        tablePrinter.printDataCell(padRight(String.format(
+                ViewConstants.WIND_FARM_LABEL, workDay.getMaintainedWindFarm().getName()),
                 ViewConstants.TOTAL_DAYS_TABLE_WIDTH - ViewConstants.BORDER_OFFSET));
 
         tablePrinter.printDataCell(padRight(ViewConstants.MAINTAINED_TURBINES_LABEL,
@@ -224,7 +225,8 @@ public class TableController
         tablePrinter.printDataCell(padRight(ViewConstants.EVENING_DRIVE_LABEL,
                 ViewConstants.TOTAL_DAYS_TABLE_WIDTH - ViewConstants.BORDER_OFFSET));
 
-        tablePrinter.printDataCell(padRight(String.format(ViewConstants.ITEM_FORMAT, formatDuration(workDay.getDriveTime())),
+        tablePrinter.printDataCell(padRight(String.format(
+                ViewConstants.ITEM_FORMAT, formatDuration(workDay.getDriveTime())),
                 ViewConstants.TOTAL_DAYS_TABLE_WIDTH - ViewConstants.BORDER_OFFSET));
     }
 
@@ -347,7 +349,8 @@ public class TableController
             sb.append(managers.get(i).getCompany());
         }
 
-        tablePrinter.printDataCell(padRight(sb.toString(), ViewConstants.TOTAL_TABLE_WIDTH - ViewConstants.BORDER_OFFSET));
+        tablePrinter.printDataCell(padRight(sb.toString(),
+                ViewConstants.TOTAL_TABLE_WIDTH - ViewConstants.BORDER_OFFSET));
     }
 
 
@@ -445,7 +448,8 @@ public class TableController
      *
      * <p>
      * Jeder Windturbinen-Typ wird anhand seines Namens gruppiert und gezaehlt.
-     * Die Rückgabe erfolgt in der Reihenfolge des ersten Auftretens der Typen (durch Verwendung einer {@link LinkedHashMap}).
+     * Die Rückgabe erfolgt in der Reihenfolge des ersten Auftretens
+     * der Typen (durch Verwendung einer {@link LinkedHashMap}).
      * <p>
      * - Beispiel:
      * <p>
@@ -515,7 +519,8 @@ public class TableController
         }
         if (string.length() > width)
         {
-            return string.substring(GeneralConstants.INT_ZERO, width - ViewConstants.ELLIPSIS_LENGTH) + ViewConstants.ELLIPSIS;
+            return string.substring(
+                    GeneralConstants.INT_ZERO, width - ViewConstants.ELLIPSIS_LENGTH) + ViewConstants.ELLIPSIS;
         }
 
         return string + Character.toString(GeneralConstants.CHAR_SPACE).repeat(width - string.length());

@@ -26,27 +26,29 @@ public class WindFarmFactory
      * den ganzen Windpark.
      * @postcondition die zurueckgegebene Windfarm enthaelt alle Windkraftanlagen, die aus der CSV-Tabelle kommen.
      */
-    public static WindFarm createWindFarm (List<String[]> rows) //TODO: in kleineren Methoden zerlegen
+    public static WindFarm createWindFarm (List<String[]> rows)
     {
         String[] baseRow = rows.getFirst();
         ProjectManagerAdministration projectManagerAdministration = ProjectManagerAdministration.getInstance();
-        
+
         // --- Basisinformation aus der ersten Roh-Zeile ---
         String windFarmName = DataCellParser.parseWindFarmName(baseRow[GeneralConstants.COLUMN_INDEX_NAME]);
 
         float[] coordinates = DataCellParser.parseCoordinates(
-                baseRow[GeneralConstants.COLUMN_INDEX_LATITUDE], 
+                baseRow[GeneralConstants.COLUMN_INDEX_LATITUDE],
                 baseRow[GeneralConstants.COLUMN_INDEX_LONGITUDE]);
         Coordinates windFarmCoordinates = new Coordinates(
                 coordinates[GeneralConstants.INT_ZERO],
                 coordinates[GeneralConstants.INT_ONE]);
 
-        float totalPerformance = DataCellParser.parseTotalPerformance(baseRow[GeneralConstants.COLUMN_INDEX_PERFORMANCE]);
-        
+        float totalPerformance = DataCellParser.parseTotalPerformance(
+                baseRow[GeneralConstants.COLUMN_INDEX_PERFORMANCE]);
+
         WindFarm currentWindFarm = new WindFarm(windFarmName, totalPerformance, windFarmCoordinates);
 
         // --- Projektbetreiber hinzufuegen ---
-        for (String companyName : DataCellParser.parseProjectManager(baseRow[GeneralConstants.COLUMN_INDEX_PROJECTMANAGER]))
+        for (String companyName : DataCellParser.parseProjectManager(
+                baseRow[GeneralConstants.COLUMN_INDEX_PROJECTMANAGER]))
         {
             ProjectManager currrentProjectManager = new ProjectManager(companyName);
             currentWindFarm.addProjectManager(currrentProjectManager);
@@ -58,7 +60,8 @@ public class WindFarmFactory
         for (String[] row : rows)
         {
             int ID = DataCellParser.parseObjectID(row[GeneralConstants.COLUMN_INDEX_ID]);
-            Year manufactureYear = DataCellParser.parseManufactureYear(row[GeneralConstants.COLUMN_INDEX_MANUFACTURE_YEAR]);
+            Year manufactureYear = DataCellParser.parseManufactureYear(
+                    row[GeneralConstants.COLUMN_INDEX_MANUFACTURE_YEAR]);
 
             Location location = new Location(
                     DataCellParser.parseTown(row[GeneralConstants.COLUMN_INDEX_TOWN]),
@@ -68,7 +71,8 @@ public class WindFarmFactory
             WindTurbineGroup currentTurbineGroup = new WindTurbineGroup(ID, manufactureYear, location, remarks);
 
             // --- Windturbine hinzufuegen ---
-            Map<String, Integer> turbineTypeMap = DataCellParser.parseWindTurbineType(row[GeneralConstants.COLUMN_INDEX_WINDTURBINE_NAME]);
+            Map<String, Integer> turbineTypeMap = DataCellParser.parseWindTurbineType(
+                    row[GeneralConstants.COLUMN_INDEX_WINDTURBINE_NAME]);
 
             for (String windTurbineTypeName : turbineTypeMap.keySet())
             {

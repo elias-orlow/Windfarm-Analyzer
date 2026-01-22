@@ -135,7 +135,11 @@ public class WindTurbineGroup
     {
         if (object == null || getClass() != object.getClass()) return false;
         WindTurbineGroup that = (WindTurbineGroup) object;
-        return ID == that.ID && Objects.equals(manufactureYear, that.manufactureYear) && Objects.equals(location, that.location) && Objects.equals(remarks, that.remarks) && Objects.equals(windTurbines, that.windTurbines);
+        return ID == that.ID
+                && Objects.equals(manufactureYear, that.manufactureYear)
+                && Objects.equals(location, that.location)
+                && Objects.equals(remarks, that.remarks)
+                && Objects.equals(windTurbines, that.windTurbines);
     }
 
     /**

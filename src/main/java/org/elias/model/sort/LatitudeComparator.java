@@ -16,7 +16,8 @@ public class LatitudeComparator implements Comparator<WindFarm>
      *
      * @param windFarm1 der erste zu vergleichende Windpark.
      * @param windFarm2 der zweite zu vergleichende Windpark.
-     * @return -1 wenn {@code windFarm1} einen kleineren Breitengrad hat, 1 bei groesserem Breitengrad, oder 0 bei Gleichheit.
+     * @return -1 wenn {@code windFarm1} einen kleineren Breitengrad hat,
+     * 1 bei groesserem Breitengrad, oder 0 bei Gleichheit.
      * @precondition beide Parameter sind nicht null und besitzen gueltige Koordinaten.
      * @postcondition die beiden Breitengrade wurden verglichen und das Ergebnis zurueckgegeben.
      */

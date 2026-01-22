@@ -49,7 +49,8 @@ public class CoordinatesNormalizer
     private static float normalizeCoordinate (float coordinate)
     {
         String coordinateAsString = Float.toString(coordinate);
-        coordinateAsString = coordinateAsString.substring(GeneralConstants.INT_ZERO, coordinateAsString.indexOf(GeneralConstants.CHAR_POINT));
+        coordinateAsString = coordinateAsString.substring(
+                GeneralConstants.INT_ZERO, coordinateAsString.indexOf(GeneralConstants.CHAR_POINT));
 
         int pointIndex = isIntegerPartShort(coordinateAsString)
                 ? ParserConstants.POINT_INDEX_SHORT

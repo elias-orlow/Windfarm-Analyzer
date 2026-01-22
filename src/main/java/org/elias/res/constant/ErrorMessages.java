@@ -17,10 +17,12 @@ public interface ErrorMessages
     String INVALID_INPUT = "Invalid input. Please enter a number";
     String INVALID_NUMBER = "Invalid input. Please select an action";
 
-    String INVALID_USER_SORT = "Input not recognized. Your selection must follow the required format (e.g., 1a, 2b+, 3c-). \nPlease try again.";
-
-    String INVALID_MANAGER_CHOICE = "Invalid input. Please select a project manager from the list by choosing a number within the allowed range.";
-    String INVALID_WINDFARM_CHOICE = "Invalid input. Please select a starting windfarm from the list by choosing a number within the allowed range.";
+    String INVALID_USER_SORT =
+            "Input not recognized. Your selection must follow the required format (e.g., 1a, 2b+, 3c-). \nPlease try again.";
+    String INVALID_MANAGER_CHOICE =
+            "Invalid input. Please select a project manager from the list by choosing a number within the allowed range.";
+    String INVALID_WINDFARM_CHOICE =
+            "Invalid input. Please select a starting windfarm from the list by choosing a number within the allowed range.";
 
     String NO_SUCH_VERTEX = "Vertex is not part of current edge";
 }

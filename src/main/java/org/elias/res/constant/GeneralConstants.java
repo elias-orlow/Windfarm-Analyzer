@@ -17,20 +17,22 @@ public interface GeneralConstants
     int EMPTY_INT_VARIABLE = 0;
     float EMPTY_FLOAT_VARIABLE = 0.0f;
 
+    // Haufig verwendete Zeichen und Symbole
     String DASH = "-";
     String EN_DASH = "–";
     String QUESTION_MARK = "?";
     String OPEN_BRACKET = "(";
-
     char CHAR_DOUBLE_QUOTES = '"';
     char CHAR_COMMA = ',';
     char CHAR_SPACE = ' ';
     char CHAR_POINT = '.';
 
+    // Haufig genutzte numerische Konstanten
     int INT_ZERO = 0;
     int INT_ONE = 1;
     int INT_TWO = 2;
 
+    // Spaltenstruktur
     int COLUMN_COUNT = 12;
     int COLUMN_INDEX_ID = 0;
     int COLUMN_INDEX_NAME = 1;
@@ -44,6 +46,7 @@ public interface GeneralConstants
     int COLUMN_INDEX_PROJECTMANAGER = 10;
     int COLUMN_INDEX_REMARKS = 11;
 
+    // Geografische, zeitliche und fachliche Konstanten
     double EARTH_RADIUS_KM = 6371.000785;
     float TOP_TURBINE_PERFORMANCE = 15.0f;
 

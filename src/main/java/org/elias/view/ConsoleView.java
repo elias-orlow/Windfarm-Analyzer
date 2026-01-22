@@ -158,7 +158,8 @@ public final class ConsoleView
      * Gibt eine Liste von CSV-Zeilen auf der Konsole aus.
      *
      * @param CSVRows Liste der CSV-Zeilen, darf null oder leer sein.
-     * @precondition CSV-Liste existiert und es wurde eine Liste mit {@link org.elias.util.CSVFileReader#convertCSVtoList(String)} erzeugt.
+     * @precondition CSV-Liste existiert und es wurde eine Liste mit
+     * {@link org.elias.util.CSVFileReader#convertCSVtoList(String)} erzeugt.
      * @postcondition Jede Zeile der Liste wurde in der urspruenglichen Reihenfolge auf der Konsole ausgegeben.
      */
     public void printCSV (List<String> CSVRows)

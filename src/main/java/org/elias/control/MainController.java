@@ -209,7 +209,8 @@ public final class MainController
             }
         }
 
-        view.printMessage(String.format(ViewConstants.TOTAL_NORMALIZED_COORDINATE_MESSAGE, normalizedCoordinatesCounter));
+        view.printMessage(String.format(
+                ViewConstants.TOTAL_NORMALIZED_COORDINATE_MESSAGE, normalizedCoordinatesCounter));
     }
 
 
@@ -362,10 +363,12 @@ public final class MainController
                 sortByAndPrint(new WindFarmNameComparator().reversed());
                 break;
             case ViewConstants.AGE_PERFORMANCE:
-                sortByAndPrint(new LatestTurbineCommissioningComparator().thenComparing(new TotalPerformanceComparator().reversed()));
+                sortByAndPrint(new LatestTurbineCommissioningComparator()
+                        .thenComparing(new TotalPerformanceComparator().reversed()));
                 break;
             case ViewConstants.TURBINE_PERFORMANCE:
-                sortByAndPrint(new WindTurbineCountComparator().thenComparing(new TotalPerformanceComparator().reversed()));
+                sortByAndPrint(new WindTurbineCountComparator()
+                        .thenComparing(new TotalPerformanceComparator().reversed()));
                 break;
             case ViewConstants.TURBINE_MANAGER_COUNT:
                 sortByAndPrint(new WindTurbineCountComparator().thenComparing(new ManagerCountComparator()));
@@ -468,7 +471,8 @@ public final class MainController
      */
     private void createPlanProcess ()
     {
-        List<ProjectManager> projectManagers = new ArrayList<>(ProjectManagerAdministration.getInstance().getProjectManagerList());
+        List<ProjectManager> projectManagers = new ArrayList<>(
+                ProjectManagerAdministration.getInstance().getProjectManagerList());
         Collections.sort(projectManagers);
 
         ProjectManager selectedManager = chooseProjectManager(projectManagers);

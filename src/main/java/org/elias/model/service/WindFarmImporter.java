@@ -60,8 +60,8 @@ public class WindFarmImporter
      *
      * @param rows       CSV-Zeilen, die zu einem Windpark gehoeren.
      * @param repository zentrales Repository fuer Speicherung der Daten.
-     * @precondition Es gibt eine Instanz von {@link WindFarmRepository}. Die Zeilen wurden korrekt sortiert und gehoeren
-     * alle zum selben Windpark.
+     * @precondition Es gibt eine Instanz von {@link WindFarmRepository}.
+     * Die Zeilen wurden korrekt sortiert und gehoeren alle zum selben Windpark.
      * @postcondition {@link WindFarmRepository} wird mit einer {@code WindFarm} gefüllt. Bei ungueltigen Eingaben wird
      * die Zeile mit der entsprechenden Fehlermeldung zur {@link WindFarmRepository#invalidRows} hinzufuegt.
      */

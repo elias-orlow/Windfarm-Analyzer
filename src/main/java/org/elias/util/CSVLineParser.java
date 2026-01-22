@@ -17,10 +17,11 @@ public class CSVLineParser
      * Dabei werden Kommas innerhalb von Anführungszeichen sowie Kommas,
      * denen ein Leerzeichen folgt, nicht als Trennzeichen interpretiert.
      *
-     * @param dataRows Liste von Zeilen aus einer CSV-Datei
-     * @return Liste von String-Arrays, wo jedes Array die einzelnen Zellen einer CSV-Zeile enthaelt
-     * @precondition {@code dataRows} ist nicht null
-     * @postcondition Für jede uebergebene CSV-Zeile existiert genau ein String-Array im Rueckgabewert, die Reihenfolge der Zeilen bleibt erhalten
+     * @param dataRows Liste von Zeilen aus einer CSV-Datei.
+     * @return Liste von String-Arrays, wo jedes Array die einzelnen Zellen einer CSV-Zeile enthaelt.
+     * @precondition {@code dataRows} ist nicht null.
+     * @postcondition Für jede uebergebene CSV-Zeile existiert genau.
+     * ein String-Array im Rueckgabewert, die Reihenfolge der Zeilen bleibt erhalten.
      */
     public static List<String[]> convertToDataUnit (List<String> dataRows)
     {
@@ -48,7 +49,8 @@ public class CSVLineParser
                 if (currentChar == GeneralConstants.CHAR_COMMA && !insideQuotes)
                 {
                     // Wenn nach dem Komma ein Leerzeichen folgt → Teil des Inhalts der Zelle
-                    if (i + GeneralConstants.INT_ONE < row.length() && row.charAt(i + GeneralConstants.INT_ONE) == GeneralConstants.CHAR_SPACE)
+                    if (i + GeneralConstants.INT_ONE < row.length()
+                            && row.charAt(i + GeneralConstants.INT_ONE) == GeneralConstants.CHAR_SPACE)
                     {
                         currentCell.append(currentChar);
                     } else

@@ -52,9 +52,10 @@ public class DataCellParser
      * Wandelt einen uebergebenen Roh-String in ein ganzzahliges Datum um.
      *
      * @param raw der Roh-String, der das Baujahr bzw. einen Jahresbereich enthaelt.
-     * @return das Baujahr der Windkraftanlage als ganzzahliger Wert. Falls {@code raw} null, leer oder ein Fragezeichen ist,
-     * wird 0 zurueckgegeben.
-     * @precondition der Parameter {@code raw} enthaelt keine Buchstaben. null, leeres String oder Fragezeichen sind erlaubt.
+     * @return das Baujahr der Windkraftanlage als ganzzahliger Wert. Falls {@code raw} null,
+     * leer oder ein Fragezeichen ist, wird 0 zurueckgegeben.
+     * @precondition der Parameter {@code raw} enthaelt keine Buchstaben. null, leeres String
+     * oder Fragezeichen sind erlaubt.
      * @postcondition gibt den geparsten ganzzahligen Wert zurueck. Bei Jahresbereich wird das letzte Jahr verwendet.
      */
     public static Year parseManufactureYear (String raw)
@@ -69,7 +70,8 @@ public class DataCellParser
             String[] parts = raw.split(ParserConstants.YEAR_SPLIT_REGEX);
 
             // Wenn das letzte Element 4-stellig - verwenden, sonst das erste Element verwenden.
-            raw = parts[parts.length - ParserConstants.LAST_ELEMENT_OFFSET].trim().length() == GeneralConstants.YEAR_NUMBER_SIZE
+            raw = parts[parts.length - ParserConstants.LAST_ELEMENT_OFFSET].trim().length()
+                    == GeneralConstants.YEAR_NUMBER_SIZE
                     ? parts[parts.length - ParserConstants.LAST_ELEMENT_OFFSET]
                     : parts[GeneralConstants.INT_ZERO];
         }
@@ -84,7 +86,8 @@ public class DataCellParser
      * @param raw der Roh-String, der die Leistung eines Windkraftparks enthaelt.
      * @return die Leistung des Windkraftparks als float-Wert. Falls {@code raw} null oder leer ist,
      * wird 0.0f zurueckgegeben.
-     * @precondition der Parameter {@code raw} enthaelt keine Buchstaben oder Fragezeichen. null und leeres String sind erlaubt.
+     * @precondition der Parameter {@code raw} enthaelt keine Buchstaben oder Fragezeichen. null und
+     * leeres String sind erlaubt.
      * @postcondition gibt den geparsten float-Wert zurueck.
      */
     public static float parseTotalPerformance (String raw)
@@ -132,7 +135,8 @@ public class DataCellParser
                 // Typ extrahieren
                 windTurbine = segment.substring(GeneralConstants.INT_ZERO, openParenIndex).trim();
                 // Anzahl extrahieren (zwischen '(' und '×)')
-                count = segment.substring(openParenIndex + GeneralConstants.INT_ONE, segment.length() - GeneralConstants.INT_ONE);
+                count = segment.substring(openParenIndex + GeneralConstants.INT_ONE,
+                        segment.length() - GeneralConstants.INT_ONE);
             } else
             {
                 windTurbine = segment.trim();
