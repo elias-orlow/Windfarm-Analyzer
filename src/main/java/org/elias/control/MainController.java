@@ -393,8 +393,10 @@ public final class MainController
      */
     private void sortByAndPrint (Comparator<WindFarm> comparator)
     {
+        Timer.startTimer();
         germanWindFarms.getGermanWindFarms().sort(comparator);
         TableController tableController = TableController.getInstance();
+        view.printMessage(String.format(ViewConstants.TIME_MESSAGE, Timer.getTime()));
         tableController.printRepository(germanWindFarms);
     }
 
