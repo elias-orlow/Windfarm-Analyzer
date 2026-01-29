@@ -79,7 +79,8 @@ public class Coordinates
             return false;
         }
         Coordinates that = (Coordinates) object;
-        return Float.compare(latitude, that.latitude) == 0 && Float.compare(longitude, that.longitude) == 0;
+        return Float.compare(latitude, that.latitude) == GeneralConstants.INT_ZERO
+                && Float.compare(longitude, that.longitude) == GeneralConstants.INT_ZERO;
     }
 
     /**

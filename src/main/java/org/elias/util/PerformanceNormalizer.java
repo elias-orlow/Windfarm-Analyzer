@@ -39,7 +39,7 @@ public class PerformanceNormalizer
      */
     public static void normalizePerformance (WindFarm windFarm, Graph<WindFarm> windFarmGraph)
     {
-        if (windFarm.getTotalPerformance() == 0)
+        if (windFarm.getTotalPerformance() == GeneralConstants.INT_ZERO)
         {
             addPerformance(windFarm, windFarmGraph);
         } else

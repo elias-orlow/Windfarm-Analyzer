@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="JavadocGenerationManager">
-    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/../../../../../../../Study/Hochschule Bremen/PROG/Entwicklungsarbeit/Docu" />
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/../../../../../../../Study/Hochschule Bremen/PROG/Entwicklungsarbeit/res/JavaDoc" />
+    <option name="OPTION_SCOPE" value="private" />
+    <option name="OTHER_OPTIONS" value="-tag precondition:a:&quot;Precondition: &quot; -tag postcondition:a:&quot;Postcondition: &quot; " />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">

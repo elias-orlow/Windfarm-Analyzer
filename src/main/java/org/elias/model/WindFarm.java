@@ -152,7 +152,7 @@ public class WindFarm
     {
         if (object == null || getClass() != object.getClass()) return false;
         WindFarm windFarm = (WindFarm) object;
-        return Float.compare(totalPerformance, windFarm.totalPerformance) == 0
+        return Float.compare(totalPerformance, windFarm.totalPerformance) == GeneralConstants.INT_ZERO
                 && Objects.equals(name, windFarm.name)
                 && Objects.equals(coordinates, windFarm.coordinates)
                 && Objects.equals(projectManagers, windFarm.projectManagers)
